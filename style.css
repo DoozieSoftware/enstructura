@@ -47,7 +47,7 @@
 html,
 body {
   font-size: 15px;
-  color: #505050;
+  color: black;
   font-family: 'Play', sans-serif;
   vertical-align: baseline;
   line-height: 26px;
@@ -538,9 +538,7 @@ ul {
   font-weight: 600;
   font-size: 14px;
   margin-right: 10px;
-  color: #fbc02d
-
-;
+  color:#e85a3a;
 }
 #rs-header .toolbar-top-area .toolbar-contact ul li a {
   transition: all 0.3s ease 0s;
@@ -1708,7 +1706,7 @@ h3.title-border:after {
   position: relative;
 }
 .services-section .service-list-sidebar ul#service-menu li a {
-  color: #505050;
+  color: black;
   font-size: 15px;
   font-weight: 400;
   text-transform: uppercase;
@@ -1760,7 +1758,7 @@ h3.title-border:after {
   margin-bottom: 20px;
 }
 .services-section .services-left-side ul#brochures-list li a {
-  color: #505050;
+  color: black;
   font-size: 15px;
   font-weight: 400;
   text-transform: uppercase;
@@ -1785,7 +1783,7 @@ h3.title-border:after {
 }
 .services-section .services-left-side.our-office ul#office-address li {
   margin-bottom: 20px;
-  color: #505050;
+  color:black;
   font-size: 15px;
   font-weight: 400;
   overflow: hidden;
@@ -1796,13 +1794,13 @@ h3.title-border:after {
   -ms-transition: 0.4s;
 }
 .services-section .services-left-side.our-office ul#office-address li a {
-  color: #505050;
+  color: black;
   transition: 0.4s;
   -webkit-transition: 0.4s;
   -ms-transition: 0.4s;
 }
 .services-section .services-left-side.our-office ul#office-address li i {
-  color: #505050;
+  color: black;
   position: absolute;
   left: 0;
   top: 5px;
