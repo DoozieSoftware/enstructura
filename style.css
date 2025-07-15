@@ -77,6 +77,8 @@ a {
   transition: all 0.3s ease 0s;
   text-decoration: none !important;
   outline: none !important;
+  font-weight: bold;
+  font-size: 17px;
 }
 a:active,
 a:hover {
@@ -119,7 +121,7 @@ ul {
   background-color: #f0f0f0;
 }
 .primary-bg {
-  background: #e85a3a;
+  background: #4b84c3;
 }
 .bg-fixed {
   background-attachment: fixed;
@@ -1691,8 +1693,8 @@ h3.title-border:after {
 }
 .services-section .service-list-sidebar ul#service-menu li a {
   color: black;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: bold;
   text-transform: uppercase;
   padding: 10px 0;
   border-bottom: 1px solid #ebebeb;
@@ -4882,13 +4884,16 @@ h3.title-border:after {
 27.Preloader  
 ---------------------------------------*/
 .preloader {
-  background-color: #e85a3a;
+  background-color:#4b84c3;
   height: 100%;
   width: 100%;
   position: fixed;
   margin-top: 0px;
   top: 0px;
   z-index: 9999999;
+}
+.item slide2{
+  height: 60%;
 }
 .sk-cube-grid {
   width: 60px;
