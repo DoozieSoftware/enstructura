@@ -77,6 +77,8 @@ a {
   transition: all 0.3s ease 0s;
   text-decoration: none !important;
   outline: none !important;
+  font-weight: bold;
+  font-size: 17px;
 }
 a:active,
 a:hover {
