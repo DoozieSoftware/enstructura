@@ -3305,6 +3305,7 @@ h3.title-border:after {
 .rs-footer .footer-title {
   margin-bottom: 40px;
   padding-bottom: 5px;
+  margin-left: 71px;
   color: #fff;
   font-size: 16px;
   position: relative;
@@ -3386,6 +3387,7 @@ h3.title-border:after {
   border-bottom: 1px solid rgba(102, 102, 102, 0.5);
   position: relative;
   padding: 4px 0 4px 14px;
+  margin-left: 72px;
 }
 .rs-footer .footer-top .sitemap-widget li a:hover,
 .rs-footer .footer-top .sitemap-widget li a:focus {
