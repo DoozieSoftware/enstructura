@@ -324,28 +324,18 @@
   <!--Header End-->
 
   <!-- Breadcrumbs Start -->
-  <div class="rs-breadcrumbs sec-color">
-    <img src="images/banner/service-details.jpg" alt="Breadcrubs" />
-    <div class="breadcrumbs-inner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <h1 class="page-title">Structural Investigation</h1>
-            <ul>
-              <li>
-                <a class="active" href="services.html">Services</a>
-              </li>
-              <li>Structural Investigation</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Breadcrumbs End -->
 
+  <!-- Breadcrumbs End -->
+  <style>
+    @media (min-width: 992px) {
+      .services-section {
+        margin-top: 150px !important;
+        /* mt-100 */
+      }
+    }
+  </style>
   <!-- Services Section Start -->
-  <div class="services-section mt-100">
+  <div class="services-section ">
     <div class="container">
       <div class="row">
         <!-- Sidebar -->
@@ -383,21 +373,88 @@
           </div>
         </div>
 
+        <style>
+          .img-collage-testing {
+            column-count: 3;
+            column-gap: 16px;
+            margin: 0 0 1rem 0;
+          }
+
+          .img-collage-testing figure {
+            position: relative;
+            margin: 0 0 16px 0;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+          }
+
+          .img-collage-testing img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+
+          /* Start hidden below, then slide up on hover/focus */
+          .img-collage-testing figcaption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 12px 14px 14px;
+            color: #fff;
+            line-height: 1.25;
+            background: linear-gradient(to top, rgba(0, 0, 0, .72), rgba(0, 0, 0, 0));
+            transform: translateY(100%);
+            /* start off-canvas below */
+            transition: transform 300ms ease,
+              /* slide */
+              opacity 300ms ease;
+            /* optional fade */
+            opacity: 0.95;
+            /* slight fade in */
+            pointer-events: none;
+            text-wrap: balance;
+          }
+
+          /* Reveal on hover/focus within the card */
+          .img-collage-testing figure:hover figcaption,
+          .img-collage-testing figure:focus-within figcaption {
+            transform: translateY(0);
+            /* slide up */
+            opacity: 1;
+          }
+
+          /* Respect reduced motion preferences */
+          @media (prefers-reduced-motion: reduce) {
+            .img-collage-testing figcaption {
+              transition: none;
+              /* no motion */
+              transform: none;
+              /* show without sliding */
+            }
+          }
+
+          /* Responsive columns */
+          @media (max-width: 992px) {
+            .img-collage-testing {
+              column-count: 2;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .img-collage-testing {
+              column-count: 1;
+            }
+          }
+        </style>
         <!-- Main Content -->
         <div class="col-sm-8">
           <div class="row">
             <div class="col-sm-12">
               <h3 class="title-border">Structural Investigation</h3>
-
-
-              <div class="col-sm-12">
-                <div id="about-slider" class="owl-carousel">
-                  <div> <img src="images/services/service_42.jpg" alt=""></div>
-                  <div> <img src="images/services/service_44.jpg" alt=""></div>
-
-
-                </div>
-              </div>
               <div class="col-sm-12">
                 <div class="services-btm">
 
@@ -415,12 +472,84 @@
                   </div>
                 </div>
               </div>
+              <div class="col-sm-12">
+                <div class="img-collage-testing">
+                  <figure class="collage-item">
+                    <img src="images/services/testing/Rebound Hammer Test.jpg" alt="Rebound Hammer Test">
+                    <figcaption>NDT-based Assessment of Existing Buildings</figcaption>
+                  </figure>
+                  <figure class="collage-item">
+                    <img src="images/services/testing/service-51.jpg" alt="Rebound Hammer Test" style="height: 211px;">
+                    <figcaption>NDT-based Assessment of Existing Buildings</figcaption>
+                  </figure>
+
+                  <figure class="collage-item">
+                    <img src="images/services/testing/Structural-Failure.png" alt="Rebound Hammer Test">
+                    <figcaption>Structural Analysis and Risk Evaluation</figcaption>
+                  </figure>
+
+                  <figure class="collage-item">
+                    <img
+                      src="images/services/testing/Reinforced-concrete-jacketing-of-a-column-and-its-supported-beams.png"
+                      alt="Rebound Hammer Test">
+                    <figcaption>Retrofitting jacketing</figcaption>
+                  </figure>
+
+                  <figure class="collage-item">
+                    <img src="images/services/testing/carbon-fiber-wrapping-service.jpg" alt="Rebound Hammer Test">
+                    <figcaption> Carbon Wrapping</figcaption>
+                  </figure>
+                  <figure class="collage-item">
+                    <img src="images/services/testing/steel plate bonding.jpeg" style="width: 280px; height: 280px;"
+                      alt="Rebound Hammer Test">
+                    <figcaption>Steel Plate Bonding </figcaption>
+                  </figure>
+                  <figure class="collage-item">
+                    <img src="images/services/testing/service-56.jpeg" alt="Rebound Hammer Test">
+                    <figcaption>Pull out test on RCC beams and slabs</figcaption>
+                  </figure>
+
+                </div>
+              </div>
+
+
+              <div class="col-sm-12">
+                <div id="about-slider" class="owl-carousel">
+                  <div> <img src="images/services/service_42.jpg" alt=""></div>
+                  <div> <img src="images/services/service_44.jpg" alt=""></div>
+
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+    <style>
+      .download-btn {
+        background: #e85a3a;
+        color: black;
+        padding: 18px 40px;
+        font-size: 17px;
+        border: 0;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background .2s, color .2s;
+      }
 
+      .download-btn:hover,
+      .download-btn:focus {
+        background: #e85a3a;
+        /* black on hover */
+        color: #fff;
+        /* white text */
+        text-decoration: none;
+        outline: 0;
+      }
+    </style>
     <!-- Footer Start -->
     <footer id="rs-footer" class="rs-footer">
       <div class="footer-top">
@@ -442,18 +571,7 @@
                 <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering structural solutions
                   tailored to every client’s unique needs.</p>
                 <a href="images/certificates/company profile.pdf" download style="text-decoration: none;">
-                  <button style="
-      background-color: #fbc02d
-
-;
-      color: #000000;
-      padding: 18px 40px;
-      font-size: 17px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    ">
+                  <button class="download-btn">
                     Download Company Profile
                   </button>
                 </a>

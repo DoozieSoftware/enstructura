@@ -100,7 +100,7 @@
                     <div class="col-sm-3 logo-col">
                         <a href="index.html" class="logo-link">
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                style="height: 120px;width:250px; margin-bottom: -20px;">
+                                style="height: 100px;width:250px; margin-bottom: -20px;">
                             <div class="custom-logo-text">
                                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
                                     <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
@@ -148,9 +148,6 @@
                                         <li><a href="technical_training.html">Technical Training</a></li>
                                     </ul>
                                 </li>
-
-
-
                                 <li><a href="gallery.html">Gallery</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
@@ -161,9 +158,6 @@
         </div>
 
         <style>
-            /* ✅ DO NOT touch background on desktop */
-
-            /* Align and space logo properly */
             .menu-area .row {
                 align-items: center;
                 padding-top: 8px;
@@ -186,7 +180,7 @@
 
             /* Logo image */
             .custom-logo-img {
-                height: 70px;
+                height: 200px;
                 width: auto;
                 display: block;
                 margin: -17px;
@@ -257,37 +251,81 @@
             /* ✅ MOBILE VIEW FIXES ONLY */
             @media (max-width: 767px) {
 
+                /* header stack: logo/text first, then menu */
+                .menu-area .row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+
+                .logo-col {
+                    order: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .col-sm-9 {
+                    order: 1;
+                    width: 100%;
+                }
+
+                /* logo + text row */
+                .logo-link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    margin: 0;
+                    /* remove extra offset */
+                }
+
+                /* override inline size from the <img style="..."> */
+                .custom-logo-img {
+                    height: 130px !important;
+                    width: auto !important;
+                    padding: 0;
+                    display: block;
+                }
+
+                .custom-logo-text {
+                    color: #fff;
+                    font-weight: 700;
+                    line-height: 1.15;
+                    font-size: 16px;
+                    /* main line */
+                    margin: 0;
+                    padding: 0;
+                    text-align: left;
+                    /* looks cleaner next to logo */
+                }
+
+                .custom-logo-text h5 {
+                    font-size: 12px;
+                    /* tagline */
+                    font-style: italic;
+                    color: #fff;
+                    margin: 2px 0 0 0;
+                    line-height: 1.15;
+                }
+
+                /* keep your existing mobile menu colors/behavior */
                 .menu-area,
                 .rs-menu-toggle {
                     background-color: #000 !important;
                 }
 
-                .logo-col {
-                    justify-content: center;
-                    text-align: center;
-                }
-
-                .logo-link {
-                    justify-content: center;
-                }
-
-                .custom-logo-img {
-                    height: 50px;
-                }
-
-                .custom-logo-text {
-                    font-size: 15px;
-                }
-
-                .menu-area .row {
-                    padding-top: 10px;
-                    padding-bottom: 10px;
+                .rs-menu-toggle {
+                    display: block;
+                    text-align: left;
+                    padding: -1px;
                 }
 
                 .sub-menu {
                     position: static;
                     display: none;
-                    background-color: #000;
+                    background: #000;
                     box-shadow: none;
                 }
 
@@ -300,7 +338,7 @@
                 }
 
                 .sub-menu li a:hover {
-                    background-color: #222;
+                    background: #222;
                 }
             }
         </style>
@@ -324,17 +362,12 @@
 
 
 
-
-        </div>
-        </div>
-        </div>
-        </div>
         <!-- Header Menu End -->
     </header>
     <!--Header End-->
 
     <!-- Breadcrumbs Start -->
-    <div class="rs-breadcrumbs sec-color">
+    <!-- <div class="rs-breadcrumbs sec-color">
         <img src="images/banner/service-details.jpg" alt="Breadcrubs" />
         <div class="breadcrumbs-inner">
             <div class="container">
@@ -351,11 +384,257 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Breadcrumbs End -->
+    <style>
+        @media (min-width: 992px) {
+            .services-section {
+                margin-top: 150px !important;
+                /* mt-100 */
+            }
+        }
+    </style>
 
+    <style>
+        .service-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 12px;
+            box-sizing: border-box;
+        }
+
+        .images-side {
+            flex: 0 0 520px;
+            min-width: 520px;
+        }
+
+        .compact-gallery {
+            display: flex;
+            gap: 10px;
+        }
+
+        .will-animate {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Animate-in state */
+        .animate-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Images */
+        .gallery-img {
+            flex: 1;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        /* Entrance animation per image when animate-in is added on container */
+        .animate-in .gallery-img {
+            animation: imgIn .6s cubic-bezier(.22, .61, .36, 1) forwards;
+        }
+
+        .animate-in .gallery-img:nth-child(1) {
+            animation-delay: .08s;
+        }
+
+        .animate-in .gallery-img:nth-child(2) {
+            animation-delay: .18s;
+        }
+
+        .animate-in .gallery-img:nth-child(3) {
+            animation-delay: .28s;
+        }
+
+        .services {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Remove will-animate styles from parent; apply to each .service-row only */
+        .service-row.will-animate {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        .service-row.animate-in {
+            opacity: 1;
+            transform: none;
+            transition: opacity .4s ease, transform .4s ease;
+        }
+
+        /* Image and title animations are scoped to the row that becomes animate-in */
+        .service-row.animate-in .gallery-img {
+            animation: imgIn .6s cubic-bezier(.22, .61, .36, 1) forwards;
+        }
+
+        .service-row.animate-in .gallery-img:nth-child(1) {
+            animation-delay: .08s;
+        }
+
+        .service-row.animate-in .gallery-img:nth-child(2) {
+            animation-delay: .18s;
+        }
+
+        .service-row.animate-in .gallery-img:nth-child(3) {
+            animation-delay: .28s;
+        }
+
+        .service-row.animate-in .title {
+            animation: titleIn .5s ease-out .22s both;
+        }
+
+        .service-row.animate-in .title::after {
+            animation: underline .6s ease-out .5s forwards;
+        }
+
+        @keyframes imgIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .gallery-img:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, .18);
+        }
+
+        /* Text */
+        .text-side {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .text-block {
+            margin-left: 18px;
+            padding: 12px 0;
+        }
+
+        .title {
+            position: relative;
+            margin-left: 20px;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.3;
+            letter-spacing: .2px;
+        }
+
+        /* Title entrance */
+        .animate-in .title {
+            animation: titleIn .5s ease-out .22s both;
+        }
+
+        @keyframes titleIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Underline sweep only after title appears */
+        .title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, #0d6efd, #22c55e);
+            border-radius: 3px;
+        }
+
+        .animate-in .title::after {
+            animation: underline .6s ease-out .5s forwards;
+        }
+
+
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+
+            .will-animate,
+            .animate-in,
+            .gallery-img,
+            .title,
+            .title::after {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width:992px) {
+            .images-side {
+                flex: 0 0 480px;
+                min-width: 480px;
+            }
+
+            .gallery-img {
+                height: 130px;
+            }
+
+            .title {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width:768px) {
+            .service-row {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .images-side {
+                flex: 90%;
+                min-width: 60%;
+            }
+
+            .compact-gallery {
+                justify-content: center;
+            }
+
+            .gallery-img {
+                height: 120px;
+            }
+
+            .text-side {
+                flex: 1 1 100%;
+                min-width: 100%;
+            }
+
+            .text-block {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
     <!-- Services Section Start -->
-    <div class="services-section mt-100">
+    <div class="services-section">
         <div class="container">
             <div class="row">
                 <!-- Sidebar -->
@@ -404,7 +683,74 @@
                                 analysis and design software, including ETABS, SAFE, STAAD.Pro, CYPE, and RCDC, enabling
                                 us to
                                 deliver accurate and efficient structural solutions.</p>
-                            <div> <img src="images/services/service_43.png" alt=""></div>
+                            <!-- <div> <img src="images/services/service_43.png" alt=""></div> -->
+                            <!-- a -->
+                            <div class="services">
+                                <div class="service-row will-animate">
+                                    <div class="images-side">
+                                        <div class="compact-gallery">
+                                            <img src="images/services/a/composite-steel-building.png"
+                                                alt="Composite Steel Building" class="gallery-img">
+                                            <img src="images/services/a/rcc-frame.jpg" alt="RCC Frame"
+                                                class="gallery-img">
+                                            <img src="images/services/a/steel-contruction.jpg" alt="Steel Construction"
+                                                class="gallery-img">
+                                        </div>
+                                    </div>
+                                    <div class="text-side">
+                                        <div class="text-block">
+                                            <h4 class="title">Structural designs of RCC, Steel and composite structure.
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- b -->
+                                <div class="service-row will-animate">
+                                    <div class="images-side">
+                                        <div class="compact-gallery">
+                                            <img src="images/services/b/3.png" alt="Composite Steel Building"
+                                                class="gallery-img">
+                                            <img src="images/services/b/download.jpeg" alt="RCC Frame"
+                                                class="gallery-img">
+                                            <img src="images/services/b/structural-remodel-process.webp"
+                                                alt="Steel Construction" class="gallery-img">
+                                        </div>
+                                    </div>
+                                    <div class="text-side">
+                                        <div class="text-block">
+                                            <h4 class="title">Structural Modifications in existing structures due change
+                                                in occupany/change in load.
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- c -->
+
+
+                                <div class="service-row will-animate">
+                                    <div class="images-side">
+                                        <div class="compact-gallery">
+                                            <img src="images/services/d/1.jpg" style="width: 180px;height: 150px;"
+                                                alt="Composite Steel Building" class="gallery-img">
+                                            <img src="images/services/d/2.jpeg" style="width: 180px;height: 150px;"
+                                                alt="RCC Frame" class="gallery-img">
+                                            <img src="images/services/c/feasible-study.png"
+                                                style="width: 180px;height: 150px;" alt="Composite Steel Building"
+                                                class="gallery-img">
+                                        </div>
+                                    </div>
+                                    <div class="text-side">
+                                        <div class="text-block">
+                                            <h4 class="title">Stability Analysis, building stability Certification and
+                                                Additional floors on existing buildings.
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- d/e -->
+
+                            </div>
+
                             <p>We also utilize CAD software for precise detailing. The use of Revit and Sketch-Up
                                 enhances the
                                 detailing process, providing clearer visualizations that improve understanding and
@@ -455,292 +801,229 @@
                             </div>
                         </div>
 
-                        <!-- Accordion: What is Included -->
-                        <!-- <div class="row">
-                    <div class="col-sm-12">
-                        <div class="include rs-about">
-                            <h3 class="title-border">What is included</h3>
-                            <div class="panel-group" id="accordion1">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
-                                                Design Validation
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne1" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <p>Our structural engineers verify calculations and design assumptions to meet BIS/IS codes and ensure optimized resource utilization while maintaining safety margins.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                 
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
-                                                Code Compliance Review
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo1" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p>Thorough check of structural designs to ensure compliance with relevant IS codes and government norms. Review includes drawings, load calculations, materials, and detailing practices.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1">
-                                                Safety & Risk Assessment
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseThree1" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <p>Evaluation of safety factors, load paths, failure modes, and redundancy to reduce structural risk and ensure long-term integrity of assets.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                        <!-- Bottom Section -->
-                        <!-- <div class="row">
-                    <div class="services-btm">
-                        <h3 class="title-border">RELATED PROJECTS</h3>
-                        <div class="col-sm-6">
-                            <p>We’ve delivered structural review and proof checking for a variety of buildings across industrial and residential sectors, including high-rise towers, factory sheds, warehouses, and commercial blocks.</p>
-                            <ul>
-                                <li>IS code compliance checks</li>
-                                <li>3D structural modeling</li>
-                                <li>Stability and safety audits</li>
-                                <li>Pre-construction verification</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <img src="images/services/service_14.jpg" alt="">
-                        </div><br>
-                    </div>
-                </div> -->
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <script>
+        (function () {
+            var rows = document.querySelectorAll('.service-row.will-animate');
 
-        <!-- Services Section End -->
-        <!-- Partner Start -->
-        <!-- <div id="rs-partner" class="rs-partner sec-spacer services-logo">
+            function activateOnce(el) {
+                el.classList.add('animate-in');
+                el.classList.remove('will-animate');
+            }
+
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            activateOnce(e.target);
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+                rows.forEach(function (r) { io.observe(r); });
+            } else {
+                // Fallback: activate all on DOM ready
+                function ready() { rows.forEach(activateOnce); }
+                if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', ready); }
+                else { ready(); }
+            }
+        })();
+    </script>
+
+    <!-- Partner End -->
+    <style>
+        .download-btn {
+            background: #e85a3a;
+            color: black;
+            padding: 18px 40px;
+            font-size: 17px;
+            border: 0;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+
+        .download-btn:hover,
+        .download-btn:focus {
+            background: #e85a3a;
+            /* black on hover */
+            color: #fff;
+            /* white text */
+            text-decoration: none;
+            outline: 0;
+        }
+    </style>
+    <!-- Footer Start -->
+    <footer id="rs-footer" class="rs-footer">
+        <div class="footer-top">
             <div class="container">
-                <div class="rs-carousel owl-carousel" data-loop="true" data-items="6" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="false" data-nav="false" data-nav-speed="false" data-mobile-device="2" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="4" data-ipad-device-nav="false" data-ipad-device-dots="false" data-md-device="6" data-md-device-nav="false" data-md-device-dots="false">
-                    <div class="partner-item">
-                        <a href="#"><img src="images/partner/1.png" alt="Partner Image"></a>
+                <div class="row">
+                    <!-- Column 1: Logo & Description -->
+                    <div class="col-md-4">
+                        <div class="about-widget" style="display: flex; align-items: center; gap: 10px;">
+                            <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
+                                style="height: 120px;width:250px; margin-bottom: -20px;">
+                            <div class="custom-logo-text">
+                                <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt)
+                                    Ltd.<br>
+                                    <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With
+                                        Smart Engineering Solutions</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering
+                                structural solutions tailored to every client’s unique needs.</p>
+                            <a href="images/certificates/company profile.pdf" download style="text-decoration: none;">
+                                <button class="download-btn">
+                                    Download Company Profile
+                                </button>
+                            </a>
+
+
+
+
+
+                        </div>
                     </div>
-                    <div class="partner-item">
-                        <a href="#"><img src="images/partner/2.png" alt="Partner Image"></a>
+
+                    <!-- Column 2: Quick Links -->
+                    <div class="col-md-4">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="sitemap-widget">
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="services.html">Services</a></li>
+
+                            <li><a href="clientele.html">Clientele</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
                     </div>
-                    <div class="partner-item">
-                        <a href="#"><img src="images/partner/3.png" alt="Partner Image"></a>
+
+                    <!-- Column 3: Contact Us / Subscribe -->
+                    <div class="col-md-4">
+                        <h3 class="footer-title" style="color: white; margin-bottom: 20px;">Contact Us</h3>
+                        <div style="color: #ccc;">
+                            <!-- Phone Section -->
+                            <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
+                                <div
+                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
+                                    <i class="fa fa-phone" style="color: white;"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: white;">Call Us</strong><br>
+                                    +91 9663329229<br>
+
+                                </div>
+                            </div>
+
+                            <!-- Email Section -->
+                            <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
+                                <div
+                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
+                                    <i class="fa fa-envelope" style="color: white;"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: white;">Work with us</strong><br>
+                                    info@enstructura.in
+                                </div>
+                            </div>
+
+                            <!-- Location Section -->
+                            <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                <div
+                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
+                                    <i class="fa fa-map-marker" style="color: white;"></i>
+                                </div>
+                                <div>
+                                    <strong style="color: white;">Our Location</strong><br>
+                                    # 2054, 2nd Main, BCCHS Layout<br>
+                                    Raghuvanahalli,off. Kanakapura Road
+                                    Bengaluru - 560 062
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="partner-item">
-                        <a href="#"><img src="images/partner/4.png" alt="Partner Image"></a>
-                    </div>
-                    <div class="partner-item">
-                        <a href="#"><img src="images/partner/5.png" alt="Partner Image"></a>
-                    </div>
-                    <div class="partner-item">
-                        <a href="#"><img src="images/partner/6.png" alt="Partner Image"></a>
-                    </div>
+
                 </div>
             </div>
-        </div> -->
-        <!-- Partner End -->
-
-        <!-- Footer Start -->
-        <footer id="rs-footer" class="rs-footer">
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <!-- Column 1: Logo & Description -->
-                        <div class="col-md-4">
-                            <div class="about-widget" style="display: flex; align-items: center; gap: 10px;">
-                                <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                    style="height: 120px;width:250px; margin-bottom: -20px;">
-                                <div class="custom-logo-text">
-                                    <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt)
-                                        Ltd.<br>
-                                        <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With
-                                            Smart Engineering Solutions</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="margin-top: 10px;">
-                                <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering
-                                    structural solutions tailored to every client’s unique needs.</p>
-                                <a href="images/certificates/company profile.pdf" download
-                                    style="text-decoration: none;">
-                                    <button style="
-      background-color: #fbc02d
-
-;
-      color: #000000;
-      padding: 18px 40px;
-      font-size: 17px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    ">
-                                        Download Company Profile
-                                    </button>
-                                </a>
-
-
-
-
-
-                            </div>
-                        </div>
-
-                        <!-- Column 2: Quick Links -->
-                        <div class="col-md-4">
-                            <h3 class="footer-title">Quick Links</h3>
-                            <ul class="sitemap-widget">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="team.html">Team</a></li>
-                                <li><a href="services.html">Services</a></li>
-
-                                <li><a href="clientele.html">Clientele</a></li>
-                                <li><a href="gallery.html">Gallery</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Column 3: Contact Us / Subscribe -->
-                        <div class="col-md-4">
-                            <h3 class="footer-title" style="color: white; margin-bottom: 20px;">Contact Us</h3>
-                            <div style="color: #ccc;">
-                                <!-- Phone Section -->
-                                <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
-                                    <div
-                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
-                                        <i class="fa fa-phone" style="color: white;"></i>
-                                    </div>
-                                    <div>
-                                        <strong style="color: white;">Call Us</strong><br>
-                                        +91 9663329229<br>
-
-                                    </div>
-                                </div>
-
-                                <!-- Email Section -->
-                                <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
-                                    <div
-                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
-                                        <i class="fa fa-envelope" style="color: white;"></i>
-                                    </div>
-                                    <div>
-                                        <strong style="color: white;">Work with us</strong><br>
-                                        info@enstructura.in
-                                    </div>
-                                </div>
-
-                                <!-- Location Section -->
-                                <div style="display: flex; align-items: flex-start; gap: 10px;">
-                                    <div
-                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
-                                        <i class="fa fa-map-marker" style="color: white;"></i>
-                                    </div>
-                                    <div>
-                                        <strong style="color: white;">Our Location</strong><br>
-                                        # 2054, 2nd Main, BCCHS Layout<br>
-                                        Raghuvanahalli,off. Kanakapura Road
-                                        Bengaluru - 560 062
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="copyright">
-                                <p> <a href="https://dooziesoft.com/">© 2025 Powered By Dooziesoft .</a> All Rights
-                                    Reserved.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 text-right">
-                            <div class="footer-bottom-share">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <!-- Footer End -->
-
-        <!-- start scrollUp  -->
-        <div id="scrollUp">
-            <i class="fa fa-angle-up"></i>
         </div>
 
-        <!-- modernizr js -->
-        <script src="js/modernizr-2.8.3.min.js"></script>
-        <!-- jquery latest version -->
-        <script src="js/jquery.min.js"></script>
-        <!-- bootstrap js -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- op nav js -->
-        <script src="js/jquery.nav.js"></script>
-        <!-- owl.carousel js -->
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/slick.min.js"></script>
-        <!-- isotope.pkgd.min js -->
-        <script src="js/isotope.pkgd.min.js"></script>
-        <!-- imagesloaded.pkgd.min js -->
-        <script src="js/imagesloaded.pkgd.min.js"></script>
-        <!-- wow js -->
-        <script src="js/wow.min.js"></script>
-        <!-- counter top js -->
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/jquery.counterup.min.js"></script>
-        <!-- magnific popup -->
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <!-- Skill bar js -->
-        <script src="js/skill.bars.jquery.js"></script>
-        <!-- rsmenu js -->
-        <script src="js/rsmenu-main.js"></script>
-        <!-- plugins js -->
-        <script src="js/plugins.js"></script>
-        <!-- contact form js -->
-        <script src="js/contact.form.js"></script>
-        <!-- quote popup form js -->
-        <script src="js/quote.form.js"></script>
-        <!-- owl-filter js -->
-        <script src="js/jquery.owl-filter.js"></script>
-        <!-- main js -->
-        <script src="js/main.js"></script>
-        <!-- moogle map js -->
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="copyright">
+                            <p> <a href="https://dooziesoft.com/">© 2025 Powered By Dooziesoft .</a> All Rights
+                                Reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 text-right">
+                        <div class="footer-bottom-share">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer End -->
+
+    <!-- start scrollUp  -->
+    <div id="scrollUp">
+        <i class="fa fa-angle-up"></i>
+    </div>
+
+    <!-- modernizr js -->
+    <script src="js/modernizr-2.8.3.min.js"></script>
+    <!-- jquery latest version -->
+    <script src="js/jquery.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- op nav js -->
+    <script src="js/jquery.nav.js"></script>
+    <!-- owl.carousel js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <!-- isotope.pkgd.min js -->
+    <script src="js/isotope.pkgd.min.js"></script>
+    <!-- imagesloaded.pkgd.min js -->
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <!-- wow js -->
+    <script src="js/wow.min.js"></script>
+    <!-- counter top js -->
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- magnific popup -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Skill bar js -->
+    <script src="js/skill.bars.jquery.js"></script>
+    <!-- rsmenu js -->
+    <script src="js/rsmenu-main.js"></script>
+    <!-- plugins js -->
+    <script src="js/plugins.js"></script>
+    <!-- contact form js -->
+    <script src="js/contact.form.js"></script>
+    <!-- quote popup form js -->
+    <script src="js/quote.form.js"></script>
+    <!-- owl-filter js -->
+    <script src="js/jquery.owl-filter.js"></script>
+    <!-- main js -->
+    <script src="js/main.js"></script>
+    <!-- moogle map js -->
 </body>
 
 <!-- Mirrored from Enstructura Consultant Pvt Ltd/products/html/construction/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 May 2025 12:21:52 GMT -->

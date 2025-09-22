@@ -37,10 +37,7 @@
     <!-- responsive css -->
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
 
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+
 </head>
 
 <body class="home2">
@@ -72,7 +69,7 @@
                                 <li><i class="fa fa-phone"></i><a href="tel:(+088)589-8745">Call Us (+91) 9663329229</a>
                                 </li>
                                 <li class="hidden-sm"><i class="fa fa-envelope-o"></i><a
-                                        href="mailto:support@Enstructura Consultant Pvt Ltd"> info@enstructura.com</a>
+                                        href="mailto:support@Enstructura Consultant Pvt Ltd"> info@enstructura.in</a>
                                 </li>
                             </ul>
                         </div>
@@ -100,7 +97,7 @@
                     <div class="col-sm-3 logo-col">
                         <a href="index.html" class="logo-link">
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                style="height: 100px;width:250px; margin-bottom: -20px;">
+                                style="height: 120px;width:250px; margin-bottom: -20px;">
                             <div class="custom-logo-text">
                                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
                                     <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
@@ -158,6 +155,9 @@
         </div>
 
         <style>
+            /* ✅ DO NOT touch background on desktop */
+
+            /* Align and space logo properly */
             .menu-area .row {
                 align-items: center;
                 padding-top: 8px;
@@ -180,7 +180,7 @@
 
             /* Logo image */
             .custom-logo-img {
-                height: 200px;
+                height: 70px;
                 width: auto;
                 display: block;
                 margin: -17px;
@@ -251,81 +251,37 @@
             /* ✅ MOBILE VIEW FIXES ONLY */
             @media (max-width: 767px) {
 
-                /* header stack: logo/text first, then menu */
-                .menu-area .row {
-                    display: flex;
-                    flex-wrap: wrap;
-                    padding-top: 10px;
-                    padding-bottom: 10px;
-                }
-
-                .logo-col {
-                    order: 0;
-                    width: 100%;
-                    display: flex;
-                    justify-content: center;
-                }
-
-                .col-sm-9 {
-                    order: 1;
-                    width: 100%;
-                }
-
-                /* logo + text row */
-                .logo-link {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    margin: 0;
-                    /* remove extra offset */
-                }
-
-                /* override inline size from the <img style="..."> */
-                .custom-logo-img {
-                    height: 130px !important;
-                    width: auto !important;
-                    padding: 0;
-                    display: block;
-                }
-
-                .custom-logo-text {
-                    color: #fff;
-                    font-weight: 700;
-                    line-height: 1.15;
-                    font-size: 16px;
-                    /* main line */
-                    margin: 0;
-                    padding: 0;
-                    text-align: left;
-                    /* looks cleaner next to logo */
-                }
-
-                .custom-logo-text h5 {
-                    font-size: 12px;
-                    /* tagline */
-                    font-style: italic;
-                    color: #fff;
-                    margin: 2px 0 0 0;
-                    line-height: 1.15;
-                }
-
-                /* keep your existing mobile menu colors/behavior */
                 .menu-area,
                 .rs-menu-toggle {
                     background-color: #000 !important;
                 }
 
-                .rs-menu-toggle {
-                    display: block;
-                    text-align: left;
-                    padding: -1px;
+                .logo-col {
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                .logo-link {
+                    justify-content: center;
+                }
+
+                .custom-logo-img {
+                    height: 50px;
+                }
+
+                .custom-logo-text {
+                    font-size: 15px;
+                }
+
+                .menu-area .row {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
                 }
 
                 .sub-menu {
                     position: static;
                     display: none;
-                    background: #000;
+                    background-color: #000;
                     box-shadow: none;
                 }
 
@@ -338,7 +294,7 @@
                 }
 
                 .sub-menu li a:hover {
-                    background: #222;
+                    background-color: #222;
                 }
             }
         </style>
@@ -363,24 +319,29 @@
 
 
 
+        </div>
+        </div>
+        </div>
+        </div>
         <!-- Header Menu End -->
     </header>
     <!--Header End-->
 
     <!-- Breadcrumbs Start -->
     <div class="rs-breadcrumbs sec-color">
-        <img src="images/new gallaery/gal38.jpg" alt="Breadcrubs"
-            style="width: 100%; height:550px; object-fit: cover;" />
+        <img src="images/new gallaery/gal36.jpg" alt="Breadcrubs"
+            style="width: 100%; height: 500px; object-fit: cover;" />
+
         <div class="breadcrumbs-inner">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h1 class="page-title">Services</h1>
+                        <h1 class="page-title">Team</h1>
                         <ul>
                             <li>
                                 <a class="active" href="index.html">Home</a>
                             </li>
-                            <li>Services</li>
+                            <li>Team</li>
                         </ul>
                     </div>
                 </div>
@@ -389,214 +350,361 @@
     </div>
     <!-- Breadcrumbs End -->
 
-    <!-- Services Section Start -->
-    <div id="services-sections" class="services-section sec-spacer">
-        <style>
-            /* Equal height for all service boxes */
-            .services-section .row {
-                display: flex;
-                flex-wrap: wrap;
-            }
+    <!-- Team Section Start -->
+    <style>
+        .team-card {
+            background: #fff;
+            padding: 20px;
 
-            .services-section .col-md-4 {
+        }
+
+        .team-photo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .team-photo img {
+            width: 320px;
+            /* reduced from 370px */
+            height: 320px;
+            /* reduced from 350px */
+            object-fit: contain;
+            border-radius: 50%;
+            background: #f0f0f0;
+            padding: 5px;
+        }
+
+
+        .team-body .name {
+            font-weight: 700;
+            font-size: 26px;
+            margin: 0 0 6px;
+        }
+
+        .team-body .role {
+            font-weight: 600;
+            color: #c0392b;
+            margin: 0 0 16px;
+        }
+
+        .team-body .desc {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 992px) {
+            .v-center-md {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+            }
+        }
+
+        /* --- Mobile-only: show image first, then text --- */
+        @media (max-width: 767.98px) {
+
+            /* Stack each team row vertically */
+            .row.team-card {
                 display: flex;
                 flex-direction: column;
-                margin-bottom: 30px;
             }
 
-            .services-section .single-service {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                flex-grow: 1;
-                height: 100%;
-                box-sizing: border-box;
+            /* Make both cols full-width and default them after the photo */
+            .row.team-card>[class*="col-"] {
+                order: 2;
+                width: 100%;
             }
-        </style>
 
+            /* If a column contains the photo, show it first */
+            .row.team-card>[class*="col-"]:has(.team-photo) {
+                order: 1;
+            }
+
+            /* Nice mobile sizing & centering */
+            .team-photo {
+                text-align: center;
+                margin-bottom: 12px;
+            }
+
+            .team-photo img {
+                width: 260px;
+                /* tweak if needed */
+                height: 260px;
+                /* keeps it round */
+            }
+
+            .team-body {
+                text-align: center;
+                /* optional: center text on mobile */
+            }
+        }
+    </style>
+
+
+    <div id="rs-team-pages" class="rs-team-pages rs-team  sec-spacer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="single-service text-center">
-                        <div class="service-img">
+            <div class="sec-title">
+                <div class="sec-title text-center">
+                    <h3>Our team Member</h3>
+                </div>
+            </div>
+            <div class="container">
 
-                            <a href="services-details.html" title="Service Image">
-
-                                <a href="ndt-retrofitting.html" title="Service Image">
-
-                                    <img src="images/services/service_009.png" alt="NDT & Retrofitting" />
-                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                </a>
+                <!-- S Ravi -->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="images/team/team_03.png" alt="S Ravi" class="img-responsive">
                         </div>
-                        <div class="service-details">
-                            <h3><a href="services-details.html">Structural Design consultancy</a></h3>
-                            <p>Creative,practical architectural planning and design for residential, commercial, and
-                                industrial projects.</p>
-                            <a href="services-details.html" class="primary-btn">Read More</a>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">S Ravi</h3>
+                            <h4 class="role">Board of Director | 35+ Years of Experience</h4>
+                            <p class="desc">
+                                Seasoned Structural Engineer with over three decades of expertise in the analysis,
+                                design, evaluation, and rehabilitation of RCC and steel structures. Specializes in
+                                multi-storeyed buildings, industrial facilities, hydraulic structures, and
+                                liquid-retaining systems. Extensive experience in structural investigations,
+                                non-destructive testing, and designing remedial measures for distressed structures.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Service Box 3 -->
-                <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="single-service text-center">
-                        <div class="service-img">
-                            <a href="structural_investigation.html" title="Service Image">
-                                <img src="images/services/service_007.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                            </a>
+                <!-- SHARATH CHANDRA V -->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">SHARATH CHANDRA V</h3>
+                            <h4 class="role">Civil Engineer | 35+ Years of Experience</h4>
+                            <p class="desc">
+                                A highly experienced Civil Engineer over 35 years in the construction industry,
+                                including 20 years in India and 11 years overseas. Proven expertise in project
+                                execution, structural systems, quality control, and stakeholder coordination across
+                                residential, commercial, and infrastructure projects.Specialized in managing large-scale
+                                developments from concept to handover,with strong focus on ISO standards and
+                                construction best practices.
+                            </p>
                         </div>
-                        <div class="service-details">
-                            <h3><a href="structural_investigation.html">Structural Investigation</a></h3>
-                            <p>Structural Analysis, Building life Analysis, Risk Analysis and Structural Investigation
-                                and failure analysis.</p>
-                            <a href="structural_investigation.html" class="primary-btn">Read More</a>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="images/team/sharath chandra.jpg" alt="Sharath Chandra" class="img-responsive">
                         </div>
                     </div>
                 </div>
 
-                <!-- Service Box 4 -->
-                <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="single-service text-center">
-                        <div class="service-img">
-                            <a href="testing.html" title="Service Image">
-                                <img src="images/services/service_21.jpg" alt="Architectural Design" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                            </a>
+                <!-- Manoranjan S -->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="images/team/team_02.png" alt="Manoranjan S" class="img-responsive">
                         </div>
-                        <div class="service-details">
-                            <h3><a href="ndt-retrofitting.html">NDT and Laboratory Testing</a></h3>
-                            <p>Compressive test on concrete Cube ,
-                                Test on Masonry blocks ,
-                                Sieve analysis on coarse and fine aggregates</p>
-                            <a href="ndt-retrofitting.html" class="primary-btn">Read More</a>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">Manoranjan S</h3>
+                            <h4 class="role">Structural Engineer | 30 Years of Experience</h4>
+                            <p class="desc">
+                                Experienced Engineer with over three decades of expertise in the evaluation and
+                                rehabilitation of RCC structures. Specializes in multi-storeyed buildings and
+                                industrial facilities. Extensive experience in structural investigations,
+                                non-destructive testing, and designing remedial measures for distressed structures.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-
-
-                <!-- Service Box 5 -->
-                <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="single-service text-center">
-                        <div class="service-img">
-                            <a href="project-management.html" title="Service Image">
-                                <img src="images/services/service_005.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                            </a>
+                <!-- K PRASANNA -->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">K PRASANNA</h3>
+                            <h4 class="role">Structural Engineer | 25+ Years of Experience</h4>
+                            <p class="desc">
+                                Experienced Structural Engineer with over two decades of expertise in the
+                                analysis, design, and evaluation of RCC and steel structures including
+                                multi-storeyed buildings, bridges, industrial plants, and hydraulic structures.
+                                Skilled in structural restoration,Strengthening and non-destrutive testing
+                                techniques.Proficient in advanced structural design and drafting tools such as
+                                STAAD.Pro,ETABS,SAFE,NISA Civil and AutoCad.Knowledgeable in wastewater treatment
+                                process design and environmental enginnering assessments
+                            </p>
                         </div>
-                        <div class="service-details">
-                            <h3><a href="project-management.html">Project Management Consultancy Services</a></h3>
-                            <p>Integrated Mechanical, Electrical, and Plumbing design solutions for optimized
-                                building performance.</p>
-                            <a href="project-management.html" class="primary-btn">Read More</a>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="images/team/team_01.png" alt="K Prasanna" class="img-responsive">
                         </div>
                     </div>
                 </div>
 
-
-                <!-- Service Box 6 -->
-                <!-- Service Box 5 -->
-                <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="single-service text-center">
-                        <div class="service-img">
-                            <a href="architectural-green.html" title="Service Image">
-                                <img src="images/services/service_004.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                            </a>
+                <!-- M S Shivakumar -->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="images/team/team_05.png" alt="M S Shivakumar" class="img-responsive">
                         </div>
-                        <div class="service-details">
-                            <h3><a href="architectural-green.html">Architectural Consultancy Services</a></h3>
-                            <p>Architectural Consultancy Services by leveraging the professional expertise of our
-                                experienced associated architects.</p>
-                            <a href="architectural-green.html" class="primary-btn">Read More</a>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">M S Shivakumar</h3>
+                            <h4 class="role">Structural Engineer | 25+ Years of Experience</h4>
+                            <p class="desc">
+                                Experienced Engineer with over two decades of expertise in the evaluation and
+                                rehabilitation of RCC structures. Specializes in multi-storeyed buildings and
+                                industrial facilities. Extensive experience in structural investigations,
+                                non-destructive testing, and designing remedial measures for distressed structures.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Service Box 6 -->
-                <!-- Service Box 5 -->
-                <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="single-service text-center">
-                        <div class="service-img">
-                            <a href="environmental.html" title="Service Image">
-                                <img src="images/services/service_003.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                            </a>
+                <!-- SUBRAMANYA B S -->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">SUBRAMANYA B S</h3>
+                            <h4 class="role">Senior Project Management Professional | Civil & Construction Expert</h4>
+                            <p class="desc">
+                                Highly accomplished Project Management Professional with over 35 years of
+                                extensive experience in project planning, construction management, contract
+                                administration, and process optimization across large-scale infrastructure and
+                                industrial projects.Proven expertise in method enginnering,cost-effective execution, and
+                                cross-functional leadership in both greenfiel and brownfield environments.
+                            </p>
                         </div>
-                        <div class="service-details">
-                            <h3><a href="environmental.html">Environmental Engineering</a></h3>
-                            <p>Design of Water Treatment Plants,
-                                Wastewater Treatment Plants,
-                                Environmental Impact Assessments.</p>
-                            <a href="environmental.html" class="primary-btn">Read More</a>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="images/team/team_06.png" alt="Subramanya B S" class="img-responsive">
                         </div>
                     </div>
                 </div>
-
-                <!-- Service Box 6 -->
-
-
-
-                <!-- Service Box 6 -->
-                <!-- Service Box 6 -->
-
-
-
-                <!-- Service Box 6 -->
-                <!-- Service Box 6 -->
-
-                <div class="col-md-4 col-sm-6 col-xs-6">
-                    <div class="single-service text-center">
-                        <div class="service-img">
-                            <a href="technical_training.html" title="Service Image">
-                                <img src="images/services/service_002.jpeg" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                            </a>
+                <!-- M N Ramesh -->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="images/team/m.n ramesh.jpg" alt="M N Ramesh" class="img-responsive">
                         </div>
-                        <div class="service-details">
-                            <h3><a href="technical_training.html">Technical Training</a></h3>
-                            <p>Technical training for practicing engineers, enabling them to enhance their knowledge
-                                with the latest design standards. .</p>
-                            <a href="technical_training.html" class="primary-btn">Read More</a>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">M N Ramesh</h3>
+                            <h4 class="role">Structural Engineer | 40+ Years of Experience</h4>
+                            <p class="desc">
+                                Seasoned Structural Engineer with over four decades of expertise in Remedial
+                                Engineering, Structural Health monitoring, Concrete Technology, Pre- stressed Concrete,
+                                Geotechnical Engineering, Construction Chemicals, Cathodic Protection and NDT. Extensive
+                                experience in structural investigations, non-destructive testing and designing remedial
+                                measures for distressed structures. </p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Service Box 6 -->
-
+                <!-- Ramesh P -->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">Ramesh P</h3>
+                            <h4 class="role">Technical Advisor | 35+ Years of Experience</h4>
+                            <p class="desc">
+                                35+ years of experience in the field of various departments of civil engineering like –
+                                construction, quality, quantity survey, design reviews and planning. Experience in high
+                                rise buildings, oil and gas – green field & brown field, roads and infra structures.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="" alt="Ramesh P" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+                <!-- Shivakumar A N-->
+                <div class="row team-card v-center-md">
+                    <div class="col-md-5">
+                        <div class="team-photo">
+                            <img src="" alt="Shivakumar A N" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="team-body">
+                            <h3 class="name">Shivakumar A N</h3>
+                            <h4 class="role">Technical Advisor | 32 Years of Experience</h4>
+                            <p class="desc">
+                                Experienced Engineer with over three decades of expertise in the construction of RCC and
+                                steel structures, innovative development works in commuter friendly terminals, vehicle
+                                maintenance units, establishing EV charging stations. Construction of driving test
+                                racks, maintenance, preparation of technical specifications, tendering, technical and
+                                commercial evaluation, awarding contracts, construction monitoring, co-ordination with
+                                consultant and contractors.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
+
+
         </div>
     </div>
 
-
-    <!-- Services Section End -->
-
     <style>
-        .download-btn {
-            background: #e85a3a;
-            color: black;
-            padding: 18px 40px;
-            font-size: 17px;
-            border: 0;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background .2s, color .2s;
+        .team-item {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
-        .download-btn:hover,
-        .download-btn:focus {
-            background: #e85a3a;
-            /* black on hover */
-            color: #fff;
-            /* white text */
-            text-decoration: none;
-            outline: 0;
+        .team-img {
+            width: 100%;
+            height: 400px;
+            /* Increased height */
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .team-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 350px;
+        }
+
+        .team-desc {
+            flex-grow: 1;
+            margin-top: 10px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-md-4,
+        .col-sm-6 {
+            display: flex;
+            flex-direction: column;
         }
     </style>
+
+
+    <!-- Your existing HTML structure below remains unchanged. Only the above style block is required to make all team cards equal in height. -->
+
 
     <!-- Footer Start -->
     <footer id="rs-footer" class="rs-footer">
@@ -606,7 +714,6 @@
                     <!-- Column 1: Logo & Description -->
                     <div class="col-md-4">
                         <div class="about-widget" style="display: flex; align-items: center; gap: 10px;">
-
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
                                 style="height: 120px;width:250px; margin-bottom: -20px;">
                             <div class="custom-logo-text">
@@ -620,15 +727,13 @@
                             <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering structural
                                 solutions tailored to every client’s unique needs.</p>
                             <a href="images/certificates/company profile.pdf" download style="text-decoration: none;">
-                                <button class="download-btn">
+                                <button
+                                    style="background-color: #fbc02d
+
+; color: #000000; padding: 18px 40px; font-size: 17px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
                                     Download Company Profile
                                 </button>
                             </a>
-
-
-
-
-
                         </div>
                     </div>
 
@@ -645,11 +750,11 @@
                         </ul>
                     </div>
 
-                    <!-- Column 3: Contact Us / Subscribe -->
+                    <!-- Column 3: Contact Us -->
                     <div class="col-md-4">
                         <h3 class="footer-title" style="color: white; margin-bottom: 20px;">Contact Us</h3>
                         <div style="color: #ccc;">
-                            <!-- Phone Section -->
+                            <!-- Phone -->
                             <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                                 <div
                                     style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
@@ -657,13 +762,11 @@
                                 </div>
                                 <div>
                                     <strong style="color: white;">Call Us</strong><br>
-
-                                    +91 9663329229<br>
-
+                                    +91 9663329229 <br>
                                 </div>
                             </div>
 
-                            <!-- Email Section -->
+                            <!-- Email -->
                             <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                                 <div
                                     style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
@@ -675,7 +778,7 @@
                                 </div>
                             </div>
 
-                            <!-- Location Section -->
+                            <!-- Location -->
                             <div style="display: flex; align-items: flex-start; gap: 10px;">
                                 <div
                                     style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
@@ -698,14 +801,14 @@
         <!-- Footer Bottom -->
         <div class="footer-bottom">
             <div class="container">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-md-6 col-sm-6">
                         <div class="copyright">
-                            <p> <a href="https://dooziesoft.com/">© 2025 Powered By Dooziesoft .</a> All Rights
-                                Reserved.</p>
+                            <p><a href="https://dooziesoft.com/">© 2025 Powered By Dooziesoft.</a> All Rights Reserved.
+                            </p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 text-right">
+                    <div class="col-md-6 col-sm-6 text-end">
                         <div class="footer-bottom-share">
                             <ul>
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -719,6 +822,27 @@
             </div>
         </div>
     </footer>
+
+    <!-- CSS to fix social icon alignment -->
+    <style>
+        .footer-bottom-share ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-bottom-share ul li {
+            margin-left: 10px;
+        }
+
+        .footer-bottom-share ul li a i {
+            color: white;
+            font-size: 18px;
+        }
+    </style>
+
 
     <!-- Footer End -->
 
