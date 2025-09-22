@@ -97,11 +97,11 @@
           <div class="col-sm-3 logo-col">
             <a href="index.html" class="logo-link">
               <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                style="height: 120px;width:250px; margin-bottom: -20px;">
+                style="height: 100px;width:250px; margin-bottom: -20px;">
               <div class="custom-logo-text">
                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
-                  <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart Engineering
-                    Solutions</h5>
+                  <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
+                    Engineering Solutions</h5>
                 </div>
               </div>
 
@@ -122,8 +122,8 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="clientele.html">Clientele</a></li>
-                    <li><a href="Accreditations & Professional Registrations
-.html">Accreditations & Professional Registrations
+                    <li><a href="Accreditations_and_Professional_registrations.html">Accreditations
+                        & Professional Registrations
                       </a></li>
                   </ul>
                 </li>
@@ -136,9 +136,11 @@
                   <ul class="sub-menu">
                     <li><a href="services-details.html">Structural Design consultancy</a></li>
                     <li><a href="ndt-retrofitting.html">NDT and Laboratory Testing</a></li>
-                    <li><a href="project-management.html">Project Management Consultancy Services</a></li>
+                    <li><a href="project-management.html">Project Management Consultancy
+                        Services</a></li>
                     <li><a href="structural_investigation.html">Structural Investigation</a></li>
-                    <li><a href="architectural-green.html">Architectural Consultancy Services</a></li>
+                    <li><a href="architectural-green.html">Architectural Consultancy Services</a>
+                    </li>
                     <li><a href="environmental.html">Environmental Engineering</a></li>
                     <li><a href="technical_training.html">Technical Training</a></li>
                   </ul>
@@ -153,9 +155,6 @@
     </div>
 
     <style>
-      /* ✅ DO NOT touch background on desktop */
-
-      /* Align and space logo properly */
       .menu-area .row {
         align-items: center;
         padding-top: 8px;
@@ -178,7 +177,7 @@
 
       /* Logo image */
       .custom-logo-img {
-        height: 70px;
+        height: 200px;
         width: auto;
         display: block;
         margin: -17px;
@@ -249,37 +248,81 @@
       /* ✅ MOBILE VIEW FIXES ONLY */
       @media (max-width: 767px) {
 
+        /* header stack: logo/text first, then menu */
+        .menu-area .row {
+          display: flex;
+          flex-wrap: wrap;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+
+        .logo-col {
+          order: 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .col-sm-9 {
+          order: 1;
+          width: 100%;
+        }
+
+        /* logo + text row */
+        .logo-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin: 0;
+          /* remove extra offset */
+        }
+
+        /* override inline size from the <img style="..."> */
+        .custom-logo-img {
+          height: 130px !important;
+          width: auto !important;
+          padding: 0;
+          display: block;
+        }
+
+        .custom-logo-text {
+          color: #fff;
+          font-weight: 700;
+          line-height: 1.15;
+          font-size: 16px;
+          /* main line */
+          margin: 0;
+          padding: 0;
+          text-align: left;
+          /* looks cleaner next to logo */
+        }
+
+        .custom-logo-text h5 {
+          font-size: 12px;
+          /* tagline */
+          font-style: italic;
+          color: #fff;
+          margin: 2px 0 0 0;
+          line-height: 1.15;
+        }
+
+        /* keep your existing mobile menu colors/behavior */
         .menu-area,
         .rs-menu-toggle {
           background-color: #000 !important;
         }
 
-        .logo-col {
-          justify-content: center;
-          text-align: center;
-        }
-
-        .logo-link {
-          justify-content: center;
-        }
-
-        .custom-logo-img {
-          height: 50px;
-        }
-
-        .custom-logo-text {
-          font-size: 15px;
-        }
-
-        .menu-area .row {
-          padding-top: 10px;
-          padding-bottom: 10px;
+        .rs-menu-toggle {
+          display: block;
+          text-align: left;
+          padding: -1px;
         }
 
         .sub-menu {
           position: static;
           display: none;
-          background-color: #000;
+          background: #000;
           box-shadow: none;
         }
 
@@ -292,7 +335,7 @@
         }
 
         .sub-menu li a:hover {
-          background-color: #222;
+          background: #222;
         }
       }
     </style>
@@ -311,60 +354,95 @@
         });
       });
     </script>
-
-
-
-
-
-
-    </div>
-    </div>
-    </div>
-    </div>
     <!-- Header Menu End -->
   </header>
-  <!--Header End-->
 
-  <!-- Breadcrumbs Start -->
-  <!-- Breadcrumbs Start -->
-  <!-- Breadcrumbs Section -->
-  <div class="rs-breadcrumbs sec-color">
-    <img src="images/banner/testimonial.jpg" alt="Breadcrumbs" />
-    <div class="breadcrumbs-inner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <h1 class="page-title">Accreditations & Professional Registrations
-            </h1>
-            <ul>
-              <li><a class="active" href="index.html">Home</a></li>
-              <li>Accreditations & Professional Registrations
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Breadcrumbs End -->
+  <style>
+    #myTab.nav-tabs>li>a {
+      color: #101010;
+      /* dark when not active/hovered */
+      font-weight: 600;
+    }
 
-  <!-- Certificates Section Start -->
-  <div class="services-section mt-40">
+    #myTab.nav-tabs>li>a:hover,
+    #myTab.nav-tabs>li>a:focus {
+      color: #e85a3a;
+      /* orange on hover */
+      background-color: #fff;
+      /* keep tab background white */
+      border-color: #ddd #ddd transparent;
+      text-decoration: none;
+    }
+
+    #myTab.nav-tabs>li.active>a,
+    #myTab.nav-tabs>li.active>a:hover,
+    #myTab.nav-tabs>li.active>a:focus {
+      color: #e85a3a;
+      background-color: #fff;
+      border-color: #ddd #ddd transparent;
+    }
+
+    #myTab.nav-tabs>li.active>a {
+      box-shadow: inset 0 -2px 0 #e85a3a;
+    }
+
+    @media (max-width: 767px) {
+      .services-section {
+        margin-top: 16px !important;
+      }
+
+      .sidebar-area h3 {
+        margin: 8px 0 10px;
+      }
+
+      .sidebar-area a img {
+        display: block;
+        max-width: 140px;
+        margin: 6px auto 8px;
+      }
+
+      .new_section {
+        margin-top: 6px;
+      }
+
+      #myTab.nav-tabs {
+        margin-bottom: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .tab-content {
+        /* reduce gap below tabs */
+        margin-top: 8px;
+      }
+
+      .left_disgnnew {
+        /* tighten buttons stack */
+        margin-top: 8px;
+      }
+    }
+  </style>
+
+
+
+  <div class="services-section " style="margin-top: 152px;">
     <div class="container">
       <div class="row">
 
         <!-- LEFT SIDEBAR -->
         <div class="col-sm-3">
           <div class="sidebar-area text-center">
-            <h3 style="font-size: 16px;">ISO/IEC & NABL Accreditated</h3>
+            <h3 style="font-size: 16px; margin-top: 5px;">ISO/IEC & NABL Accreditated</h3>
             <a href="#">
               <img src="images/accredition logo - Edited.png" alt="NABL Logo" style="width: 100%; max-width: 180px;">
             </a>
           </div>
 
+
+
           <!-- TAB SECTION -->
           <div class="new_section">
-            <ul class="nav nav-tabs" role="tablist" id="myTab">
+
+            <ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
               <li class="active"><a href="#accreditations" role="tab" data-toggle="tab">Accreditations</a></li>
               <li><a href="#certifications" role="tab" data-toggle="tab">Registrations</a></li>
             </ul>
@@ -373,7 +451,7 @@
               <!-- Accreditations -->
               <div class="tab-pane active" id="accreditations">
                 <div class="left_disgnnew">
-                  <button class="btn custom-blue-btn preview-btn"
+                  <button class="btn custom-blue-btn preview-btn "
                     data-file="images/certificates/certificate of incorporation.png">
                     Certificate of Incorporation
                   </button>
@@ -463,14 +541,21 @@
       margin-top: 40px;
     }
 
+    .custom-blue-btn.active {
+      color: #fff !important;
+      /* White text when active */
+      background-color: #e85a3a;
+      /* Keep same orange background */
+    }
+
+
     .left_disgnnew {
       margin-top: 10px;
     }
 
     .custom-blue-btn {
-      color: #fff;
-      background-color: #fbc02d;
-      border-color: #fbc02d;
+      color: #101010;
+      background-color: #e85a3a;
       width: 100%;
       text-align: left;
       padding: 14px 20px;
@@ -481,7 +566,8 @@
     }
 
     .custom-blue-btn:hover {
-      background-color: #fbc02d;
+      color: #fff;
+      background-color: #e85a3a;
     }
 
     iframe,
@@ -518,11 +604,47 @@
         });
       });
     });
+
+    document.querySelectorAll('.preview-btn').forEach(button => {
+      button.addEventListener('click', function () {
+        // Remove active class from all buttons
+        document.querySelectorAll('.preview-btn').forEach(btn => btn.classList.remove('active'));
+
+        // Add active class to clicked button
+        this.classList.add('active');
+      });
+    });
   </script>
 
 
-  <br>
+
   <!-- Partner End -->
+  <!-- CSS -->
+  <style>
+    .download-btn {
+      background: #e85a3a;
+      color: black;
+      padding: 18px 40px;
+      font-size: 17px;
+      border: 0;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .download-btn:hover,
+    .download-btn:focus {
+      background: #e85a3a;
+      /* black on hover */
+      color: #fff;
+      /* white text */
+      text-decoration: none;
+      outline: 0;
+    }
+  </style>
+
+
 
   <!-- Footer Start -->
   <footer id="rs-footer" class="rs-footer">
@@ -545,26 +667,9 @@
               <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering structural solutions
                 tailored to every client’s unique needs.</p>
               <a href="images/certificates/company profile.pdf" download style="text-decoration: none;">
-                <button style="
-      background-color: #fbc02d
+                <button class="download-btn">Download Company Profile</button>
 
-;
-      color: #000000;
-      padding: 18px 40px;
-      font-size: 17px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    ">
-                  Download Company Profile
-                </button>
               </a>
-
-
-
-
-
             </div>
           </div>
 

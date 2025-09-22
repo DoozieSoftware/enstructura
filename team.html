@@ -350,271 +350,513 @@
     </div>
     <!-- Breadcrumbs End -->
 
-    <!-- Team Section Start -->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <style>
+        :root {
+            --card-bg: #fff;
+            --card-shadow: 0 8px 24px rgba(22, 33, 63, .12);
+            --card-shadow-hover: 0 14px 36px rgba(22, 33, 63, .16);
+            --tile-grad: linear-gradient(135deg, #FF9C2F 0%, #FF4B3E 100%);
+            --tile-shadow: 0 16px 40px rgba(255, 75, 62, .28);
+            --text: #252b37;
+            --muted: #5c6677;
+            --brand: #be2e2a;
+        }
+
+        /* Section */
+        .team-section {
+            background: #f6f7fb;
+            padding: 42px 0 56px;
+        }
+
+        /* Two-up equal-height rows (no Bootstrap required) */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -16px;
+            margin-right: -16px;
+        }
+
+        .team-grid>.col-6 {
+            display: flex;
+            width: 50%;
+            padding: 0 16px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                display: block;
+            }
+
+            .team-grid>.col-6 {
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+        /* Card shell */
         .team-card {
-            background: #fff;
-            padding: 20px;
-
+            position: relative;
+            display: flex;
+            flex: 1 1 auto;
+            margin: 10px;
+            min-height: 150px;
+            background: var(--card-bg);
+            border-radius: 22px;
+            box-shadow: var(--card-shadow);
+            overflow: visible;
+            /* allow orange tile to hang out */
+            transition: transform .2s ease, box-shadow .2s ease;
+            margin-bottom: 28px;
         }
 
-        .team-photo {
-            text-align: center;
-            margin-bottom: 10px;
+        .team-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow-hover);
         }
 
-        .team-photo img {
-            width: 320px;
-            /* reduced from 370px */
-            height: 320px;
-            /* reduced from 350px */
-            object-fit: contain;
-            border-radius: 50%;
-            background: #f0f0f0;
-            padding: 5px;
+        /* Soft vignette so the card isn’t flat white */
+        .team-card:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(1000px 280px at 70% 40%, rgba(0, 0, 0, .05), transparent 60%);
+            opacity: .22;
+            z-index: 1;
+            /* below content & tile */
         }
 
-
-        .team-body .name {
-            font-weight: 700;
-            font-size: 26px;
-            margin: 0 0 6px;
+        /* Orange square (above the card, half outside) */
+        .edge-tile {
+            position: absolute;
+            left: -33px;
+            /* adjust protrusion */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 190px;
+            height: 220px;
+            border-radius: 24px;
+            background: var(--tile-grad);
+            box-shadow: var(--tile-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            /* above everything on the card */
+            pointer-events: none;
+            /* avoids capturing clicks */
+            /* IMPORTANT: neutralize the slide animation on the tile itself */
+            opacity: 1;
         }
 
-        .team-body .role {
-            font-weight: 600;
-            color: #c0392b;
-            margin: 0 0 16px;
+        /* Image inside the orange square */
+        .edge-tile img {
+            width: 84%;
+            height: 84%;
+            border-radius: 10% 10% 0 0;
+            /* your current style */
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .12);
+            opacity: 0;
+            /* start hidden for fade */
         }
 
-        .team-body .desc {
-            color: #333;
+        /* When the reveal script adds .in to the edge-tile, fade the image ONLY */
+        .edge-tile.slide-in-left.in img {
+            animation: fadeOnly .6s ease-out forwards;
+        }
+
+        @keyframes fadeOnly {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Also prevent any left/right motion for the tile container */
+        .edge-tile.slide-in-left {
+            opacity: 1;
+        }
+
+        .edge-tile.slide-in-left.in {
+            animation: none;
+            transform: translateY(-50%);
+        }
+
+        /* Content (space for tile inside the card) */
+        .card-content {
+            position: relative;
+            z-index: 3;
+            /* above vignette */
+            display: flex;
+            align-items: center;
+            padding: 24px 26px 24px 180px;
+            /* clean text alignment */
+            width: 100%;
+        }
+
+        .txt-box {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .team-name {
+            margin: 0 0 8px;
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--text);
+            letter-spacing: .2px;
+        }
+
+        .team-role {
+            margin: 0 0 12px;
+            font-weight: 800;
+            color: var(--brand);
+            font-size: 15px;
+        }
+
+        .team-desc {
+            margin: 0;
+            color: #000;
+            /* you set this explicitly */
             line-height: 1.8;
-            margin-bottom: 0;
+            font-size: 14px;
         }
 
-        @media (min-width: 992px) {
-            .v-center-md {
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-align: center;
-                -ms-flex-align: center;
-                align-items: center;
+        /* Mobile */
+        @media (max-width: 768px) {
+            .team-card {
+                padding-top: 96px;
+                min-height: unset;
+                margin: 35px;
+                border-radius: 20px;
+            }
+
+            .edge-tile {
+                left: 26%;
+                top: -55px;
+                transform: translate(-50%, -42%);
+                width: 150px;
+                height: 150px;
+                border-radius: 20px;
+            }
+
+            .card-content {
+                padding: 14px 16px 18px;
+                text-align: center;
+            }
+        }
+
+        /* Reveal Animations (keep text slide-in from right; image now fades) */
+        .slide-in-left,
+        .slide-in-right {
+            opacity: 0;
+            will-change: transform;
+        }
+
+        /* keep text/content sliding from right */
+        .slide-in-right.in {
+            animation: slideRight .55s cubic-bezier(.2, .65, .3, 1) forwards;
+        }
+
+        @keyframes slideRight {
+            from {
+                transform: translateX(28px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* We neutralize slide-in-left for edge-tile via rules above; no change needed here */
+        .slide-in-left.in {
+            animation: slideLeft .55s cubic-bezier(.2, .65, .3, 1) forwards;
+        }
+
+        @keyframes slideLeft {
+            from {
+                transform: translateX(-28px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
             }
         }
     </style>
 
-
-    <div id="rs-team-pages" class="rs-team-pages rs-team  sec-spacer">
+    <section class="team-section">
         <div class="container">
-            <div class="sec-title">
-                <div class="sec-title text-center">
-                    <h3>Our team Member</h3>
+            <div class="text-center" style="margin-bottom:18px">
+                <div class="sec-title">
+                    <div class="sec-title text-center">
+                        <h3>Our team Member</h3>
+                    </div>
                 </div>
             </div>
-            <div class="container">
 
+            <!-- ========== ROW 1 ========== -->
+            <div class="team-grid">
                 <!-- S Ravi -->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="images/team/team_03.png" alt="S Ravi" class="img-responsive">
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="images/team/team_03.png" alt="S Ravi">
                         </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">S Ravi</h3>
-                            <h4 class="role">Board of Director | 35+ Years of Experience</h4>
-                            <p class="desc">
-                                Seasoned Structural Engineer with over three decades of expertise in the analysis,
-                                design, evaluation, and rehabilitation of RCC and steel structures. Specializes in
-                                multi-storeyed buildings, industrial facilities, hydraulic structures, and
-                                liquid-retaining systems. Extensive experience in structural investigations,
-                                non-destructive testing, and designing remedial measures for distressed structures.
-                            </p>
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">S Ravi</h3>
+                                <h4 class="team-role">Board of Director | 35+ Years of Experience</h4>
+                                <p class="team-desc">
+                                    Seasoned Structural Engineer with over three decades of expertise in the analysis,
+                                    design, evaluation, and rehabilitation of RCC and steel structures. Specializes in
+                                    multi-storeyed buildings, industrial facilities, hydraulic structures, and
+                                    liquid-retaining systems. Extensive experience in structural investigations,
+                                    non-destructive testing, and designing remedial measures for distressed structures.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- SHARATH CHANDRA V -->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">SHARATH CHANDRA V</h3>
-                            <h4 class="role">Civil Engineer | 35+ Years of Experience</h4>
-                            <p class="desc">
-                                A highly experienced Civil Engineer over 35 years in the construction industry,
-                                including 20 years in India and 11 years overseas. Proven expertise in project
-                                execution, structural systems, quality control, and stakeholder coordination across
-                                residential, commercial, and infrastructure projects.Specialized in managing large-scale
-                                developments from concept to handover,with strong focus on ISO standards and
-                                construction best practices.
-                            </p>
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="images/team/sharath chandra.jpg" alt="Sharath Chandra">
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="images/team/sharath chandra.jpg" alt="Sharath Chandra" class="img-responsive">
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">SHARATH CHANDRA V</h3>
+                                <h4 class="team-role">Civil Engineer | 35+ Years of Experience</h4>
+                                <p class="team-desc">
+                                    A highly experienced Civil Engineer over 35 years in the construction industry,
+                                    including 20 years in India and 11 years overseas. Proven expertise in project
+                                    execution, structural systems, quality control, and stakeholder coordination across
+                                    residential, commercial, and infrastructure projects. Specialized in managing
+                                    large-scale developments from concept to handover, with strong focus on ISO
+                                    standards
+                                    and construction best practices.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- ========== ROW 2 ========== -->
+            <div class="team-grid">
                 <!-- Manoranjan S -->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="images/team/team_02.png" alt="Manoranjan S" class="img-responsive">
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="images/team/team_02.png" alt="Manoranjan S">
                         </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">Manoranjan S</h3>
-                            <h4 class="role">Structural Engineer | 30 Years of Experience</h4>
-                            <p class="desc">
-                                Experienced Engineer with over three decades of expertise in the evaluation and
-                                rehabilitation of RCC structures. Specializes in multi-storeyed buildings and
-                                industrial facilities. Extensive experience in structural investigations,
-                                non-destructive testing, and designing remedial measures for distressed structures.
-                            </p>
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">Manoranjan S</h3>
+                                <h4 class="team-role">Structural Engineer | 30 Years of Experience</h4>
+                                <p class="team-desc">
+                                    Experienced Engineer with over three decades of expertise in the evaluation and
+                                    rehabilitation of RCC structures. Specializes in multi-storeyed buildings and
+                                    industrial facilities. Extensive experience in structural investigations,
+                                    non-destructive testing, and designing remedial measures for distressed structures.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- K PRASANNA -->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">K PRASANNA</h3>
-                            <h4 class="role">Structural Engineer | 25+ Years of Experience</h4>
-                            <p class="desc">
-                                Experienced Structural Engineer with over two decades of expertise in the
-                                analysis, design, and evaluation of RCC and steel structures including
-                                multi-storeyed buildings, bridges, industrial plants, and hydraulic structures.
-                                Skilled in structural restoration,Strengthening and non-destrutive testing
-                                techniques.Proficient in advanced structural design and drafting tools such as
-                                STAAD.Pro,ETABS,SAFE,NISA Civil and AutoCad.Knowledgeable in wastewater treatment
-                                process design and environmental enginnering assessments
-                            </p>
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="images/team/team_01.png" alt="K Prasanna">
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="images/team/team_01.png" alt="K Prasanna" class="img-responsive">
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">K PRASANNA</h3>
+                                <h4 class="team-role">Structural Engineer | 25+ Years of Experience</h4>
+                                <p class="team-desc">
+                                    Experienced Structural Engineer with over two decades of expertise in the
+                                    analysis, design, and evaluation of RCC and steel structures including
+                                    multi-storeyed buildings, bridges, industrial plants, and hydraulic structures.
+                                    Skilled in structural restoration, Strengthening and non-destructive testing
+                                    techniques. Proficient in advanced structural design and drafting tools such as
+                                    STAAD.Pro, ETABS, SAFE, NISA Civil and AutoCad. Knowledgeable in wastewater
+                                    treatment
+                                    process design and environmental engineering assessments.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- ========== ROW 3 ========== -->
+            <div class="team-grid">
                 <!-- M S Shivakumar -->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="images/team/team_05.png" alt="M S Shivakumar" class="img-responsive">
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="images/team/team_05.png" alt="M S Shivakumar">
                         </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">M S Shivakumar</h3>
-                            <h4 class="role">Structural Engineer | 25+ Years of Experience</h4>
-                            <p class="desc">
-                                Experienced Engineer with over two decades of expertise in the evaluation and
-                                rehabilitation of RCC structures. Specializes in multi-storeyed buildings and
-                                industrial facilities. Extensive experience in structural investigations,
-                                non-destructive testing, and designing remedial measures for distressed structures.
-                            </p>
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">M S Shivakumar</h3>
+                                <h4 class="team-role">Structural Engineer | 25+ Years of Experience</h4>
+                                <p class="team-desc">
+                                    Experienced Engineer with over two decades of expertise in the evaluation and
+                                    rehabilitation of RCC structures. Specializes in multi-storeyed buildings and
+                                    industrial facilities. Extensive experience in structural investigations,
+                                    non-destructive testing, and designing remedial measures for distressed structures.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- SUBRAMANYA B S -->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">SUBRAMANYA B S</h3>
-                            <h4 class="role">Senior Project Management Professional | Civil & Construction Expert</h4>
-                            <p class="desc">
-                                Highly accomplished Project Management Professional with over 35 years of
-                                extensive experience in project planning, construction management, contract
-                                administration, and process optimization across large-scale infrastructure and
-                                industrial projects.Proven expertise in method enginnering,cost-effective execution, and
-                                cross-functional leadership in both greenfiel and brownfield environments.
-                            </p>
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="images/team/team_06.png" alt="Subramanya B S">
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="images/team/team_06.png" alt="Subramanya B S" class="img-responsive">
-                        </div>
-                    </div>
-                </div>
-                <!-- M N Ramesh -->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="images/team/m.n ramesh.jpg" alt="M N Ramesh" class="img-responsive">
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">M N Ramesh</h3>
-                            <h4 class="role">Structural Engineer | 40+ Years of Experience</h4>
-                            <p class="desc">
-                                Seasoned Structural Engineer with over four decades of expertise in Remedial
-                                Engineering, Structural Health monitoring, Concrete Technology, Pre- stressed Concrete,
-                                Geotechnical Engineering, Construction Chemicals, Cathodic Protection and NDT. Extensive
-                                experience in structural investigations, non-destructive testing and designing remedial
-                                measures for distressed structures. </p>
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">SUBRAMANYA B S</h3>
+                                <h4 class="team-role">Senior Project Management Professional | Civil & Construction
+                                    Expert</h4>
+                                <p class="team-desc">
+                                    Highly accomplished Project Management Professional with over 35 years of
+                                    extensive experience in project planning, construction management, contract
+                                    administration, and process optimization across large-scale infrastructure and
+                                    industrial projects. Proven expertise in method engineering, cost-effective
+                                    execution, and
+                                    cross-functional leadership in both greenfield and brownfield environments.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Ramesh P -->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">Ramesh P</h3>
-                            <h4 class="role">Technical Advisor | 35+ Years of Experience</h4>
-                            <p class="desc">
-                                35+ years of experience in the field of various departments of civil engineering like –
-                                construction, quality, quantity survey, design reviews and planning. Experience in high
-                                rise buildings, oil and gas – green field & brown field, roads and infra structures.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="" alt="Ramesh P" class="img-responsive">
-                        </div>
-                    </div>
-                </div>
-                <!-- Shivakumar A N-->
-                <div class="row team-card v-center-md">
-                    <div class="col-md-5">
-                        <div class="team-photo">
-                            <img src="" alt="Shivakumar A N" class="img-responsive">
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="team-body">
-                            <h3 class="name">Shivakumar A N</h3>
-                            <h4 class="role">Technical Advisor | 32 Years of Experience</h4>
-                            <p class="desc">
-                                Experienced Engineer with over three decades of expertise in the construction of RCC and
-                                steel structures, innovative development works in commuter friendly terminals, vehicle
-                                maintenance units, establishing EV charging stations. Construction of driving test
-                                racks, maintenance, preparation of technical specifications, tendering, technical and
-                                commercial evaluation, awarding contracts, construction monitoring, co-ordination with
-                                consultant and contractors.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
 
+            <!-- ========== ROW 4 ========== -->
+            <div class="team-grid">
+                <!-- M N Ramesh -->
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="images/team/m.n ramesh.jpg" alt="M N Ramesh">
+                        </div>
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">M N Ramesh</h3>
+                                <h4 class="team-role">Structural Engineer | 40+ Years of Experience</h4>
+                                <p class="team-desc">
+                                    Seasoned Structural Engineer with over four decades of expertise in Remedial
+                                    Engineering, Structural Health monitoring, Concrete Technology, Pre- stressed
+                                    Concrete,
+                                    Geotechnical Engineering, Construction Chemicals, Cathodic Protection and NDT.
+                                    Extensive
+                                    experience in structural investigations, non-destructive testing and designing
+                                    remedial
+                                    measures for distressed structures.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Ramesh P -->
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="" alt="Ramesh P">
+                        </div>
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">Ramesh P</h3>
+                                <h4 class="team-role">Technical Advisor | 35+ Years of Experience</h4>
+                                <p class="team-desc">
+                                    35+ years of experience in the field of various departments of civil engineering
+                                    like –
+                                    construction, quality, quantity survey, design reviews and planning. Experience in
+                                    high
+                                    rise buildings, oil and gas – green field & brown field, roads and infra structures.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== ROW 5 ========== -->
+            <div class="team-grid" style="margin-bottom: -40px;">
+                <!-- Shivakumar A N -->
+                <div class="col-6">
+                    <div class="team-card">
+                        <div class="edge-tile slide-in-left">
+                            <img src="" alt="Shivakumar A N">
+                        </div>
+                        <div class="card-content slide-in-right">
+                            <div class="txt-box">
+                                <h3 class="team-name">Shivakumar A N</h3>
+                                <h4 class="team-role">Technical Advisor | 32 Years of Experience</h4>
+                                <p class="team-desc">
+                                    Experienced Engineer with over three decades of expertise in the construction of RCC
+                                    and
+                                    steel structures, innovative development works in commuter friendly terminals,
+                                    vehicle
+                                    maintenance units, establishing EV charging stations. Construction of driving test
+                                    racks, maintenance, preparation of technical specifications, tendering, technical
+                                    and
+                                    commercial evaluation, awarding contracts, construction monitoring, co-ordination
+                                    with
+                                    consultant and contractors.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Second column intentionally empty (odd count) -->
+            </div>
         </div>
-    </div>
+    </section>
+
+    <script>
+        // Smooth reveal trigger (unchanged)
+        (function () {
+            var els = document.querySelectorAll('.slide-in-left,.slide-in-right');
+            function reveal() {
+                for (var i = 0; i < els.length; i++) {
+                    var r = els[i].getBoundingClientRect();
+                    if (r.top < window.innerHeight * 0.85) els[i].classList.add('in');
+                }
+            }
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('in'); });
+                }, { threshold: .15 });
+                [].forEach.call(els, function (el) { io.observe(el); });
+            } else {
+                reveal(); window.addEventListener('scroll', reveal); window.addEventListener('resize', reveal);
+            }
+        })();
+    </script>
+
 
     <style>
         .team-item {

@@ -46,18 +46,18 @@
 <body class="home2">
     <!--Preloader start here-->
     <!-- <div class="preloader">
-			 <div class="sk-cube-grid">
-				<div class="sk-cube sk-cube1"></div>
-				<div class="sk-cube sk-cube2"></div>
-				<div class="sk-cube sk-cube3"></div>
-				<div class="sk-cube sk-cube4"></div>
-				<div class="sk-cube sk-cube5"></div>
-				<div class="sk-cube sk-cube6"></div>
-				<div class="sk-cube sk-cube7"></div>
-				<div class="sk-cube sk-cube8"></div>
-				<div class="sk-cube sk-cube9"></div>
-			  </div>
-		</div> -->
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
+    </div> -->
     <!--Preloader area end here-->
 
     <!--Header Start-->
@@ -100,7 +100,7 @@
                     <div class="col-sm-3 logo-col">
                         <a href="index.html" class="logo-link">
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                style="height: 120px;width:250px; margin-bottom: -20px;">
+                                style="height: 100px;width:250px; margin-bottom: -20px;">
                             <div class="custom-logo-text">
                                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
                                     <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
@@ -158,9 +158,6 @@
         </div>
 
         <style>
-            /* ✅ DO NOT touch background on desktop */
-
-            /* Align and space logo properly */
             .menu-area .row {
                 align-items: center;
                 padding-top: 8px;
@@ -183,7 +180,7 @@
 
             /* Logo image */
             .custom-logo-img {
-                height: 70px;
+                height: 200px;
                 width: auto;
                 display: block;
                 margin: -17px;
@@ -254,37 +251,81 @@
             /* ✅ MOBILE VIEW FIXES ONLY */
             @media (max-width: 767px) {
 
+                /* header stack: logo/text first, then menu */
+                .menu-area .row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+
+                .logo-col {
+                    order: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .col-sm-9 {
+                    order: 1;
+                    width: 100%;
+                }
+
+                /* logo + text row */
+                .logo-link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    margin: 0;
+                    /* remove extra offset */
+                }
+
+                /* override inline size from the <img style="..."> */
+                .custom-logo-img {
+                    height: 130px !important;
+                    width: auto !important;
+                    padding: 0;
+                    display: block;
+                }
+
+                .custom-logo-text {
+                    color: #fff;
+                    font-weight: 700;
+                    line-height: 1.15;
+                    font-size: 16px;
+                    /* main line */
+                    margin: 0;
+                    padding: 0;
+                    text-align: left;
+                    /* looks cleaner next to logo */
+                }
+
+                .custom-logo-text h5 {
+                    font-size: 12px;
+                    /* tagline */
+                    font-style: italic;
+                    color: #fff;
+                    margin: 2px 0 0 0;
+                    line-height: 1.15;
+                }
+
+                /* keep your existing mobile menu colors/behavior */
                 .menu-area,
                 .rs-menu-toggle {
                     background-color: #000 !important;
                 }
 
-                .logo-col {
-                    justify-content: center;
-                    text-align: center;
-                }
-
-                .logo-link {
-                    justify-content: center;
-                }
-
-                .custom-logo-img {
-                    height: 50px;
-                }
-
-                .custom-logo-text {
-                    font-size: 15px;
-                }
-
-                .menu-area .row {
-                    padding-top: 10px;
-                    padding-bottom: 10px;
+                .rs-menu-toggle {
+                    display: block;
+                    text-align: left;
+                    padding: -1px;
                 }
 
                 .sub-menu {
                     position: static;
                     display: none;
-                    background-color: #000;
+                    background: #000;
                     box-shadow: none;
                 }
 
@@ -297,7 +338,7 @@
                 }
 
                 .sub-menu li a:hover {
-                    background-color: #222;
+                    background: #222;
                 }
             }
         </style>
@@ -316,41 +357,18 @@
                 });
             });
         </script>
-
-
-
-
-
-
-        </div>
-        </div>
-        </div>
-        </div>
         <!-- Header Menu End -->
     </header>
     <!--Header End-->
-
-    <!-- Breadcrumbs Start -->
-    <div class="rs-breadcrumbs sec-color">
-        <img src="images/new gallaery/gal02.png" alt="Breadcrubs" />
-        <div class="breadcrumbs-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h1 class="page-title">Contact Us </h1>
-                        <ul>
-                            <li>
-                                <a class="active" href="index.html">Home</a>
-                            </li>
-                            <li>Contact Us</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumbs End -->
-
+    <style>
+        /* System/Desktop view only */
+        @media (min-width: 992px) {
+            .contact-page3.contact-page.sec-spacer {
+                margin-top: 100px !important;
+                /* mt-100 */
+            }
+        }
+    </style>
     <!-- Contact Start Here -->
     <div class="contact-page3 contact-page sec-spacer">
         <div class="container">
@@ -461,7 +479,29 @@
         </div>
     </div>
     <!-- contact End  -->
+    <style>
+        .download-btn {
+            background: #e85a3a;
+            color: black;
+            padding: 18px 40px;
+            font-size: 17px;
+            border: 0;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
 
+        .download-btn:hover,
+        .download-btn:focus {
+            background: #e85a3a;
+            /* black on hover */
+            color: #fff;
+            /* white text */
+            text-decoration: none;
+            outline: 0;
+        }
+    </style>
     <!-- Footer Start -->
     <footer id="rs-footer" class="rs-footer">
         <div class="footer-top">
@@ -483,18 +523,7 @@
                             <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering structural
                                 solutions tailored to every client’s unique needs.</p>
                             <a href="images/certificates/company profile.pdf" download style="text-decoration: none;">
-                                <button style="
-      background-color: #fbc02d
-
-;
-      color: #000000;
-      padding: 18px 40px;
-      font-size: 17px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    ">
+                                <button class="download-btn">
                                     Download Company Profile
                                 </button>
                             </a>
