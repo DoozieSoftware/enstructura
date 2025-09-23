@@ -342,6 +342,12 @@
                 /* mt-100 */
             }
         }
+
+        @media (max-width: 576px) {
+            .hide-on-mobile {
+                display: none !important;
+            }
+        }
     </style>
     <!-- Breadcrumbs End -->
 
@@ -351,7 +357,7 @@
             <div class="row">
                 <!-- Sidebar -->
                 <div class="col-sm-4">
-                    <div class="service-list-sidebar">
+                    <div class="service-list-sidebar hide-on-mobile">
                         <ul id="service-menu">
                             <li><a href="services-details.html">Structural Design consultancy</a></li>
                             <li><a href="ndt-retrofitting.html">NDT and Laboratory Testing</a></li>
@@ -363,7 +369,7 @@
                         </ul>
                     </div>
 
-                    <div class="our-office services-left-side">
+                    <div class="our-office services-left-side hide-on-mobile">
                         <h3 class="title-border">Our office</h3>
                         <ul id="office-address">
                             <li><i class="fa fa-map-marker"></i>
@@ -493,7 +499,29 @@
             </div>
         </div> -->
         <!-- Partner End -->
+        <style>
+            .download-btn {
+                background: #e85a3a;
+                color: black;
+                padding: 18px 40px;
+                font-size: 17px;
+                border: 0;
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background .2s, color .2s;
+            }
 
+            .download-btn:hover,
+            .download-btn:focus {
+                background: #e85a3a;
+                /* black on hover */
+                color: #fff;
+                /* white text */
+                text-decoration: none;
+                outline: 0;
+            }
+        </style>
         <!-- Footer Start -->
         <footer id="rs-footer" class="rs-footer">
             <div class="footer-top">
@@ -517,18 +545,7 @@
                                     structural solutions tailored to every client’s unique needs.</p>
                                 <a href="images/certificates/company profile.pdf" download
                                     style="text-decoration: none;">
-                                    <button style="
-      background-color: #fbc02d
-
-;
-      color: #000000;
-      padding: 18px 40px;
-      font-size: 17px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    ">
+                                    <button class="download-btn">
                                         Download Company Profile
                                     </button>
                                 </a>

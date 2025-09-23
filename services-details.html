@@ -364,28 +364,7 @@
 
         <!-- Header Menu End -->
     </header>
-    <!--Header End-->
 
-    <!-- Breadcrumbs Start -->
-    <!-- <div class="rs-breadcrumbs sec-color">
-        <img src="images/banner/service-details.jpg" alt="Breadcrubs" />
-        <div class="breadcrumbs-inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h1 class="page-title">Structural Design & Proof Checking</h1>
-                        <ul>
-                            <li>
-                                <a class="active" href="services.html">Services</a>
-                            </li>
-                            <li>Structural Design & Proof Checking</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Breadcrumbs End -->
     <style>
         @media (min-width: 992px) {
             .services-section {
@@ -632,6 +611,12 @@
                 transform: translateX(-50%);
             }
         }
+
+        @media (max-width: 576px) {
+            .hide-on-mobile {
+                display: none !important;
+            }
+        }
     </style>
     <!-- Services Section Start -->
     <div class="services-section">
@@ -639,7 +624,7 @@
             <div class="row">
                 <!-- Sidebar -->
                 <div class="col-sm-4">
-                    <div class="service-list-sidebar">
+                    <div class="service-list-sidebar hide-on-mobile">
                         <ul id="service-menu">
                             <li class="active"><a href="#">Structural Design consultancy</a></li>
                             <li><a href="ndt-retrofitting.html">NDT and Laboratory Testing</a></li>
@@ -651,7 +636,7 @@
                         </ul>
                     </div>
 
-                    <div class="our-office services-left-side">
+                    <div class="our-office services-left-side hide-on-mobile">
                         <h3 class="title-border">Our office</h3>
                         <ul id="office-address">
                             <li><i class="fa fa-map-marker"></i>
@@ -730,10 +715,11 @@
                                 <div class="service-row will-animate">
                                     <div class="images-side">
                                         <div class="compact-gallery">
-                                            <img src="images/services/d/1.jpg" style="width: 180px;height: 150px;"
-                                                alt="Composite Steel Building" class="gallery-img">
-                                            <img src="images/services/d/2.jpeg" style="width: 180px;height: 150px;"
-                                                alt="RCC Frame" class="gallery-img">
+                                            <img src="images/services/c/stability.jpeg"
+                                                style="width: 180px;height: 150px;" alt="Composite Steel Building"
+                                                class="gallery-img">
+                                            <img src="images/services/c/featured_image-featured_image_thumb.jpg"
+                                                style="width: 180px;height: 150px;" alt="RCC Frame" class="gallery-img">
                                             <img src="images/services/c/feasible-study.png"
                                                 style="width: 180px;height: 150px;" alt="Composite Steel Building"
                                                 class="gallery-img">
