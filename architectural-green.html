@@ -368,6 +368,12 @@
                 /* mt-100 */
             }
         }
+
+        @media (max-width: 576px) {
+            .hide-on-mobile {
+                display: none !important;
+            }
+        }
     </style>
     <!-- Breadcrumbs End -->
 
@@ -377,7 +383,7 @@
             <div class="row">
                 <!-- Sidebar -->
                 <div class="col-sm-4">
-                    <div class="service-list-sidebar">
+                    <div class="service-list-sidebar hide-on-mobile">
                         <ul id="service-menu">
                             <li class="active"><a href="services-details.html">Structural Design consultancy</a></li>
                             <li><a href="ndt-retrofitting.html">NDT and Laboratory Testing</a></li>
@@ -390,7 +396,7 @@
                         </ul>
                     </div>
 
-                    <div class="our-office services-left-side">
+                    <div class="our-office services-left-side hide-on-mobile">
                         <h3 class="title-border">Our office</h3>
                         <ul id="office-address">
                             <li><i class="fa fa-map-marker"></i>
