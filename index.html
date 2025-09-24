@@ -45,7 +45,7 @@
 
 <body class="home2">
     <!--Preloader start here-->
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div class="sk-cube-grid">
             <div class="sk-cube sk-cube1"></div>
             <div class="sk-cube sk-cube2"></div>
@@ -57,7 +57,7 @@
             <div class="sk-cube sk-cube8"></div>
             <div class="sk-cube sk-cube9"></div>
         </div>
-    </div>
+    </div> -->
     <!--Preloader area end here-->
 
     <!--Header Start-->
@@ -480,8 +480,8 @@
                             <li class="card">
                                 <img src="images/home/home-pg/INDUSTRIAL BUILDING FOR L M WIND POWER INDIA (P) LTD, DOBBESPET, TUMKUR ROAD, BANGALORE.avif"
                                     alt="Stadium Roof">
-                                <span class="caption">INDUSTRIAL BUILDING FOR L M WIND POWER INDIA (P) LTD, DOBBESPET,
-                                    TUMKUR ROAD, BANGALORE</span>
+                                <span class="caption">L M WIND POWER INDIA (P) LTD, DOBBESPET,
+                                    BANGALORE</span>
                             </li>
                             <li class="card">
                                 <img src="images/home/home-pg/manipal-hospital.jpeg" alt="Manipal Hospital Yelahanka">
@@ -676,14 +676,19 @@
                 height: 30vw;
                 /* scales with screen width */
                 min-height: 110px;
-                /* don’t get too tiny */
+                /* don't get too tiny */
                 max-height: 190px;
                 /* keep reasonable on large phones */
             }
 
+            /* MOBILE CAPTION IMPROVEMENTS - ONLY CHANGE NEEDED */
             .card .caption {
-                padding: 8px 10px;
-                font-size: 12.5px;
+                padding: 5px 8px;
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.3px;
+                text-align: center;
+                line-height: 1.3;
             }
         }
 
@@ -698,8 +703,11 @@
                 min-height: 100px;
             }
 
+            /* SMALLER CAPTIONS FOR TINY PHONES */
             .card .caption {
-                font-size: 12px;
+                padding: 4px 6px;
+                font-size: 9px;
+                font-weight: 500;
             }
         }
     </style>
@@ -833,6 +841,16 @@
                                 <div class="fg-slide"><img src="images/home/15.jpeg" alt=""></div>
                                 <div class="fg-slide"><img src="images/home/17.jpeg" alt=""></div>
                                 <div class="fg-slide"><img src="images/home/18.jpeg" alt=""></div>
+
+                                <div class="fg-slide"><img
+                                        src="images/services/testing/LAB TEST/NDT laboratory photo.jpeg" alt=""></div>
+                                <div class="fg-slide"><img
+                                        src="images/services/testing/LAB TEST/WhatsApp Image 2025-09-12 at 15.57.49.jpeg"
+                                        alt=""></div>
+                                <div class="fg-slide"><img
+                                        src="images/services/testing/LAB TEST/WhatsApp Image 2025-09-12 at 16.02.55.jpeg"
+                                        alt=""></div>
+
                             </div>
                         </div>
 
@@ -843,20 +861,20 @@
                 </div>
 
                 <style>
-                    /* ===== Focus Gallery (bigger cards) ===== */
+                    /* ===== Focus Gallery (increased height for clearer images) ===== */
                     .fg-wrapper {
                         background: #fff;
                         border-radius: 12px;
                         box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
-                        padding: 10px;
+                        padding: 15px;
                         position: relative;
                     }
 
                     .fg-viewport {
                         overflow: hidden;
                         width: 100%;
-                        height: 320px;
-                        /* ↑ taller for a large image */
+                        height: 330px;
+                        /* Increased from 320px to 480px for better image visibility */
                         border-radius: 10px;
                         position: relative;
                     }
@@ -865,7 +883,7 @@
                         display: flex;
                         align-items: center;
                         gap: 22px;
-                        padding: 10px 26px;
+                        padding: 15px 26px;
                         will-change: transform;
                         transition: transform .7s cubic-bezier(.2, .7, .2, 1);
                         transform: translate3d(0, 0, 0);
@@ -873,34 +891,43 @@
 
                     /* Big focus, smaller blurred sides */
                     .fg-slide {
-                        flex: 0 0 68%;
-                        max-width: 68%;
+                        flex: 0 0 100%;
+                        max-width: 100%;
                         position: relative;
-                        filter: blur(3px);
+                        /* filter: blur(3px); */
                         transform: scale(.84);
                         transition: transform .45s ease, filter .45s ease, opacity .45s ease;
-                        opacity: .82;
+                        /* opacity: .82; */
                     }
 
                     .fg-slide img {
                         width: 100%;
-                        height: 60%;
-                        /* fill the card height */
-                        max-height: none;
-                        /* no cap – follows viewport */
+                        height: 400px;
+                        /* Increased from 60% to fixed 400px for consistent, taller images */
                         object-fit: cover;
+                        /* Maintains aspect ratio while filling the space */
+                        object-position: center;
+                        /* Centers the image for best cropping */
                         display: block;
                         border-radius: 12px;
-                        box-shadow: 0 10px 22px rgba(0, 0, 0, .18);
+                        /* box-shadow: 0 10px 22px rgba(0, 0, 0, .18); */
+                        image-rendering: -webkit-optimize-contrast;
+                        /* Improves image sharpness */
+                        image-rendering: crisp-edges;
+                        /* Better image quality */
                     }
 
                     .fg-slide.is-active {
                         filter: none;
                         transform: scale(1.08);
-                        /* noticeably bigger focus */
                         opacity: 1;
                         z-index: 1;
-                        box-shadow: 0 16px 32px rgba(0, 0, 0, .22);
+                        /* box-shadow: 0 16px 32px rgba(0, 0, 0, .22); */
+                    }
+
+                    .fg-slide.is-active img {
+                        height: 420px;
+                        /* Active image even taller for prominence */
                     }
 
                     /* Arrows */
@@ -911,21 +938,22 @@
                         border: 0;
                         background: rgba(0, 0, 0, .45);
                         color: #fff;
-                        width: 38px;
-                        height: 38px;
-                        line-height: 38px;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
                         text-align: center;
                         border-radius: 50%;
                         cursor: pointer;
                         transition: background .2s ease, transform .2s ease;
+                        z-index: 10;
                     }
 
                     .fg-prev {
-                        left: 10px;
+                        left: 15px;
                     }
 
                     .fg-next {
-                        right: 10px;
+                        right: 15px;
                     }
 
                     .fg-nav:hover {
@@ -934,15 +962,15 @@
                     }
 
                     /* ===== Mobile ===== */
-                    @media (max-width:768px) {
+                    @media (max-width: 768px) {
                         .fg-viewport {
-                            height: 420px;
+                            height: 520px;
+                            /* Increased mobile height for better visibility */
                         }
 
-                        /* taller than before for clarity */
                         .fg-track {
                             gap: 14px;
-                            padding: 8px 14px;
+                            padding: 12px 14px;
                         }
 
                         .fg-slide {
@@ -952,14 +980,48 @@
                             filter: blur(2.5px);
                         }
 
+                        .fg-slide img {
+                            height: 350px;
+                            /* Taller mobile images */
+                        }
+
                         .fg-slide.is-active {
                             transform: scale(1.06);
                         }
+
+                        .fg-slide.is-active img {
+                            height: 380px;
+                            /* Active mobile image height */
+                        }
                     }
 
-                    @media (max-width:480px) {
+                    @media (max-width: 480px) {
                         .fg-viewport {
-                            height: 380px;
+                            height: 450px;
+                            /* Adjusted for small screens */
+                        }
+
+                        .fg-slide img {
+                            height: 300px;
+                        }
+
+                        .fg-slide.is-active img {
+                            height: 320px;
+                        }
+                    }
+
+                    /* Large screens - even taller for maximum clarity */
+                    @media (min-width: 1200px) {
+                        .fg-viewport {
+                            height: 550px;
+                        }
+
+                        .fg-slide img {
+                            height: 450px;
+                        }
+
+                        .fg-slide.is-active img {
+                            height: 480px;
                         }
                     }
                 </style>
@@ -1052,6 +1114,7 @@
                         window.addEventListener('resize', function () { centerOn(index, false); });
                     })();
                 </script>
+
 
 
             </div>
@@ -1200,11 +1263,11 @@
 
                             <a href="services-details.html" title="Service Image">
 
-                                <a href="ndt-retrofitting.html" title="Service Image">
+                                <!-- <a href="ndt-retrofitting.html" title="Service Image"> -->
 
-                                    <img src="images/services/service_009.png" alt="NDT & Retrofitting" />
-                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                </a>
+                                <img src="images/services/service_23.jpeg" alt="NDT & Retrofitting" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
+                            </a>
                         </div>
                         <div class="service-details">
                             <h3><a href="services-details.html">Structural Design consultancy</a></h3>
@@ -1220,8 +1283,10 @@
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="structural_investigation.html" title="Service Image">
-                                <img src="images/services/service_007.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <img src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/4. Half Cell potential measurement Test.jpg"
+                                    alt="Structural Investigation"
+                                    style="height: 200px;width: 100%;object-fit: cover;" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1239,7 +1304,7 @@
                         <div class="service-img">
                             <a href="testing.html" title="Service Image">
                                 <img src="images/services/service_21.jpg" alt="Architectural Design" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1260,7 +1325,7 @@
                         <div class="service-img">
                             <a href="project-management.html" title="Service Image">
                                 <img src="images/services/service_005.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1280,7 +1345,7 @@
                         <div class="service-img">
                             <a href="architectural-green.html" title="Service Image">
                                 <img src="images/services/service_004.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1299,7 +1364,7 @@
                         <div class="service-img">
                             <a href="environmental.html" title="Service Image">
                                 <img src="images/services/service_003.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1318,7 +1383,7 @@
                         <div class="service-img">
                             <a href="technical_training.html" title="Service Image">
                                 <img src="images/services/service_002.jpeg" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
