@@ -545,6 +545,53 @@
 
                         </div>
                     </div>
+                    <style>
+                        .img-collage-testing {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 100%;
+                            height: 100vh;
+                            /* Full viewport height for centering */
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        .img-collage-testing img {
+                            display: block;
+                            width: 100%;
+                            /* Increased from 80% to 95% */
+                            height: 100%;
+                            max-width: 1400px;
+                            /* Increased maximum width from 800px to 1200px */
+                            max-height: 600px;
+                            object-fit: contain;
+                            /* Maintains aspect ratio */
+                            border-radius: 12px;
+                        }
+
+                        /* Remove figure styles since we're using img directly */
+                        .img-collage-testing figure {
+                            margin: 0;
+                        }
+
+                        /* Responsive adjustments */
+                        @media (max-width: 992px) {
+                            .img-collage-testing img {
+                                width: 98%;
+                                /* Increased from 90% to 98% */
+                                height: 70%;
+                            }
+                        }
+
+                        @media (max-width: 576px) {
+                            .img-collage-testing img {
+                                width: 100%;
+                                /* Increased from 95% to 100% */
+                                height: 60%;
+                            }
+                        }
+                    </style>
 
 
                     <div class="row">
@@ -553,72 +600,9 @@
                                 Laboratory
                                 Testing </h3>
                             <div class="col-sm-12">
-                                <div class="col-sm-12">
-                                    <div class="img-collage-testing">
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/1 Rebound Hammer Test.jpg"
-                                                alt="Rebound Hammer Test">
-                                            <figcaption>Rebound Hammer Test on RCC members</figcaption>
-                                        </figure>
-
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/2. Ultrasonic Pulse velocity test.jpg"
-                                                alt="Ultrasonic Pulse Velocity Test">
-                                            <figcaption>Ultrasonic Pulse Velocity Test on RCC members</figcaption>
-                                        </figure>
-
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/3. Cover meter studies.jpg"
-                                                alt="Cover Meter Studies">
-                                            <figcaption>Cover meter,Rebar Location with Proferometer Studies on RCC
-                                                members</figcaption>
-                                        </figure>
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/4. Half Cell potential measurement Test.jpg"
-                                                alt="Half Cell Potential Measurement Test">
-                                            <figcaption>Half cell potential meter test for corrosion assessment of
-                                                requirement</figcaption>
-                                        </figure>
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/5. Carbonation Test.jpg"
-                                                alt="Carbonation Test">
-                                            <figcaption>Carbonation test on RC member</figcaption>
-                                        </figure>
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/LAB TEST/NDT laboratory photo.jpeg"
-                                                style="width: fit-content;height: 180px;" alt="NDT Laboratory Testing">
-                                            <figcaption>Laboratory testing viz., Compression Test on concreate
-                                                cubes,Bricks,Concreate Blocks. </figcaption>
-                                        </figure>
-
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/6. Semi Destructive core Test.jpg"
-                                                alt="Semi Destructive Core Test">
-                                            <figcaption>Concreate core testing</figcaption>
-                                        </figure>
-
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/NDT PHOTOGRAPHS - SPECIAL TEST/Pullout Test on anchor fastener.jpg"
-                                                alt="Pullout Test on Anchor Fastener"
-                                                style="width: fit-content;height: 240px;">
-                                            <figcaption>Pullout Test on anchor fastener</figcaption>
-                                        </figure>
-
-
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/LAB TEST/WhatsApp Image 2025-09-12 at 15.57.49.jpeg"
-                                                alt="Rebound Hammer Test" style="width: fit-content;height: 262px;">
-                                            <figcaption>Laboratory testing viz., Compression Test on concreate
-                                                cubes,Bricks,Concreate Blocks.</figcaption>
-                                        </figure>
-                                        <figure class="collage-item">
-                                            <img src="images/services/testing/LAB TEST/WhatsApp Image 2025-09-12 at 16.02.55.jpeg"
-                                                alt="Rebound Hammer Test" style="width: fit-content;height: 240px;">
-                                            <figcaption>Laboratory testing viz., Compression Test on concreate
-                                                cubes,Bricks,Concreate Blocks.</figcaption>
-                                        </figure>
-                                        <!-- Repeat figure blocks per image -->
-                                    </div>
+                                <div class="img-collage-testing">
+                                    <img src="images/services/collage-photo/Non Destructive Testing and Laboratory Testing Facilites.png"
+                                        alt="Structural Investigation">
                                 </div>
 
                             </div>
@@ -674,12 +658,12 @@
                                 engineers and technicians with industry-ready skills for structural assessment,
                                 damage
                                 detection, and rehabilitation strategies.</p>
-                            <div id="about-slider" class="owl-carousel">
+                            <!-- <div id="about-slider" class="owl-carousel">
                                 <div> <img src="images/services/service_24.jpeg" alt=""></div>
                                 <div> <img src="images/services/service_25.jpg" alt=""></div>
                                 <div> <img src="images/services/serivce_30.jpeg" alt=""></div>
                                 <div> <img src="images/services/service_29.jpg" alt=""></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="row">

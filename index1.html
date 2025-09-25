@@ -45,7 +45,7 @@
 
 <body class="home2">
     <!--Preloader start here-->
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div class="sk-cube-grid">
             <div class="sk-cube sk-cube1"></div>
             <div class="sk-cube sk-cube2"></div>
@@ -57,7 +57,7 @@
             <div class="sk-cube sk-cube8"></div>
             <div class="sk-cube sk-cube9"></div>
         </div>
-    </div>
+    </div> -->
     <!--Preloader area end here-->
 
     <!--Header Start-->
@@ -100,7 +100,7 @@
                     <div class="col-sm-3 logo-col">
                         <a href="index.html" class="logo-link">
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                style="height: 120px;width:250px; margin-bottom: -20px;">
+                                style="height: 100px;width:250px; margin-bottom: -20px;">
                             <div class="custom-logo-text">
                                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
                                     <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
@@ -251,38 +251,81 @@
             /* ✅ MOBILE VIEW FIXES ONLY */
             @media (max-width: 767px) {
 
+                /* header stack: logo/text first, then menu */
+                .menu-area .row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+
+                .logo-col {
+                    order: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .col-sm-9 {
+                    order: 1;
+                    width: 100%;
+                }
+
+                /* logo + text row */
+                .logo-link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    margin: 0;
+                    /* remove extra offset */
+                }
+
+                /* override inline size from the <img style="..."> */
+                .custom-logo-img {
+                    height: 130px !important;
+                    width: auto !important;
+                    padding: 0;
+                    display: block;
+                }
+
+                .custom-logo-text {
+                    color: #fff;
+                    font-weight: 700;
+                    line-height: 1.15;
+                    font-size: 16px;
+                    /* main line */
+                    margin: 0;
+                    padding: 0;
+                    text-align: left;
+                    /* looks cleaner next to logo */
+                }
+
+                .custom-logo-text h5 {
+                    font-size: 12px;
+                    /* tagline */
+                    font-style: italic;
+                    color: #fff;
+                    margin: 2px 0 0 0;
+                    line-height: 1.15;
+                }
+
+                /* keep your existing mobile menu colors/behavior */
                 .menu-area,
                 .rs-menu-toggle {
                     background-color: #000 !important;
                 }
 
-                .logo-col {
-                    justify-content: center;
-                    text-align: center;
-                }
-
-                .logo-link {
-                    justify-content: center;
-                }
-
-                .custom-logo-img {
-                    height: 50px;
-                    margin-top: 22px;
-                }
-
-                .custom-logo-text {
-                    font-size: 15px;
-                }
-
-                .menu-area .row {
-                    padding-top: 10px;
-                    padding-bottom: 10px;
+                .rs-menu-toggle {
+                    display: block;
+                    text-align: left;
+                    padding: -1px;
                 }
 
                 .sub-menu {
                     position: static;
                     display: none;
-                    background-color: #000;
+                    background: #000;
                     box-shadow: none;
                 }
 
@@ -295,7 +338,7 @@
                 }
 
                 .sub-menu li a:hover {
-                    background-color: #222;
+                    background: #222;
                 }
             }
         </style>
@@ -315,143 +358,442 @@
             });
         </script>
 
-
-
-
-
-
-        </div>
-        </div>
-        </div>
-        </div>
-        <!-- Header Menu End -->
     </header>
     <!--Header End-->
 
-    <!--Slider Section Start-->
-    <div class="slider-section" id="slider-section">
-        <div id="first-slider">
-            <div id="carousel-example-generic" class="carousel slide carousel-fade">
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <!-- Item 1 -->
-                    <div class="item active slide1">
-                        <img src="images/home/home_06.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-                                <!-- <div class="col-md-12">
-										<div class="content-details">
-											<h1 data-animation="animated bounceInDown"><span>Reliable</span> Engineering<br>Takes Many <span>Forms</span></h1>
-											<p data-animation="animated lightSpeedIn">Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. 
-											Override the digital divide with additional clickthroughs. </p>  
-											<a href="#" class="sl-btn" data-animation="animated fadeInUp">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-										</div>
-									</div> -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="item slide2">
-                        <img src="images/home/home_02.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-                                <!-- <div class="col-md-12">
-										<div class="content-details">
-											<h1 data-animation="animated bounceInDown"><span>Reliable</span> Engineering<br>Takes Many <span>Forms</span></h1>
-											<p data-animation="animated fadeInLeft">Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs. </p>
-											<a href="#" class="sl-btn" data-animation="animated fadeInLeft">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-										</div>
-									</div> -->
-                            </div>
-                        </div>
-                    </div>
+    <!-- ====== Animated Image Wall (Bootstrap 3) ====== -->
+    <section id="image-wall" class="section-orange">
+        <div class="container m-b-20">
 
 
+            <!-- GALLERY: hover anywhere to pause -->
+            <div class="row gallery" id="gallery">
+                <!-- Column 1 (UP) -->
+                <div class="col-sm-4">
+                    <div class="reel up" data-speed="40">
+                        <ul class="stack">
+                            <!-- Repeat / add as many as you want -->
+                            <li class="card">
+                                <img src="images/home/home-pg/GRC SAPPHIRE SPRINGS.jpg" alt="GRC SAPPHIRE SPRINGS ">
+                                <span class="caption">GRC SAPPHIRE SPRINGS </span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/gal03.jpg" alt="PRASHASAN STAMBHA, GOA">
+                                <span class="caption">PRASHASAN STAMBHA, GOA</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/home_06.jpg" alt="Sapthagiri NPS University">
+                                <span class="caption">Sapthagiri NPS University</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/service_16.jpg" alt="Jayalakshmi Group">
+                                <span class="caption">Jayalakshmi Group</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/Advait_International_Academy.jpg"
+                                    alt="Advaith International Academy - Hosur Road">
+                                <span class="caption">Advaith International Academy - Hosur Road</span>
+                            </li>
 
-                    <div class="item slide2">
+                            <li class="card">
+                                <img src="images/home/home-pg/Atria_Institute.JPG" alt="Atria Institute">
+                                <span class="caption">Atria Institute</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/Oxford_Dental.JPG" alt="Oxford Dental">
+                                <span class="caption">Oxford Dental</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/oxford enginerring collge.png"
+                                    alt="Oxford Engineering College">
+                                <span class="caption">Oxford Engineering College</span>
+                            </li>
 
-                        <img src="images/home/home_04.JPG" alt="" />
-                        <div class="row">
-                            <div class="container">
-                                <!-- <div class="col-md-12">
-										<div class="content-details">
-											<h1 data-animation="animated bounceInDown"><span>Reliable</span> Engineering<br>Takes Many <span>Forms</span></h1>
-											<p data-animation="animated fadeInLeft">Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs. </p>
-											<a href="#" class="sl-btn" data-animation="animated fadeInLeft">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-										</div>
-									</div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item slide2">
-                        <img src="images/home/home_08.jpg" alt="" />
+                            <li class="card">
+                                <img src="images/home/home-pg/kr-purambridge.png" alt="K R RPURAM BRIDGE">
+                                <span class="caption">K R RPURAM BRIDGE</span>
+                            </li>
 
-                        <div class="row">
-                            <div class="container">
-                                <!-- <div class="col-md-12">
-										<div class="content-details">
-											<h1 data-animation="animated bounceInDown"><span>Reliable</span> Engineering<br>Takes Many <span>Forms</span></h1>
-											<p data-animation="animated fadeInLeft">Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs. </p>
-											<a href="#" class="sl-btn" data-animation="animated fadeInLeft">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-										</div>
-									</div> -->
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="item slide2">
-                        <img src="images/home/home_07.jpeg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-                                <!-- <div class="col-md-12">
-										<div class="content-details">
-											<h1 data-animation="animated bounceInDown"><span>Reliable</span> Engineering<br>Takes Many <span>Forms</span></h1>
-											<p data-animation="animated fadeInLeft">Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs. </p>
-											<a href="#" class="sl-btn" data-animation="animated fadeInLeft">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-										</div>
-									</div> -->
-                            </div>
-                        </div>
-
+                        </ul>
                     </div>
                 </div>
-                <!-- End Wrapper for slides-->
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <i class="fa fa-angle-left"></i><span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <i class="fa fa-angle-right"></i><span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div>
+
+                <!-- Column 2 (DOWN) -->
+                <div class="col-sm-4">
+                    <div class="reel down" data-speed="46">
+                        <ul class="stack">
+                            <li class="card">
+                                <img src="images/home/home-pg/gal19.jpg" alt="rvk-banashankari">
+                                <span class="caption">RVK Banashankari</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/rvk-bellari.jpg" alt="rvk-bellari">
+                                <span class="caption">RVK Bellari</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/m-chinnaswamy-stadium.jpg" alt="M Chinnaswamy Stadium">
+                                <span class="caption">M Chinnaswamy Stadium</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/Hubli Dharwad Water purification center Ambinbhavi karnataka.jpg"
+                                    alt="Hubli Dharwad Water purification center Ambinbhavi karnataka">
+                                <span class="caption">Hubli Dharwad Water Purification Center</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/service_009.jpg" alt="RDWSD, DHARWAD">
+                                <span class="caption">RDWSD, DHARWAD</span>
+                            </li>
+
+                            <li class="card">
+                                <img src="images/home/home-pg/cvk-construction.jpeg" alt="CVK Construction">
+                                <span class="caption">CVK Construction</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/overhead-tank.webp" alt="Over Head Tank">
+                                <span class="caption">Over Head Tank</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/STABILITY CHECK OF KALAMANDAL DOME AT BHUBANESWAR.png"
+                                    alt="STABILITY CHECK OF KALAMANDAL DOME AT BHUBANESWAR">
+                                <span class="caption">STABILITY CHECK OF KALAMANDAL DOME AT BHUBANESWAR</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Column 3 (UP) -->
+                <div class="col-sm-4">
+                    <div class="reel up" data-speed="52">
+                        <ul class="stack">
+                            <li class="card">
+                                <img src="images/home/home-pg/GRIFFITH Laboratories.png" alt="GRIFFITH Laboratories">
+                                <span class="caption">GRIFFITH Laboratories</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/service_06.jpeg" alt="Dharwad Bus Terminal">
+                                <span class="caption">Dharwad Bus Terminal</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/crane.avif" alt="Bridge Girder Erection Crane">
+                                <span class="caption">Bridge Girder Erection Crane</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/INDUSTRIAL BUILDING FOR L M WIND POWER INDIA (P) LTD, DOBBESPET, TUMKUR ROAD, BANGALORE.avif"
+                                    alt="Stadium Roof">
+                                <span class="caption">L M WIND POWER INDIA (P) LTD, DOBBESPET,
+                                    BANGALORE</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/manipal-hospital.jpeg" alt="Manipal Hospital Yelahanka">
+                                <span class="caption">Manipal Hospital Yelahanka</span>
+                            </li>
+                            <li class="card">
+                                <img src="images/home/home-pg/INTEGRATED LOGISTICS FACILITIES, SANDILA, LUCKNOW.png"
+                                    alt="INTEGRATED LOGISTICS FACILITIES, SANDILA, LUCKNOW">
+                                <span class="caption">INTEGRATED LOGISTICS FACILITIES, SANDILA, LUCKNOW</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
+
+    <style>
+        /* ===== Theme / Section ===== */
+        .section-orange {
+            background: linear-gradient(135deg, #FF9C2F 0%, #c86015 100%);
+            /* orange */
+            padding: 20px 0 10px;
+            color: #fff;
+        }
+
+        .section-title {
+            margin: 0 0 6px;
+            font-weight: 700;
+
+            letter-spacing: .3px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+        }
+
+        .section-sub {
+            margin: 0 0 0px;
+            opacity: .95;
+        }
+
+        /* ===== Gallery Layout ===== */
+        .gallery {
+            position: relative;
+            /* Pause everything on hover */
+        }
+
+        .gallery:hover .stack {
+            animation-play-state: paused !important;
+        }
+
+        /* Columns */
+        .reel {
+            height: 95vh;
+            /* visible window (make bigger/smaller if you like) */
+            overflow: hidden;
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .25);
+            background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(0, 0, 0, .08));
+        }
+
+        /* Vertical stack that scrolls infinitely */
+        .stack {
+            list-style: none;
+            margin: 0;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            /* animation set in JS with computed duration based on height; fallback: */
+            animation: scrollUp 40s linear infinite;
+        }
+
+        .reel.down .stack {
+            animation-name: scrollDown;
+        }
+
+        /* Image cards */
+        .card {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #111;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .28);
+            transform: translateZ(0);
+            /* enable GPU compositing */
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            /* uniform tiles; adjust as needed */
+            object-fit: cover;
+            display: block;
+            transition: transform .35s ease, filter .35s ease;
+        }
+
+        .card .caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 10px 12px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: .2px;
+            color: #fff;
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .55) 40%, rgba(0, 0, 0, .75));
+            transform: translateY(0);
+            transition: transform .25s ease, opacity .25s ease;
+        }
+
+        /* Hover effect on each image (gets a bit bigger “one by one” as user hovers) */
+        .card:hover img {
+            transform: scale(1.06);
+            filter: brightness(1.05) contrast(1.05);
+        }
+
+        .card:hover .caption {
+            transform: translateY(-4px);
+        }
+
+        /* Infinite scroll animations (content is duplicated via JS to loop seamlessly) */
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-50%);
+            }
+
+            /* because we double the list */
+        }
+
+        @keyframes scrollDown {
+            0% {
+                transform: translateY(-50%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+
+        /* ===== Mobile-only fixes (keep 3 columns on phones) ===== */
+        @media (max-width: 768px) {
+
+            /* Force three columns on XS without changing HTML */
+            #gallery .col-sm-4 {
+                width: 33.3333%;
+                float: left;
+                padding-left: 10px;
+                /* tighter gutters for small screens */
+                padding-right: 10px;
+            }
+
+            /* tighten row gutters */
+            #gallery.row {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+
+            /* Section spacing a bit tighter on phones */
+            .section-orange {
+                padding: 16px 0 12px;
+            }
+
+            /* Window height for each reel */
+            .reel {
+                height: 90vh;
+                /* keeps all 3 columns visible */
+                margin-bottom: 12px;
+                border-radius: 12px;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+            }
+
+            /* Stack spacing */
+            .stack {
+                padding: 10px;
+                gap: 10px;
+            }
+
+            /* Card look/feel */
+            .card {
+                border-radius: 12px;
+                box-shadow: 0 6px 14px rgba(0, 0, 0, .18);
+            }
+
+            /* Responsive tile height so 3-up fits on small screens */
+            .card img {
+                height: 30vw;
+                /* scales with screen width */
+                min-height: 110px;
+                /* don't get too tiny */
+                max-height: 190px;
+                /* keep reasonable on large phones */
+            }
+
+            /* MOBILE CAPTION IMPROVEMENTS - ONLY CHANGE NEEDED */
+            .card .caption {
+                padding: 5px 8px;
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.3px;
+                text-align: center;
+                line-height: 1.3;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 480px) {
+            .reel {
+                height: 91vh;
+            }
+
+            .card img {
+                height: 32vw;
+                min-height: 100px;
+            }
+
+            /* SMALLER CAPTIONS FOR TINY PHONES */
+            .card .caption {
+                padding: 4px 6px;
+                font-size: 9px;
+                font-weight: 500;
+            }
+        }
+    </style>
+    <script>
+        (function () {
+            if (!window.matchMedia('(max-width: 768px)').matches) return; // mobile only
+            var gallery = document.getElementById('gallery');
+            if (!gallery) return;
+
+            function setPause(paused) {
+                gallery.querySelectorAll('.stack').forEach(function (s) {
+                    s.style.animationPlayState = paused ? 'paused' : '';
+                });
+            }
+
+            ['touchstart', 'mousedown'].forEach(function (ev) {
+                gallery.addEventListener(ev, function () { setPause(true); }, { passive: true });
+            });
+            ['touchend', 'touchcancel', 'mouseup', 'mouseleave'].forEach(function (ev) {
+                gallery.addEventListener(ev, function () { setPause(false); }, { passive: true });
+            });
+        })();
+    </script>
+
+
+    <script>
+        /**
+         * Make the vertical reels loop seamlessly:
+         * - Duplicate the children (so total height ≈ 2x)
+         * - Compute animation duration from content height + speed factor
+         * - Pause/resume on hover handled by CSS (animation-play-state)
+         */
+        (function () {
+            function setupReel(reel) {
+                var stack = reel.querySelector('.stack');
+                if (!stack) return;
+
+                // 1) duplicate children to allow seamless wrap
+                var items = Array.prototype.slice.call(stack.children);
+                items.forEach(function (li) {
+                    stack.appendChild(li.cloneNode(true));
+                });
+
+                // 2) compute duration: slower for taller stacks
+                // Base seconds per pixel; tune with data-speed (smaller = faster)
+                var speed = parseFloat(reel.getAttribute('data-speed') || '44'); // seconds for full travel
+                // Use height to adjust: taller column takes longer so it feels consistent
+                // We’ll clamp a bit so it’s not too slow/fast
+                var h = stack.scrollHeight;
+                var duration = Math.max(28, Math.min(70, speed * (h / 1600)));
+                stack.style.animationDuration = duration + 's';
+
+                // 3) Respect direction
+                if (reel.classList.contains('down')) {
+                    stack.style.animationName = 'scrollDown';
+                } else {
+                    stack.style.animationName = 'scrollUp';
+                }
+            }
+
+            // Initialize all reels
+            document.addEventListener('DOMContentLoaded', function () {
+                Array.prototype.forEach.call(document.querySelectorAll('#gallery .reel'), setupReel);
+            });
+
+            // Extra: Pause on keyboard focus too (accessibility)
+            var gallery = document.getElementById('gallery');
+            if (gallery) {
+                gallery.addEventListener('focusin', function () {
+                    gallery.querySelectorAll('.stack').forEach(function (s) {
+                        s.style.animationPlayState = 'paused';
+                    });
+                });
+                gallery.addEventListener('focusout', function () {
+                    gallery.querySelectorAll('.stack').forEach(function (s) {
+                        s.style.animationPlayState = '';
+                    });
+                });
+            }
+        })();
+    </script>
 
 
 
     <!--start our classes sections -->
 
-    <!--start Collto Action -->
-    <!-- <div class="collto-action primary-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9">
-                       
-                        <h2 >Trusted Engineering Expertise for Structural Strength, Reliability, and Lasting Confidence.</h2>
-                    </div>
-                     <div class="col-sm-3">
-                     <div class="col-sm-3">
-                        <div class="get-quite text-right">
-                            <a href="contact.html">get a Quote</a>
-                        </div>
-                    </div> 
-                    </div> 
-                </div>
-            </div>
-        </div>   -->
     <!--End Collto sections -->
     <div id="rs-about" class="rs-about sec-spacer">
 
@@ -476,32 +818,307 @@
                     </p>
                 </div>
                 <!-- Right Column: Image/Video -->
+                <!-- Focus Slider (Bootstrap 3 friendly) -->
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="about-right-img" style="position:relative;">
-                        <div id="about-slider" class="owl-carousel">
-                            <div> <img src="images/home/1.jpeg" alt=""></div>
-                            <div> <img src="images/home/2.jpeg" alt=""></div>
-                            <div> <img src="images/home/3.jpeg" alt="" style="width:600px; height:900;"></div>
-                            <div> <img src="images/home/4.jpeg" alt=""></div>
-                            <div> <img src="images/home/5.jpeg" alt=""></div>
-                            <div> <img src="images/home/6.jpeg" alt=""></div>
-                            <div> <img src="images/home/7.jpeg" alt=""></div>
-                            <div> <img src="images/home/8.jpeg" alt=""></div>
-                            <div> <img src="images/home/9.jpeg" alt=""></div>
-                            <div> <img src="images/home/10.jpeg" alt=""></div>
-                            <div> <img src="images/home/11.jpeg" alt=""></div>
-                            <div> <img src="images/home/12.jpeg" alt=""></div>
-                            <div> <img src="images/home/13.jpeg" alt=""></div>
-                            <div> <img src="images/home/14.jpeg" alt=""></div>
-                            <div> <img src="images/home/15.jpeg" alt=""></div>
-                            <div> <img src="images/home/17.jpeg" alt=""></div>
-                            <div> <img src="images/home/18.jpeg" alt=""></div>
+                    <div class="fg-wrapper">
+                        <div class="fg-viewport" id="fgViewport">
+                            <div class="fg-track" id="fgTrack">
+                                <!-- slides (keep all your images) -->
+                                <div class="fg-slide"><img src="images/home/1.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/2.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/3.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/4.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/5.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/6.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/7.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/8.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/9.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/10.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/11.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/12.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/13.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/14.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/15.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/17.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/18.jpeg" alt=""></div>
+
+                                <div class="fg-slide"><img
+                                        src="images/services/testing/LAB TEST/NDT laboratory photo.jpeg" alt=""></div>
+                                <div class="fg-slide"><img
+                                        src="images/services/testing/LAB TEST/WhatsApp Image 2025-09-12 at 15.57.49.jpeg"
+                                        alt=""></div>
+                                <div class="fg-slide"><img
+                                        src="images/services/testing/LAB TEST/WhatsApp Image 2025-09-12 at 16.02.55.jpeg"
+                                        alt=""></div>
+
+                            </div>
                         </div>
 
-
+                        <!-- optional arrows (hidden on phones) -->
+                        <button class="fg-nav fg-prev hidden-xs" type="button" aria-label="Previous">&#10094;</button>
+                        <button class="fg-nav fg-next hidden-xs" type="button" aria-label="Next">&#10095;</button>
                     </div>
                 </div>
+
+                <style>
+                    /* ===== Focus Gallery (increased height for clearer images) ===== */
+                    .fg-wrapper {
+                        background: #fff;
+                        border-radius: 12px;
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+                        padding: 15px;
+                        position: relative;
+                    }
+
+                    .fg-viewport {
+                        overflow: hidden;
+                        width: 100%;
+                        height: 330px;
+                        /* Increased from 320px to 480px for better image visibility */
+                        border-radius: 10px;
+                        position: relative;
+                    }
+
+                    .fg-track {
+                        display: flex;
+                        align-items: center;
+                        gap: 22px;
+                        padding: 15px 26px;
+                        will-change: transform;
+                        transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+                        transform: translate3d(0, 0, 0);
+                    }
+
+                    /* Big focus, smaller blurred sides */
+                    .fg-slide {
+                        flex: 0 0 100%;
+                        max-width: 100%;
+                        position: relative;
+                        /* filter: blur(3px); */
+                        transform: scale(.84);
+                        transition: transform .45s ease, filter .45s ease, opacity .45s ease;
+                        /* opacity: .82; */
+                    }
+
+                    .fg-slide img {
+                        width: 100%;
+                        height: 400px;
+                        /* Increased from 60% to fixed 400px for consistent, taller images */
+                        object-fit: cover;
+                        /* Maintains aspect ratio while filling the space */
+                        object-position: center;
+                        /* Centers the image for best cropping */
+                        display: block;
+                        border-radius: 12px;
+                        /* box-shadow: 0 10px 22px rgba(0, 0, 0, .18); */
+                        image-rendering: -webkit-optimize-contrast;
+                        /* Improves image sharpness */
+                        image-rendering: crisp-edges;
+                        /* Better image quality */
+                    }
+
+                    .fg-slide.is-active {
+                        filter: none;
+                        transform: scale(1.08);
+                        opacity: 1;
+                        z-index: 1;
+                        /* box-shadow: 0 16px 32px rgba(0, 0, 0, .22); */
+                    }
+
+                    .fg-slide.is-active img {
+                        height: 420px;
+                        /* Active image even taller for prominence */
+                    }
+
+                    /* Arrows */
+                    .fg-nav {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        border: 0;
+                        background: rgba(0, 0, 0, .45);
+                        color: #fff;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        transition: background .2s ease, transform .2s ease;
+                        z-index: 10;
+                    }
+
+                    .fg-prev {
+                        left: 15px;
+                    }
+
+                    .fg-next {
+                        right: 15px;
+                    }
+
+                    .fg-nav:hover {
+                        background: rgba(0, 0, 0, .65);
+                        transform: translateY(-50%) scale(1.05);
+                    }
+
+                    /* ===== Mobile ===== */
+                    @media (max-width: 768px) {
+                        .fg-viewport {
+                            height: 520px;
+                            /* Increased mobile height for better visibility */
+                        }
+
+                        .fg-track {
+                            gap: 14px;
+                            padding: 12px 14px;
+                        }
+
+                        .fg-slide {
+                            flex: 0 0 82%;
+                            max-width: 82%;
+                            transform: scale(.88);
+                            filter: blur(2.5px);
+                        }
+
+                        .fg-slide img {
+                            height: 350px;
+                            /* Taller mobile images */
+                        }
+
+                        .fg-slide.is-active {
+                            transform: scale(1.06);
+                        }
+
+                        .fg-slide.is-active img {
+                            height: 380px;
+                            /* Active mobile image height */
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .fg-viewport {
+                            height: 450px;
+                            /* Adjusted for small screens */
+                        }
+
+                        .fg-slide img {
+                            height: 300px;
+                        }
+
+                        .fg-slide.is-active img {
+                            height: 320px;
+                        }
+                    }
+
+                    /* Large screens - even taller for maximum clarity */
+                    @media (min-width: 1200px) {
+                        .fg-viewport {
+                            height: 550px;
+                        }
+
+                        .fg-slide img {
+                            height: 450px;
+                        }
+
+                        .fg-slide.is-active img {
+                            height: 480px;
+                        }
+                    }
+                </style>
+
+                <script>
+                    /* ===== Focus Slider with SEAMLESS loop (clones at ends) ===== */
+                    (function () {
+                        var viewport = document.getElementById('fgViewport');
+                        var track = document.getElementById('fgTrack');
+                        if (!viewport || !track) return;
+
+                        // 1) Build circular track (clone first & last)
+                        var originals = Array.prototype.slice.call(track.children);
+                        var firstClone = originals[0].cloneNode(true);
+                        var lastClone = originals[originals.length - 1].cloneNode(true);
+                        firstClone.setAttribute('data-clone', 'first');
+                        lastClone.setAttribute('data-clone', 'last');
+                        track.insertBefore(lastClone, track.firstChild);
+                        track.appendChild(firstClone);
+
+                        var slides = Array.prototype.slice.call(track.children);
+
+                        // 2) Start centered on the first REAL slide (index 1 now)
+                        var index = 1;
+                        var timer = null;
+                        var AUTOPLAY_MS = 2800;
+
+                        function markActive(i) {
+                            slides.forEach(function (s) { s.classList.remove('is-active'); });
+                            // avoid marking clones when they flash during wrap
+                            if (!slides[i].hasAttribute('data-clone')) {
+                                slides[i].classList.add('is-active');
+                            }
+                        }
+
+                        function centerOn(i, animate) {
+                            index = i;
+                            var slide = slides[index];
+                            markActive(index);
+
+                            var slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+                            var viewportCenter = viewport.clientWidth / 2;
+                            var targetTx = -(slideCenter - viewportCenter);
+
+                            if (!animate) {
+                                track.style.transition = 'none';
+                                track.style.transform = 'translate3d(' + targetTx + 'px,0,0)';
+                                track.offsetHeight; track.style.transition = ''; // restore
+                            } else {
+                                track.style.transform = 'translate3d(' + targetTx + 'px,0,0)';
+                            }
+                        }
+
+                        function next() { centerOn(index + 1, true); }
+                        function prev() { centerOn(index - 1, true); }
+
+                        // 3) When we hit a clone, jump (without animation) to the real slide
+                        track.addEventListener('transitionend', function () {
+                            if (slides[index].getAttribute('data-clone') === 'first') {
+                                // we moved to the cloned first at the end; jump to real first (index 1)
+                                centerOn(1, false);
+                            } else if (slides[index].getAttribute('data-clone') === 'last') {
+                                // we moved to the cloned last at the beginning; jump to real last (index slides.length-2)
+                                centerOn(slides.length - 2, false);
+                            }
+                        });
+
+                        function start() { stop(); timer = setInterval(next, AUTOPLAY_MS); }
+                        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+                        // Init
+                        centerOn(index, false);
+                        start();
+
+                        // Pause on hover/touch
+                        ['mouseenter', 'touchstart', 'focusin'].forEach(function (ev) {
+                            viewport.addEventListener(ev, stop, { passive: true });
+                        });
+                        ['mouseleave', 'touchend', 'touchcancel', 'focusout'].forEach(function (ev) {
+                            viewport.addEventListener(ev, start, { passive: true });
+                        });
+
+                        // Arrows
+                        var prevBtn = document.querySelector('.fg-prev');
+                        var nextBtn = document.querySelector('.fg-next');
+                        if (prevBtn) prevBtn.addEventListener('click', function () { stop(); prev(); start(); });
+                        if (nextBtn) nextBtn.addEventListener('click', function () { stop(); next(); start(); });
+
+                        // Re-center on resize
+                        window.addEventListener('resize', function () { centerOn(index, false); });
+                    })();
+                </script>
+
+
+
             </div>
+
             <!-- Accordion: Full width below image and text -->
             <div class="row" style="margin-top:40px;">
                 <div class="col-12">
@@ -532,44 +1149,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                                        href="#collapseTwo">
-                                        Our Mission
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    Our mission is to combine all applicable skills to resolve any critical problems in
-                                    civil engineering and obtain solutions that are functionally sound, economically
-                                    feasible, and practically applicable.
-                                    We strive to deliver technical excellence while upholding the highest standards of
-                                    ethics and integrity in every project we undertake.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                                        href="#collapseThree">
-                                        Our Vision
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    Our Vision is to be a trusted partner in civil and structural engineering,
-                                    delivering innovative, sustainable, and reliable solutions that shape the future of
-                                    infrastructure.
-                                    We strive to continuously evolve through knowledge, research, and ethical practices,
-                                    making a meaningful impact in the built environment.
-                                </div>
-                            </div>
-                        </div> -->
+
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -598,7 +1178,7 @@
                                             ethics and integrity in every project we undertake.
                                         </div>
                                         <div class="col-sm-3">
-                                            <img src="images/mission.avif" alt="Our Mission" class="img-responsive ">
+                                            <img src="images/our-mission.png" alt="Our Mission" class="img-responsive ">
                                         </div>
                                     </div>
                                 </div>
@@ -621,7 +1201,7 @@
                                     <div class="row">
                                         <!-- Image -->
                                         <div class="col-sm-3">
-                                            <img src="images/vision.png" alt="Our Vision" class="img-responsive"
+                                            <img src="images/our-vision.png" alt="Our Vision" class="img-responsive"
                                                 style="max-height:178px; ">
                                         </div>
                                         <!-- Text -->
@@ -683,11 +1263,11 @@
 
                             <a href="services-details.html" title="Service Image">
 
-                                <a href="ndt-retrofitting.html" title="Service Image">
+                                <!-- <a href="ndt-retrofitting.html" title="Service Image"> -->
 
-                                    <img src="images/services/service_009.png" alt="NDT & Retrofitting" />
-                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                </a>
+                                <img src="images/services/service_23.jpeg" alt="NDT & Retrofitting" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
+                            </a>
                         </div>
                         <div class="service-details">
                             <h3><a href="services-details.html">Structural Design consultancy</a></h3>
@@ -703,8 +1283,10 @@
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="structural_investigation.html" title="Service Image">
-                                <img src="images/services/service_007.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <img src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/4. Half Cell potential measurement Test.jpg"
+                                    alt="Structural Investigation"
+                                    style="height: 200px;width: 100%;object-fit: cover;" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -722,7 +1304,7 @@
                         <div class="service-img">
                             <a href="testing.html" title="Service Image">
                                 <img src="images/services/service_21.jpg" alt="Architectural Design" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -743,7 +1325,7 @@
                         <div class="service-img">
                             <a href="project-management.html" title="Service Image">
                                 <img src="images/services/service_005.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -763,7 +1345,7 @@
                         <div class="service-img">
                             <a href="architectural-green.html" title="Service Image">
                                 <img src="images/services/service_004.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -782,7 +1364,7 @@
                         <div class="service-img">
                             <a href="environmental.html" title="Service Image">
                                 <img src="images/services/service_003.png" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -795,24 +1377,13 @@
                     </div>
                 </div>
 
-                <!-- Service Box 6 -->
-
-
-
-                <!-- Service Box 6 -->
-                <!-- Service Box 6 -->
-
-
-
-                <!-- Service Box 6 -->
-                <!-- Service Box 6 -->
 
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="technical_training.html" title="Service Image">
                                 <img src="images/services/service_002.jpeg" alt="Urban Planning" />
-                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -883,669 +1454,29 @@
             </div>
         </div>
     </div>
-    <!-- Counter Down Section End Here-->
+    <style>
+        .download-btn {
+            background: #e85a3a;
+            color: black;
+            padding: 18px 40px;
+            font-size: 17px;
+            border: 0;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
 
-    <!-- Repeat the same structure for all other cards -->
-
-
-    <!-- <div class="col-md-4 col-sm-6 col-xs-6 d-flex">
-                <div class="single-service text-center d-flex flex-column h-100">
-                    <div class="service-img">
-                        <a href="ndt-retrofitting.html" title="Service Image">
-                            <img src="images/services/2.jpg" alt="NDT & Retrofitting" />
-                            <i class="fa fa-link" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="service-details mt-auto">
-                        <h3><a href="ndt-retrofitting.html">NDT & Retrofitting Designs</a></h3>
-                        <p>Non-destructive testing for concrete & steel, retrofitting, and remedial structure designs.</p>
-                        <a href="ndt-retrofitting.html" class="primary-btn">Read More</a>
-                    </div>
-                </div>
-            </div> -->
-
-    <!-- Continue with the same structure for the rest of the cards... -->
-    <!-- 
-        </div>
-    </div>
-</div> -->
-
-    <!-- Services Section End -->
-
-
-
-
-    <!-- <div class="counter-top-area secondary-bg">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row">
-                   <div class="rs-count">
-                      
-                        <div class="col-lg-3 col-md-3 col-sm-6  wow fadeInUp" data-wow-duration=".3s" data-wow-delay="300ms">
-                            <div class="rs-counter-list">
-                                <div class="glyph-icon flaticon-victory"></div>
-                                <h2 class="rs-counter percent">100</h2>                  
-                                <h3>Service Quality</h3>
-                            </div>
-                        </div>
-                      
-                        <div class="col-lg-3 col-md-3 col-sm-6  wow fadeInUp" data-wow-duration=".7s" data-wow-delay="300ms">
-                            <div class="rs-counter-list">
-                                <div class="glyph-icon flaticon-social"></div>
-                                <h2 class="rs-counter">3675</h2>                      
-                                <h3>Satisfied Client</h3>
-                            </div>
-                        </div>
-                       
-                        <div class="col-lg-3 col-md-3 col-sm-6  wow fadeInUp" data-wow-duration=".9s" data-wow-delay="300ms">
-                            <div class="rs-counter-list">
-                                <div class="glyph-icon flaticon-task-complete"></div>
-                                <h2 class="rs-counter">340</h2>                     
-                                <h3>Completed Projects</h3>
-                            </div>
-                        </div>
-                     
-                        <div class="col-lg-3 col-md-3 col-sm-6  wow fadeInUp" data-wow-duration="1.2s" data-wow-delay="300ms">
-                            <div class="rs-counter-list">
-                                <div class="glyph-icon flaticon-checked"></div>
-                                <h2 class="rs-counter">25</h2>                        
-                                <h3 class="last">Year Of Experience</h3>
-                            </div>
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
-         Counter Down Section End Here-->
-
-    <!-- project section start -->
-    <!-- <div id="rs-project" class="rs-project project-style-2 sec-spacer">
-            <div class="container-fluid">
-                <div class="sec-title text-center">
-                    <h3>Our Latest Project</h3>                              
-                </div>
-                <div class="project-filter">
-                    <button class="active" data-filter="*">ALL</button>
-                    <button data-filter=".filter1">Building</button>
-                    <button data-filter=".filter2">House & Exterior</button>
-                    <button data-filter=".filter3">Construction</button>
-                    <button data-filter=".filter4">Design</button>
-                </div>
-                <div class="row">
-                   <div class="grid" id="filter-list">
-						<div class="grid-item filter1">
-							<div class="project-item">
-								<div class="project-img">
-									<img src="images/project/home1.jpg" alt="Project Image" />
-								</div>
-								<div class="headding-title">
-									<h3><a href="project-details.html">Eldorado Green<br> House On Lake Side</a></h3>
-									<a href="project-details.html" class="project-link">See project ...</a>
-								</div>
-								<div class="project-content">
-									<div class="overly-border"></div>
-									<div class="display-table">
-										<div class="display-table-cell">
-											<h3 class="p-title"><a href="project-details.html">Eldorado Green<br> House On Lake Side</a></h3>
-											<p class="p-desc">Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum luctus. Phasellus at rhoncus lacus. Aenean ullamcorper lorem nibh, elementum porttitor tortor accumsan id. Nunc euismod sapien magna, sed pretium neque commodo</p>
-											<a href="project-details.html" class="project-link">See project ...</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-item filter2 filter3">
-							<div class="project-item">
-								<div class="project-img">
-									<img src="images/project/home2.jpg" alt="Project Image" />
-								</div>
-								<div class="headding-title">
-									<h3><a href="project-details.html">Science Museum <br>Of Newzeland</a></h3>
-									<a href="project-details.html" class="project-link">See project ...</a>
-								</div>
-								<div class="project-content">
-									<div class="overly-border"></div>
-									<div class="display-table">
-										<div class="display-table-cell">
-											<h3 class="p-title"><a href="project-details.html">Science Museum <br>Of Newzeland</a></h3>
-											<p class="p-desc">Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum luctus. Phasellus at rhoncus lacus. Aenean ullamcorper lorem nibh, elementum porttitor tortor accumsan id. Nunc euismod sapien magna, sed pretium neque commodo</p>
-											<a href="project-details.html" class="project-link">See project ...</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-item filter1">
-							<div class="project-item">
-								<div class="project-img">
-									<img src="images/project/home3.jpg" alt="Project Image" />
-								</div>
-								<div class="headding-title">
-									<h3><a href="project-details.html">West45 Corporate<br> office</a></h3>
-									<a href="project-details.html" class="project-link">See project ...</a>
-								</div>
-								<div class="project-content">
-									<div class="overly-border"></div>
-									<div class="display-table">
-										<div class="display-table-cell">
-											<h3 class="p-title"><a href="project-details.html">West45 Corporate<br> office Building</a></h3>
-											<p class="p-desc">Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum luctus. Phasellus at rhoncus lacus. Aenean ullamcorper lorem nibh, elementum porttitor tortor accumsan id. Nunc euismod sapien magna, sed pretium neque commodo</p>
-											<a href="project-details.html" class="project-link">See project ...</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-item  filter2 filter4">
-							<div class="project-item">
-								<div class="project-img">
-									<img src="images/project/home4.jpg" alt="Project Image" />
-								</div>
-								<div class="headding-title">
-									<h3><a href="project-details.html">Do Re-Design <br>Your House Our</a></h3>
-									<a href="project-details.html" class="project-link">See project ...</a>
-								</div>
-								<div class="project-content">
-									<div class="overly-border"></div>
-									<div class="display-table">
-										<div class="display-table-cell">
-											<h3 class="p-title"><a href="project-details.html">Do Re-Design <br>Your House Our Idea</a></h3>
-											<p class="p-desc">Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum luctus. Phasellus at rhoncus lacus. Aenean ullamcorper lorem nibh, elementum porttitor tortor accumsan id. Nunc euismod sapien magna, sed pretium neque commodo</p>
-											<a href="project-details.html" class="project-link">See project ...</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-item filter1">
-							<div class="project-item">
-								<div class="project-img">
-									<img src="images/project/home1.jpg" alt="Project Image" />
-								</div>
-								<div class="headding-title">
-									<h3><a href="project-details.html">Eldorado Green<br> House On Lake</a></h3>
-									<a href="project-details.html" class="project-link">See project ...</a>
-								</div>
-								<div class="project-content">
-									<div class="overly-border"></div>
-									<div class="display-table">
-										<div class="display-table-cell">
-											 <h3 class="p-title"><a href="project-details.html">Eldorado Green<br> House On Lake Side</a></h3>
-											<p class="p-desc">Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum luctus. Phasellus at rhoncus lacus. Aenean ullamcorper lorem nibh, elementum porttitor tortor accumsan id. Nunc euismod sapien magna, sed pretium neque commodo</p>
-											<a href="project-details.html" class="project-link">See project ...</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-item filter3">
-							<div class="project-item">
-								<div class="project-img">
-									<img src="images/project/home2.jpg" alt="Project Image" />
-								</div>
-								<div class="headding-title">
-									<h3><a href="project-details.html">Do Re-Design <br>Your House Our Idea</a></h3>
-									<a href="project-details.html" class="project-link">See project ...</a>
-								</div>
-								<div class="project-content">
-									<div class="overly-border"></div>
-									<div class="display-table">
-										<div class="display-table-cell">
-											<h3 class="p-title"><a href="project-details.html">Do Re-Design <br>Your House Our Idea</a></h3>
-											<p class="p-desc">Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum luctus. Phasellus at rhoncus lacus. Aenean ullamcorper lorem nibh, elementum porttitor tortor accumsan id. Nunc euismod sapien magna, sed pretium neque commodo</p>
-											<a href="project-details.html" class="project-link">See project ...</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-item filter2 filter3">
-							<div class="project-item">
-								<div class="project-img">
-									<img src="images/project/home3.jpg" alt="Project Image" />
-								</div>
-								<div class="headding-title">
-									<h3><a href="project-details.html">Eldorado Green<br> House On Lake Side</a></h3>
-									<a href="project-details.html" class="project-link">See project ...</a>
-								</div>
-								<div class="project-content">
-									<div class="overly-border"></div>
-									<div class="display-table">
-										<div class="display-table-cell">
-										   <h3 class="p-title"><a href="project-details.html">Eldorado Green<br> House On Lake Side</a></h3>
-											<p class="p-desc">Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum luctus. Phasellus at rhoncus lacus. Aenean ullamcorper lorem nibh, elementum porttitor tortor accumsan id. Nunc euismod sapien magna, sed pretium neque commodo</p>
-											<a href="project-details.html" class="project-link">See project ...</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="grid-item filter1 filter4">
-							<div class="project-item">
-								<div class="project-img">
-									<img src="images/project/home4.jpg" alt="Project Image" />
-								</div>
-								<div class="headding-title">
-									<h3><a href="project-details.html">West45 Corporate<br> office Building</a></h3>
-									<a href="project-details.html" class="project-link">See project ...</a>
-								</div>
-								<div class="project-content">
-									<div class="overly-border"></div>
-									<div class="display-table">
-										<div class="display-table-cell">
-											 <h3 class="p-title"><a href="project-details.html">West45 Corporate<br> office Building</a></h3>
-											<p class="p-desc">Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum luctus. Phasellus at rhoncus lacus. Aenean ullamcorper lorem nibh, elementum porttitor tortor accumsan id. Nunc euismod sapien magna, sed pretium neque commodo</p>
-											<a href="project-details.html" class="project-link">See project ...</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-            </div>
-        </div> -->
-    <!-- project section End -->
-
-    <!-- Testimonial Start -->
-    <!-- <div id="rs-testimonial" class="rs-testimonial sec-spacer gray-color testimonial-style1">
-			<div class="container">
-				<div class="sec-title text-center">
-                    <h3>What Our  Client Says</h3>                              
-                </div>
-				<div class="row">
-			        <div class="col-md-12">
-						<div  id="testimonial-slider10" class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="true" data-nav="false" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-md-device="3" data-md-device-nav="false" data-md-device-dots="true">
-			                <div class="testimonial">
-			                    <div class="image">
-			                        <img src="images/testimonial/1.jpg" alt="" />
-			                    </div>
-			                    <h3 class="title">Williamson Terry</h3>
-			                    <p class="description">RS Theme dolor sit amet, consectetur adipiscing elit. Morbi non ante porttitor.</p>
-			                    <div class="testimonial-content">
-			                        <div class="testimonial-profile">
-			                            <h3 class="name">RS Theme</h3>
-			                            <span class="post">Designer</span>
-			                        </div>
-			                        <ul class="rating">
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star-half-empty"></li>
-			                        </ul>
-			                        <ul class="social-links">
-			                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-			                        </ul>
-			                    </div>
-			                </div> 
-			                <div class="testimonial">
-			                    <div class="image">
-			                        <img src="images/testimonial/2.jpg" alt="" />
-			                    </div>
-			                    <h3 class="title">Kristian Roby</h3>
-			                    <p class="description">RS Theme dolor sit amet, consectetur adipiscing elit. Morbi non ante porttitor.</p>
-			                    <div class="testimonial-content">
-			                        <div class="testimonial-profile">
-			                            <h3 class="name">RS Theme</h3>
-			                            <span class="post">Manager</span>
-			                        </div>
-			                        <ul class="rating">
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star-half-empty"></li>
-			                        </ul>
-			                        <ul class="social-links">
-			                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-			                        </ul>
-			                    </div>
-			                </div>
-			                <div class="testimonial">
-			                    <div class="image">
-			                        <img src="images/testimonial/3.jpg" alt="" />
-			                    </div>
-			                    <h3 class="title">Tom Williamson</h3>
-			                    <p class="description">RS Theme sit amet, consectetur adipiscing elit. Morbi non ante porttitor.</p>
-			                    <div class="testimonial-content">
-			                        <div class="testimonial-profile">
-			                            <h3 class="name">RS Theme</h3>
-			                            <span class="post">Web Developer</span>
-			                        </div>
-			                        <ul class="rating">
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star-half-empty"></li>
-			                        </ul>
-			                        <ul class="social-links">
-			                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-			                        </ul>
-			                    </div>
-			                </div> 
-			                <div class="testimonial">
-			                    <div class="image">
-			                        <img src="images/testimonial/4.jpg" alt="" />
-			                    </div>
-			                    <h3 class="title">RS Theme</h3>
-			                    <p class="description">RS Theme dolor sit amet, consectetur adipiscing elit. Morbi non ante porttitor.</p>
-			                    <div class="testimonial-content">
-			                        <div class="testimonial-profile">
-			                            <h3 class="name">Peter Nevil</h3>
-			                            <span class="post">Web Designer</span>
-			                        </div>
-			                        <ul class="rating">
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star"></li>
-			                            <li class="fa fa-star-half-empty"></li>
-			                        </ul>
-			                        <ul class="social-links">
-			                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-			                        </ul>
-			                    </div>
-			                </div>
-			            </div>
-			        </div>
-			    </div>
-			</div>
-        </div> -->
-    <!-- Testimonial End -->
-
-    <!-- Team Start -->
-    <!-- <div id="rs-team" class="rs-team sec-spacer">
-            <div class="container">
-                <div class="sec-title">
-					<div class="sec-title text-center">
-						<h3>Our team Member</h3>                              
-					</div>		
-                </div>
-                <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="true" data-nav="false" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-md-device="3" data-md-device-nav="false" data-md-device-dots="true">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="images/team/1.jpg" alt="team Image" />
-							<div class="normal-text">
-								<h3 class="team-name">ABD Rashid Khan</h3>
-                                <span class="subtitle">Founder & CEO</span>
-							</div>
-                        </div>
-                        <div class="team-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-									<h3 class="team-name"><a href="team-details.html">Browni Rosario</a></h3>
-									<span class="team-title">Founder & CEO</span>
-                                    <p class="team-desc"> Lorem Ipsum has been the industry's standard dummy ever sincrinter galley.</p>
-									<div class="team-social">
-										<a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-google-plus"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-pinterest-p"></i></a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="images/team/2.jpg" alt="team Image" />
-							<div class="normal-text">
-								<h3 class="team-name">ABD Rashid Khan</h3>
-                                <span class="subtitle">Founder & CEO</span>
-							</div>
-                        </div>
-                        <div class="team-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-                                    <h3 class="team-name"><a href="team-details.html">Browni Rosario</a></h3>
-                                    <span class="team-title">Manager</span>
-                                    <p class="team-desc"> Lorem Ipsum has been the industry's standard dummy ever sincrinter galley.</p>
-									<div class="team-social">
-										<a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-google-plus"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-pinterest-p"></i></a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="images/team/3.jpg" alt="team Image" />
-							<div class="normal-text">
-								<h3 class="team-name">ABD Rashid Khan</h3>
-                                <span class="subtitle">Founder & CEO</span>
-							</div>
-                        </div>
-                        <div class="team-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-                                     <h3 class="team-name"><a href="team-details.html">Mahabub Alam</a></h3>
-                                    <span class="team-title">CTO & Developer</span>
-                                    <p class="team-desc"> Lorem Ipsum has been the industry's standard dummy ever sincrinter galley.</p>
-									<div class="team-social">
-										<a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-google-plus"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-pinterest-p"></i></a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="images/team/4.jpg" alt="team Image" />
-							<div class="normal-text">
-								<h3 class="team-name">ABD Rashid Khan</h3>
-                                <span class="subtitle">Founder & CEO</span>
-							</div>
-                        </div>
-                        <div class="team-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-                                     <h3 class="team-name"><a href="team-details.html">Browni Rosario</a></h3>
-                                    <span class="team-title">Founder & CEO</span>
-                                    <p class="team-desc"> Lorem Ipsum has been the industry's standard dummy ever sincrinter galley.</p>
-									<div class="team-social">
-										<a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-google-plus"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-pinterest-p"></i></a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="images/team/5.jpg" alt="team Image" />
-							<div class="normal-text">
-								<h3 class="team-name">ABD Rashid Khan</h3>
-                                <span class="subtitle">Founder & CEO</span>
-							</div>
-                        </div>
-                        <div class="team-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-                                     <h3 class="team-name"><a href="team-details.html">Browni Rosario</a></h3>
-                                    <span class="team-title">Founder & CEO</span>
-                                    <p class="team-desc"> Lorem Ipsum has been the industry's standard dummy ever sincrinter galley.</p>
-									<div class="team-social">
-										<a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-google-plus"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
-										<a href="#" class="social-icon"><i class="fa fa-pinterest-p"></i></a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-			</div>
-		</div> -->
-    <!-- Team Start -->
-
-    <!-- Blog Start -->
-    <!-- <div id="rs-blog" class="rs-blog gray-color rs-team sec-spacer">
-            <div class="container-fuild">
-                <div class="sec-title">
-					<div class="sec-title text-center">
-						<h3>Our Blog Posts</h3>                              
-					</div>		
-                </div>
-				<div class="blog-list">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="images/blog/1.jpg" alt="Blog Image" />
-                        </div>
-                        <div class="blog-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-									<div class="blog-date">
-										17 April 2013
-									</div>
-                                    <h3><a href="blog-details.html">Construction News In Australia</a></h3>
-                                    <p>Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum To lPhasellus at rhoncus lacus. </p>
-									<div class="blog-link">
-										<a href="blog-details.html">Read More...</a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="images/blog/2.jpg" alt="Blog Image" />
-                        </div>
-                        <div class="blog-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-									<div class="blog-date">
-										17 April 2013
-									</div>
-                                    <h3><a href="blog-details.html">Construction News In Australia</a></h3>
-                                    <p>Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum To lPhasellus at rhoncus lacus. </p>
-									<div class="blog-link">
-										<a href="blog-details.html">Read More...</a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="images/blog/3.jpg" alt="Blog Image" />
-                        </div>
-                        <div class="blog-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-									<div class="blog-date">
-										17 April 2013
-									</div>
-                                    <h3><a href="blog-details.html">Construction News In Australia</a></h3>
-                                    <p>Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum To lPhasellus at rhoncus lacus. </p>
-									<div class="blog-link">
-										<a href="blog-details.html">Read More...</a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="images/blog/4.jpg" alt="Blog Image" />
-                        </div>
-                        <div class="blog-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-									<div class="blog-date">
-										17 April 2013
-									</div>
-                                    <h3><a href="blog-details.html">Construction News In Australia</a></h3>
-                                    <p>Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum To lPhasellus at rhoncus lacus. </p>
-									<div class="blog-link">
-										<a href="blog-details.html">Read More...</a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="images/blog/5.jpg" alt="Blog Image" />
-                        </div>
-                        <div class="blog-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-									<div class="blog-date">
-										17 April 2013
-									</div>
-                                    <h3><a href="blog-details.html">Construction News In Australia</a></h3>
-                                    <p>Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum To lPhasellus at rhoncus lacus. </p>
-									<div class="blog-link">
-										<a href="blog-details.html">Read More...</a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <img src="images/blog/6.jpg" alt="Blog Image" />
-                        </div>
-                        <div class="blog-content">
-							<div class="overly-border"></div>
-                            <div class="display-table">
-                                <div class="display-table-cell">
-									<div class="blog-date">
-										17 April 2013
-									</div>
-                                    <h3><a href="blog-details.html">Construction News In Australia</a></h3>
-                                    <p>Curabitur vitae euismod odio, nec tempor turpis. Sed dictum dictum To lPhasellus at rhoncus lacus. </p>
-									<div class="blog-link">
-										<a href="blog-details.html">Read More...</a>
-									</div>
-                                </div>
-                            </div>
-                        </div>
-					</div>  
-                </div>
-			
-			</div>
-        </div> -->
-    <!-- Blog Start -->
-
-    <!-- Partner Start -->
-
-    <!-- Partner End -->
-
+        .download-btn:hover,
+        .download-btn:focus {
+            background: #e85a3a;
+            /* black on hover */
+            color: #fff;
+            /* white text */
+            text-decoration: none;
+            outline: 0;
+        }
+    </style>
     <!-- Footer Start -->
     <footer id="rs-footer" class="rs-footer">
         <div class="footer-top">
@@ -1568,26 +1499,8 @@
                             <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering structural
                                 solutions tailored to every client’s unique needs.</p>
                             <a href="images/certificates/company profile.pdf" download style="text-decoration: none;">
-                                <button style="
-      background-color: #fbc02d
-
-;
-      color: #000000;
-      padding: 18px 40px;
-      font-size: 17px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    ">
-                                    Download Company Profile
-                                </button>
+                                <button class="download-btn">Download Company Profile</button>
                             </a>
-
-
-
-
-
                         </div>
                     </div>
 
