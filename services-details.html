@@ -374,250 +374,6 @@
         }
     </style>
 
-    <style>
-        .service-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 0 12px;
-            box-sizing: border-box;
-        }
-
-        .images-side {
-            flex: 0 0 520px;
-            min-width: 520px;
-        }
-
-        .compact-gallery {
-            display: flex;
-            gap: 10px;
-        }
-
-        .will-animate {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        /* Animate-in state */
-        .animate-in {
-            opacity: 1;
-            transform: none;
-        }
-
-        /* Images */
-        .gallery-img {
-            flex: 1;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 6px;
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        /* Entrance animation per image when animate-in is added on container */
-        .animate-in .gallery-img {
-            animation: imgIn .6s cubic-bezier(.22, .61, .36, 1) forwards;
-        }
-
-        .animate-in .gallery-img:nth-child(1) {
-            animation-delay: .08s;
-        }
-
-        .animate-in .gallery-img:nth-child(2) {
-            animation-delay: .18s;
-        }
-
-        .animate-in .gallery-img:nth-child(3) {
-            animation-delay: .28s;
-        }
-
-        .services {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Remove will-animate styles from parent; apply to each .service-row only */
-        .service-row.will-animate {
-            opacity: 0;
-            transform: translateY(12px);
-        }
-
-        .service-row.animate-in {
-            opacity: 1;
-            transform: none;
-            transition: opacity .4s ease, transform .4s ease;
-        }
-
-        /* Image and title animations are scoped to the row that becomes animate-in */
-        .service-row.animate-in .gallery-img {
-            animation: imgIn .6s cubic-bezier(.22, .61, .36, 1) forwards;
-        }
-
-        .service-row.animate-in .gallery-img:nth-child(1) {
-            animation-delay: .08s;
-        }
-
-        .service-row.animate-in .gallery-img:nth-child(2) {
-            animation-delay: .18s;
-        }
-
-        .service-row.animate-in .gallery-img:nth-child(3) {
-            animation-delay: .28s;
-        }
-
-        .service-row.animate-in .title {
-            animation: titleIn .5s ease-out .22s both;
-        }
-
-        .service-row.animate-in .title::after {
-            animation: underline .6s ease-out .5s forwards;
-        }
-
-        @keyframes imgIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px) scale(.98);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .gallery-img:hover {
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 10px 22px rgba(0, 0, 0, .18);
-        }
-
-        /* Text */
-        .text-side {
-            flex: 1;
-            min-width: 220px;
-        }
-
-        .text-block {
-            margin-left: 18px;
-            padding: 12px 0;
-        }
-
-        .title {
-            position: relative;
-            margin-left: 20px;
-            font-size: 20px;
-            font-weight: 300;
-            line-height: 1.3;
-            letter-spacing: .2px;
-        }
-
-        /* Title entrance */
-        .animate-in .title {
-            animation: titleIn .5s ease-out .22s both;
-        }
-
-        @keyframes titleIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Underline sweep only after title appears */
-        .title::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            height: 3px;
-            width: 0%;
-            background: linear-gradient(90deg, #0d6efd, #22c55e);
-            border-radius: 3px;
-        }
-
-        .animate-in .title::after {
-            animation: underline .6s ease-out .5s forwards;
-        }
-
-
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-
-            .will-animate,
-            .animate-in,
-            .gallery-img,
-            .title,
-            .title::after {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width:992px) {
-            .images-side {
-                flex: 0 0 480px;
-                min-width: 480px;
-            }
-
-            .gallery-img {
-                height: 130px;
-            }
-
-            .title {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width:768px) {
-            .service-row {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .images-side {
-                flex: 90%;
-                min-width: 60%;
-            }
-
-            .compact-gallery {
-                justify-content: center;
-            }
-
-            .gallery-img {
-                height: 120px;
-            }
-
-            .text-side {
-                flex: 1 1 100%;
-                min-width: 100%;
-            }
-
-            .text-block {
-                margin-left: 0;
-                text-align: center;
-            }
-
-            .title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hide-on-mobile {
-                display: none !important;
-            }
-        }
-    </style>
     <!-- Services Section Start -->
     <div class="services-section">
         <div class="container">
@@ -656,6 +412,55 @@
                     </div>
                 </div>
 
+                <style>
+                    .img-collage-testing {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 100vh;
+                        /* Full viewport height for centering */
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .img-collage-testing img {
+                        display: block;
+                        width: 100%;
+                        /* Increased from 80% to 95% */
+                        height: 100%;
+                        max-width: 1400px;
+                        /* Increased maximum width from 800px to 1200px */
+                        max-height: 600px;
+                        object-fit: contain;
+                        /* Maintains aspect ratio */
+                        border-radius: 12px;
+                    }
+
+                    /* Remove figure styles since we're using img directly */
+                    .img-collage-testing figure {
+                        margin: 0;
+                    }
+
+                    /* Responsive adjustments */
+                    @media (max-width: 992px) {
+                        .img-collage-testing img {
+                            width: 98%;
+                            /* Increased from 90% to 98% */
+                            height: 70%;
+                        }
+                    }
+
+                    @media (max-width: 576px) {
+                        .img-collage-testing img {
+                            width: 100%;
+                            /* Increased from 95% to 100% */
+                            height: 60%;
+                        }
+                    }
+                </style>
+
+
                 <!-- Main Content -->
                 <div class="col-sm-8">
                     <div class="row">
@@ -672,68 +477,16 @@
                             <!-- a -->
                             <div class="services">
                                 <div class="service-row will-animate">
-                                    <div class="images-side">
-                                        <div class="compact-gallery">
-                                            <img src="images/services/a/composite-steel-building.png"
-                                                alt="Composite Steel Building" class="gallery-img">
-                                            <img src="images/services/a/rcc-frame.jpg" alt="RCC Frame"
-                                                class="gallery-img">
-                                            <img src="images/services/a/steel-contruction.jpg" alt="Steel Construction"
-                                                class="gallery-img">
+                                    <div class="col-sm-12">
+                                        <div class="img-collage-testing">
+                                            <img src="images/services/collage-photo/structural Design Consultancy.png"
+                                                alt="structural Design Consultancy">
                                         </div>
                                     </div>
-                                    <div class="text-side">
-                                        <div class="text-block">
-                                            <h4 class="title">Structural designs of RCC, Steel and composite structure.
-                                            </h4>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <!-- b -->
-                                <div class="service-row will-animate">
-                                    <div class="images-side">
-                                        <div class="compact-gallery">
-                                            <img src="images/services/b/3.png" alt="Composite Steel Building"
-                                                class="gallery-img">
-                                            <img src="images/services/b/download.jpeg" alt="RCC Frame"
-                                                class="gallery-img">
-                                            <img src="images/services/b/structural-remodel-process.webp"
-                                                alt="Steel Construction" class="gallery-img">
-                                        </div>
-                                    </div>
-                                    <div class="text-side">
-                                        <div class="text-block">
-                                            <h4 class="title">Structural Modifications in existing structures due change
-                                                in occupany/change in load.
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- c -->
 
-
-                                <div class="service-row will-animate">
-                                    <div class="images-side">
-                                        <div class="compact-gallery">
-                                            <img src="images/services/c/stability.jpeg"
-                                                style="width: 180px;height: 150px;" alt="Composite Steel Building"
-                                                class="gallery-img">
-                                            <img src="images/services/c/featured_image-featured_image_thumb.jpg"
-                                                style="width: 180px;height: 150px;" alt="RCC Frame" class="gallery-img">
-                                            <img src="images/services/c/feasible-study.png"
-                                                style="width: 180px;height: 150px;" alt="Composite Steel Building"
-                                                class="gallery-img">
-                                        </div>
-                                    </div>
-                                    <div class="text-side">
-                                        <div class="text-block">
-                                            <h4 class="title">Stability Analysis, building stability Certification and
-                                                Additional floors on existing buildings.
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- d/e -->
 
                             </div>
 
@@ -747,14 +500,14 @@
                                 ensures our
                                 designs are not only technically sound but also practical to implement.</p>
 
-                            <div class="col-sm-12">
+                            <!-- <div class="col-sm-12">
                                 <div id="about-slider" class="owl-carousel">
                                     <div> <img src="images/services/service_40.jpg" alt=""></div>
                                     <div> <img src="images/services/service_32.JPG" alt=""></div>
                                     <div> <img src="images/services/service_33.jpg" alt=""></div>
                                 </div>
 
-                            </div>
+                            </div> -->
                             <div class="col-sm-12">
 
                                 <h3 class="title-border"><br>Retrofitting Design Expertise</h3>

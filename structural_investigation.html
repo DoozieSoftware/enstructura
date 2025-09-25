@@ -382,81 +382,53 @@
 
         <style>
           .img-collage-testing {
-            column-count: 3;
-            column-gap: 16px;
-            margin: 0 0 1rem 0;
-          }
-
-          .img-collage-testing figure {
-            position: relative;
-            margin: 0 0 16px 0;
-            -webkit-column-break-inside: avoid;
-            page-break-inside: avoid;
-            break-inside: avoid;
-            overflow: hidden;
-            border-radius: 12px;
-            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            /* Full viewport height for centering */
+            margin: 0;
+            padding: 0;
           }
 
           .img-collage-testing img {
             display: block;
             width: 100%;
-            height: auto;
+            /* Increased from 80% to 95% */
+            height: 100%;
+            max-width: 1400px;
+            /* Increased maximum width from 800px to 1200px */
+            max-height: 600px;
+            object-fit: contain;
+            /* Maintains aspect ratio */
+            border-radius: 12px;
           }
 
-          /* Start hidden below, then slide up on hover/focus */
-          .img-collage-testing figcaption {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 12px 14px 14px;
-            color: #fff;
-            line-height: 1.25;
-            background: linear-gradient(to top, rgba(0, 0, 0, .72), rgba(0, 0, 0, 0));
-            transform: translateY(100%);
-            /* start off-canvas below */
-            transition: transform 300ms ease,
-              /* slide */
-              opacity 300ms ease;
-            /* optional fade */
-            opacity: 0.95;
-            /* slight fade in */
-            pointer-events: none;
-            text-wrap: balance;
+          /* Remove figure styles since we're using img directly */
+          .img-collage-testing figure {
+            margin: 0;
           }
 
-          /* Reveal on hover/focus within the card */
-          .img-collage-testing figure:hover figcaption,
-          .img-collage-testing figure:focus-within figcaption {
-            transform: translateY(0);
-            /* slide up */
-            opacity: 1;
-          }
-
-          /* Respect reduced motion preferences */
-          @media (prefers-reduced-motion: reduce) {
-            .img-collage-testing figcaption {
-              transition: none;
-              /* no motion */
-              transform: none;
-              /* show without sliding */
-            }
-          }
-
-          /* Responsive columns */
+          /* Responsive adjustments */
           @media (max-width: 992px) {
-            .img-collage-testing {
-              column-count: 2;
+            .img-collage-testing img {
+              width: 98%;
+              /* Increased from 90% to 98% */
+              height: 70%;
             }
           }
 
           @media (max-width: 576px) {
-            .img-collage-testing {
-              column-count: 1;
+            .img-collage-testing img {
+              width: 100%;
+              /* Increased from 95% to 100% */
+              height: 60%;
             }
           }
         </style>
+
+
         <!-- Main Content -->
         <div class="col-sm-8">
           <div class="row">
@@ -481,54 +453,7 @@
               </div>
               <div class="col-sm-12">
                 <div class="img-collage-testing">
-                  <figure class="collage-item">
-                    <img src="images\services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/1 Rebound Hammer Test.jpg"
-                      alt="Rebound Hammer Test">
-                    <figcaption>NDT-based Assessment of Existing Buildings</figcaption>
-                  </figure>
-                  <figure class="collage-item">
-                    <img
-                      src="images/services/testing/NDT PHOTOGRAPHS - CONCRETE STRUCTURES/4. Half Cell potential measurement Test.jpg"
-                      alt="Rebound Hammer Test" style="height: 211px;">
-                    <figcaption>NDT-based Assessment of Existing Buildings</figcaption>
-                  </figure>
-
-                  <figure class="collage-item">
-                    <img src="images/services/c/risk_mitigration.jpeg" alt="Rebound Hammer Test">
-                    <figcaption>Structural Analysis and Risk Evaluation</figcaption>
-                  </figure>
-
-                  <figure class="collage-item">
-                    <img src="images/services/c/jacketing.png" alt="Retrofitting jacketing">
-                    <figcaption>Retrofitting jacketing</figcaption>
-                  </figure>
-
-                  <figure class="collage-item">
-                    <img src="images/services/c/carbon wrapping.jpeg" alt="carbon wrapping">
-                    <figcaption> Carbon Wrapping</figcaption>
-                  </figure>
-                  <figure class="collage-item">
-                    <img src="images/services/c/steel plate bonding.jpeg" style="width: 280px; height: 280px;"
-                      alt="Steel Plate Bonding">
-                    <figcaption>Steel Plate Bonding </figcaption>
-                  </figure>
-                  <figure class="collage-item">
-                    <img
-                      src="images/services/testing/NDT PHOTOGRAPHS - SPECIAL TEST/Pullout Test on anchor fastener.jpg"
-                      alt="Rebound Hammer Test">
-                    <figcaption>Pull out test on RCC beams and slabs</figcaption>
-                  </figure>
-
-                </div>
-              </div>
-
-
-              <div class="col-sm-12">
-                <div id="about-slider" class="owl-carousel">
-                  <div> <img src="images/services/service_42.jpg" alt=""></div>
-                  <div> <img src="images/services/service_44.jpg" alt=""></div>
-
-
+                  <img src="images/services/collage-photo/Structural Investigation.png" alt="Structural Investigation">
                 </div>
               </div>
 
