@@ -357,6 +357,7 @@
                 });
             });
         </script>
+
         <!-- Header Menu End -->
     </header>
     <!--Header End-->
@@ -385,7 +386,7 @@
                 <div class="col-sm-4">
                     <div class="service-list-sidebar hide-on-mobile">
                         <ul id="service-menu">
-                            <li class="active"><a href="services-details.html">Structural Design consultancy</a></li>
+                            <li><a href="services-details.html">Structural Design consultancy</a></li>
                             <li><a href="ndt-retrofitting.html">NDT and Laboratory Testing</a></li>
                             <li><a href="project-management.html">Project Management Consultancy Services</a></li>
                             <li><a href="structural_investigation.html">Structural Investigation</a></li>
@@ -548,7 +549,7 @@
                 </div>
             </div>
         </div> -->
-    <!-- Partner End -->
+
     <style>
         .download-btn {
             background: #e85a3a;
@@ -571,6 +572,74 @@
             text-decoration: none;
             outline: 0;
         }
+
+        /* Mobile-only alignment for Bootstrap 3 */
+        @media (max-width: 767px) {
+
+            /* Quick Links section - remove default padding */
+            .col-md-4:nth-child(2) {
+                padding-left: 15px;
+                margin-left: 0;
+                text-align: left;
+            }
+
+            /* Contact Us section - remove default padding */
+            .col-md-4:nth-child(3) {
+                padding-left: 15px;
+                margin-left: 0;
+                text-align: left;
+            }
+
+            /* Align footer titles to left edge */
+            .col-md-4:nth-child(2) .footer-title,
+            .col-md-4:nth-child(3) .footer-title {
+                text-align: left;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            /* Quick links list alignment with 5px margin */
+            .col-md-4:nth-child(2) .sitemap-widget {
+                padding-left: 0;
+                margin-left: 0;
+                list-style: none;
+            }
+
+            .col-md-4:nth-child(2) .sitemap-widget li {
+                text-align: left;
+                padding-left: 0;
+                margin-left: 5px;
+                /* 5px left margin for list items */
+            }
+
+            .col-md-4:nth-child(2) .sitemap-widget li a {
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            /* Remove contact icon margins to align to left edge */
+            .col-md-4:nth-child(3) div[style*="margin-left: 70px"] {
+                margin-left: 0 !important;
+            }
+
+            /* Ensure contact items align to left edge */
+            .col-md-4:nth-child(3) div[style*="display: flex"] {
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-left: 0;
+                padding-left: 0;
+            }
+        }
+
+        /* Preserve desktop layout */
+        @media (min-width: 768px) {
+
+            .col-md-4:nth-child(2),
+            .col-md-4:nth-child(3) {
+                padding-left: 15px;
+                /* Bootstrap 3 default */
+            }
+        }
     </style>
     <!-- Footer Start -->
     <footer id="rs-footer" class="rs-footer">
@@ -581,12 +650,13 @@
                     <div class="col-md-4">
                         <div class="about-widget" style="display: flex; align-items: center; gap: 10px;">
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                style="height: 120px;width:250px; margin-bottom: -20px;">
+                                style="height: 120px;width:240px; margin-bottom: -20px;margin-left: -30px;">
                             <div class="custom-logo-text">
                                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
                                     <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
                                         Engineering Solutions</h5>
                                 </div>
+
                             </div>
                         </div>
                         <div style="margin-top: 10px;">
@@ -597,11 +667,6 @@
                                     Download Company Profile
                                 </button>
                             </a>
-
-
-
-
-
                         </div>
                     </div>
 
@@ -612,7 +677,6 @@
                             <li><a href="about.html">About</a></li>
                             <li><a href="team.html">Team</a></li>
                             <li><a href="services.html">Services</a></li>
-
                             <li><a href="clientele.html">Clientele</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
                             <li><a href="contact.html">Contact</a></li>
@@ -626,20 +690,19 @@
                             <!-- Phone Section -->
                             <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                                 <div
-                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px">
+                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                                     <i class="fa fa-phone" style="color: white;"></i>
                                 </div>
                                 <div>
                                     <strong style="color: white;">Call Us</strong><br>
                                     +91 9663329229 <br>
-
                                 </div>
                             </div>
 
                             <!-- Email Section -->
                             <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                                 <div
-                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px">
+                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                                     <i class="fa fa-envelope" style="color: white;"></i>
                                 </div>
                                 <div>
@@ -651,7 +714,7 @@
                             <!-- Location Section -->
                             <div style="display: flex; align-items: flex-start; gap: 10px;">
                                 <div
-                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px">
+                                    style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                                     <i class="fa fa-map-marker" style="color: white;"></i>
                                 </div>
                                 <div>
