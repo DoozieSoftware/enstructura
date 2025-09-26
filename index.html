@@ -92,7 +92,6 @@
             </div>
         </div>
         <!-- Toolbar End -->
-        <!-- Header Menu Start -->
         <div class="menu-area menu-sticky">
             <div class="container">
                 <div class="row">
@@ -100,7 +99,7 @@
                     <div class="col-sm-3 logo-col">
                         <a href="index.html" class="logo-link">
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                style="height: 120px;width:250px; margin-bottom: -20px;">
+                                style="height: 100px;width:250px; margin-bottom: -20px;">
                             <div class="custom-logo-text">
                                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
                                     <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
@@ -251,38 +250,81 @@
             /* ✅ MOBILE VIEW FIXES ONLY */
             @media (max-width: 767px) {
 
+                /* header stack: logo/text first, then menu */
+                .menu-area .row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+
+                .logo-col {
+                    order: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .col-sm-9 {
+                    order: 1;
+                    width: 100%;
+                }
+
+                /* logo + text row */
+                .logo-link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    margin: 0;
+                    /* remove extra offset */
+                }
+
+                /* override inline size from the <img style="..."> */
+                .custom-logo-img {
+                    height: 130px !important;
+                    width: auto !important;
+                    padding: 0;
+                    display: block;
+                }
+
+                .custom-logo-text {
+                    color: #fff;
+                    font-weight: 700;
+                    line-height: 1.15;
+                    font-size: 16px;
+                    /* main line */
+                    margin: 0;
+                    padding: 0;
+                    text-align: left;
+                    /* looks cleaner next to logo */
+                }
+
+                .custom-logo-text h5 {
+                    font-size: 12px;
+                    /* tagline */
+                    font-style: italic;
+                    color: #fff;
+                    margin: 2px 0 0 0;
+                    line-height: 1.15;
+                }
+
+                /* keep your existing mobile menu colors/behavior */
                 .menu-area,
                 .rs-menu-toggle {
                     background-color: #000 !important;
                 }
 
-                .logo-col {
-                    justify-content: center;
-                    text-align: center;
-                }
-
-                .logo-link {
-                    justify-content: center;
-                }
-
-                .custom-logo-img {
-                    height: 50px;
-                    margin-top: 22px;
-                }
-
-                .custom-logo-text {
-                    font-size: 15px;
-                }
-
-                .menu-area .row {
-                    padding-top: 10px;
-                    padding-bottom: 10px;
+                .rs-menu-toggle {
+                    display: block;
+                    text-align: left;
+                    padding: -1px;
                 }
 
                 .sub-menu {
                     position: static;
                     display: none;
-                    background-color: #000;
+                    background: #000;
                     box-shadow: none;
                 }
 
@@ -295,7 +337,7 @@
                 }
 
                 .sub-menu li a:hover {
-                    background-color: #222;
+                    background: #222;
                 }
             }
         </style>
@@ -320,183 +362,419 @@
 
 
 
-        </div>
-        </div>
-        </div>
-        </div>
         <!-- Header Menu End -->
     </header>
     <!--Header End-->
-
     <!--Slider Section Start-->
-    <div class="slider-section" id="slider-section">
-        <div id="first-slider">
-            <div id="carousel-example-generic" class="carousel slide carousel-fade">
+    <style>
+        /* Enhanced Mobile Carousel Responsive Styles */
+        .mobile-carousel-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .mobile-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .mobile-carousel-slide {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .mobile-carousel-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        /* Enhanced Mobile Controls - HIDDEN BY DEFAULT WITH OUTWARD-TO-INWARD ANIMATION */
+        .mobile-carousel-prev,
+        .mobile-carousel-next {
+            position: absolute !important;
+            top: 50% !important;
+            transform: translateY(-50%) scale(0.3) !important;
+            background: linear-gradient(135deg, #FF8C00, #FF6347) !important;
+            /* border: 3px solid #FFA500 !important; */
+            /* border-radius: 50% !important; */
+            width: 40px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 1000 !important;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3) !important;
+        }
+
+        .mobile-carousel-prev {
+            left: -20px !important;
+        }
+
+        .mobile-carousel-next {
+            right: -20px !important;
+        }
+
+        /* SHOW ON CAROUSEL HOVER (Desktop) */
+        .mobile-carousel-section:hover .mobile-carousel-prev {
+            opacity: 0.95 !important;
+            visibility: visible !important;
+            transform: translateY(-50%) scale(1) !important;
+            left: 15px !important;
+        }
+
+        .mobile-carousel-section:hover .mobile-carousel-next {
+            opacity: 0.95 !important;
+            visibility: visible !important;
+            transform: translateY(-50%) scale(1) !important;
+            right: 15px !important;
+        }
+
+        /* ENHANCED HOVER EFFECT WITH PULSING ANIMATION */
+        .mobile-carousel-prev:hover,
+        .mobile-carousel-next:hover,
+        .mobile-carousel-prev:focus,
+        .mobile-carousel-next:focus {
+            background: linear-gradient(135deg, #FF6347, #FF4500) !important;
+            /* border: 3px solid #FFD700 !important; */
+            text-decoration: none !important;
+            color: #fff !important;
+            opacity: 1 !important;
+            transform: translateY(-50%) scale(1.15) !important;
+            /* box-shadow: 0 6px 25px rgba(255, 69, 0, 0.5) !important; */
+            animation: pulse-orange 0.6s ease-in-out !important;
+        }
+
+        @keyframes pulse-orange {
+            0% {
+                box-shadow: 0 6px 25px rgba(255, 69, 0, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 8px 35px rgba(255, 140, 0, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 6px 25px rgba(255, 69, 0, 0.5);
+            }
+        }
+
+        .carousel-angle-left,
+        .carousel-angle-right {
+            color: #fff !important;
+            font-size: 36px !important;
+            line-height: 1 !important;
+            font-weight: bold !important;
+            font-family: Arial, sans-serif !important;
+            text-shadow: 0 0 8px rgba(255, 140, 0, 0.6) !important;
+        }
+
+        .mobile-carousel-dots,
+        .carousel-indicators {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        .carousel-fade .item {
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .carousel-fade .item.active {
+            opacity: 1;
+        }
+
+        .carousel-inner>.item {
+            transition: transform 0.6s ease-in-out;
+        }
+
+        @media (max-width: 767px) {
+            .mobile-carousel-img {
+                height: 50vh;
+                min-height: 300px;
+                object-fit: cover;
+                object-position: center top;
+            }
+
+            .mobile-carousel-prev,
+            .mobile-carousel-next {
+                width: 50px !important;
+                height: 50px !important;
+                opacity: 0.95 !important;
+                /* <<< FIX: Always visible on mobile */
+                visibility: visible !important;
+                transform: translateY(-50%) scale(1) !important;
+            }
+
+            .mobile-carousel-prev {
+                left: 10px !important;
+            }
+
+            .mobile-carousel-next {
+                right: 10px !important;
+            }
+
+            .carousel-angle-left,
+            .carousel-angle-right {
+                font-size: 30px !important;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .mobile-carousel-img {
+                height: 60vh;
+                min-height: 400px;
+                object-fit: cover;
+                object-position: center top;
+            }
+
+            .carousel-angle-left,
+            .carousel-angle-right {
+                font-size: 34px !important;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .mobile-carousel-img {
+                height: 85vh;
+                min-height: 650px;
+                max-height: 800px;
+                object-fit: cover;
+                object-position: center top;
+            }
+
+            .mobile-carousel-prev,
+            .mobile-carousel-next {
+                width: 70px !important;
+                height: 70px !important;
+            }
+
+            .mobile-carousel-prev {
+                left: -25px !important;
+            }
+
+            .mobile-carousel-next {
+                right: -25px !important;
+            }
+
+            .mobile-carousel-section:hover .mobile-carousel-prev {
+                left: 20px !important;
+            }
+
+            .mobile-carousel-section:hover .mobile-carousel-next {
+                right: 20px !important;
+            }
+
+            .carousel-angle-left,
+            .carousel-angle-right {
+                font-size: 42px !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .mobile-carousel-img {
+                height: 90vh;
+                min-height: 700px;
+                max-height: 900px;
+                object-fit: cover;
+                object-position: center top;
+            }
+
+            .mobile-carousel-prev,
+            .mobile-carousel-next {
+                width: 80px !important;
+                height: 80px !important;
+            }
+
+            .mobile-carousel-prev {
+                left: -30px !important;
+            }
+
+            .mobile-carousel-next {
+                right: -30px !important;
+            }
+
+            .mobile-carousel-section:hover .mobile-carousel-prev {
+                left: 25px !important;
+            }
+
+            .mobile-carousel-section:hover .mobile-carousel-next {
+                right: 25px !important;
+            }
+
+            .carousel-angle-left,
+            .carousel-angle-right {
+                font-size: 48px !important;
+            }
+        }
+
+        .carousel-inner {
+            touch-action: pan-y pinch-zoom;
+        }
+
+        .mobile-carousel-img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
+        .mobile-carousel-section {
+            max-height: 100vh;
+            overflow: hidden;
+        }
+
+        .mobile-carousel-wrapper {
+            max-height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+
+    <div class="mobile-carousel-section" id="mobile-carousel-section">
+        <div id="main-image-slider">
+            <div id="responsive-carousel-slider" class="carousel slide carousel-fade" data-ride="carousel"
+                data-interval="3000" data-pause="false" data-keyboard="false">
+
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <!-- Item 1 -->
-                    <div class="item active slide1">
-                        <img src="images/home/home_06.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-                                <!-- <div class="col-md-12">
-                                    <div class="content-details">
-                                        <h1 data-animation="animated bounceInDown"><span>Reliable</span>
-                                            Engineering<br>Takes Many <span>Forms</span></h1>
-                                        <p data-animation="animated lightSpeedIn">Capitalise on low hanging fruit to
-                                            identify a ballpark value added activity to beta test.
-                                            Override the digital divide with additional clickthroughs. </p>
-                                        <a href="#" class="sl-btn" data-animation="animated fadeInUp">Read More <i
-                                                class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
+                <div class="carousel-inner mobile-carousel-wrapper" role="listbox">
+                    <div class="item active mobile-carousel-slide">
+                        <img src="images/home/home_06.jpg" loading="lazy" alt="Slide 1" class="mobile-carousel-img" />
                     </div>
-
-                    <!-- Item 2 -->
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/gal03.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/gal03.jpg" loading="lazy" alt="Slide 2"
+                            class="mobile-carousel-img" />
                     </div>
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/GRC SAPPHIRE SPRINGS.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/GRC SAPPHIRE SPRINGS.jpg" loading="lazy" alt="Slide 3"
+                            class="mobile-carousel-img" />
                     </div>
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/gal01.jpeg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/gal01.jpeg" loading="lazy" alt="Slide 4"
+                            class="mobile-carousel-img" />
                     </div>
-
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/service_16.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/service_16.jpg" loading="lazy" alt="Slide 5"
+                            class="mobile-carousel-img" />
                     </div>
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/wtp.JPG" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/wtp.JPG" loading="lazy" alt="Slide 6"
+                            class="mobile-carousel-img" />
                     </div>
-
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/gal32.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/gal32.jpg" loading="lazy" alt="Slide 7"
+                            class="mobile-carousel-img" />
                     </div>
-
-
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/home_02.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/home_02.jpg" loading="lazy" alt="Slide 8"
+                            class="mobile-carousel-img" />
                     </div>
-
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/PEB-industries-Bnal.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/PEB-industries-Bnal.jpg" loading="lazy" alt="Slide 9"
+                            class="mobile-carousel-img" />
                     </div>
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/service_009.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/service_009.jpg" loading="lazy" alt="Slide 10"
+                            class="mobile-carousel-img" />
                     </div>
-
-                    <div class="item slide2">
+                    <div class="item mobile-carousel-slide">
                         <img src="images/home/home-pg/INDUSTRIAL BUILDING FOR L M WIND POWER INDIA (P) LTD, DOBBESPET, TUMKUR ROAD, BANGALORE.avif"
-                            alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                            loading="lazy" alt="Slide 11" class="mobile-carousel-img" />
                     </div>
-                    <div class="item slide2">
-                        <img src=" images/home/home-pg/m-chinnaswamy-stadium.jpg" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/m-chinnaswamy-stadium.jpg" loading="lazy" alt="Slide 12"
+                            class="mobile-carousel-img" />
                     </div>
-
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/water_treatment_plant.JPG" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/water_treatment_plant.JPG" loading="lazy" alt="Slide 13"
+                            class="mobile-carousel-img" />
                     </div>
-                    <div class="item slide2">
-                        <img src="images/home/home-pg/STABILITY CHECK OF KALAMANDAL DOME AT BHUBANESWAR.png" alt="" />
-
-                        <div class="row">
-                            <div class="container">
-
-                            </div>
-                        </div>
+                    <div class="item mobile-carousel-slide">
+                        <img src="images/home/home-pg/STABILITY CHECK OF KALAMANDAL DOME AT BHUBANESWAR.png"
+                            loading="lazy" alt="Slide 14" class="mobile-carousel-img" />
                     </div>
-
-
-
-
                 </div>
-                <!-- End Wrapper for slides-->
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <i class="fa fa-angle-left"></i><span class="sr-only">Previous</span>
+
+                <!-- Navigation Controls -->
+                <a class="left carousel-control mobile-carousel-prev" href="#responsive-carousel-slider" role="button"
+                    data-slide="prev" tabindex="-1">
+                    <span class="carousel-angle-left">‹</span>
+                    <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <i class="fa fa-angle-right"></i><span class="sr-only">Next</span>
+
+                <a class="right carousel-control mobile-carousel-next" href="#responsive-carousel-slider" role="button"
+                    data-slide="next" tabindex="-1">
+                    <span class="carousel-angle-right">›</span>
+                    <span class="sr-only">Next</span>
                 </a>
             </div>
         </div>
     </div>
 
+    <script>
+        // Enhanced Touch Swipe Support for Mobile Carousel
+        $(document).ready(function () {
+            const $carousel = $('#responsive-carousel-slider');
+            let startX = 0, startY = 0;
+            const threshold = 50;
+
+            // Initialize carousel with autoplay and no pause
+            $carousel.carousel({
+                interval: 3000,
+                pause: false,
+                keyboard: false
+            });
+
+            // Remove bootstrap hover pause if attached
+            $carousel.off('mouseenter mouseleave mouseenter.bs.carousel mouseleave.bs.carousel');
+
+            // Force plugin internal pause option off
+            const bsData = $carousel.data('bs.carousel') || $carousel.data('carousel');
+            if (bsData && bsData.options) {
+                bsData.options.pause = false;
+            }
+
+            // Prevent focus on controls from pausing
+            $carousel.find('.carousel-control').attr('tabindex', '-1').on('focus', function () {
+                this.blur();
+            });
+
+            // Swipe gestures
+            $carousel.on('touchstart', function (e) {
+                startX = e.originalEvent.touches[0].clientX;
+                startY = e.originalEvent.touches[0].clientY;
+            });
+
+            $carousel.on('touchend', function (e) {
+                const endX = e.originalEvent.changedTouches[0].clientX;
+                const endY = e.originalEvent.changedTouches[0].clientY;
+                const deltaX = Math.abs(startX - endX);
+                const deltaY = Math.abs(startY - endY);
+
+                if (deltaX > deltaY && deltaX > threshold) {
+                    if (startX > endX + threshold) {
+                        $carousel.carousel('next');
+                    } else if (startX < endX - threshold) {
+                        $carousel.carousel('prev');
+                    }
+                }
+            });
+
+            // Keep cycling
+            $carousel.carousel('cycle');
+        });
+    </script>
 
 
     <!--start our classes sections -->
@@ -733,6 +1011,9 @@
                 </style>
 
                 <script>
+
+
+
                     /* ===== Focus Slider with SEAMLESS loop (clones at ends) ===== */
                     (function () {
                         var viewport = document.getElementById('fgViewport');
@@ -1168,7 +1449,7 @@
 
     <!-- Partner Start -->
 
-    <!-- Partner End -->
+
     <style>
         .download-btn {
             background: #e85a3a;
@@ -1191,6 +1472,74 @@
             text-decoration: none;
             outline: 0;
         }
+
+        /* Mobile-only alignment for Bootstrap 3 */
+        @media (max-width: 767px) {
+
+            /* Quick Links section - remove default padding */
+            .col-md-4:nth-child(2) {
+                padding-left: 15px;
+                margin-left: 0;
+                text-align: left;
+            }
+
+            /* Contact Us section - remove default padding */
+            .col-md-4:nth-child(3) {
+                padding-left: 15px;
+                margin-left: 0;
+                text-align: left;
+            }
+
+            /* Align footer titles to left edge */
+            .col-md-4:nth-child(2) .footer-title,
+            .col-md-4:nth-child(3) .footer-title {
+                text-align: left;
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            /* Quick links list alignment with 5px margin */
+            .col-md-4:nth-child(2) .sitemap-widget {
+                padding-left: 0;
+                margin-left: 0;
+                list-style: none;
+            }
+
+            .col-md-4:nth-child(2) .sitemap-widget li {
+                text-align: left;
+                padding-left: 0;
+                margin-left: 5px;
+                /* 5px left margin for list items */
+            }
+
+            .col-md-4:nth-child(2) .sitemap-widget li a {
+                margin-left: 0;
+                padding-left: 0;
+            }
+
+            /* Remove contact icon margins to align to left edge */
+            .col-md-4:nth-child(3) div[style*="margin-left: 70px"] {
+                margin-left: 0 !important;
+            }
+
+            /* Ensure contact items align to left edge */
+            .col-md-4:nth-child(3) div[style*="display: flex"] {
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-left: 0;
+                padding-left: 0;
+            }
+        }
+
+        /* Preserve desktop layout */
+        @media (min-width: 768px) {
+
+            .col-md-4:nth-child(2),
+            .col-md-4:nth-child(3) {
+                padding-left: 15px;
+                /* Bootstrap 3 default */
+            }
+        }
     </style>
     <!-- Footer Start -->
     <footer id="rs-footer" class="rs-footer">
@@ -1201,7 +1550,7 @@
                     <div class="col-md-4">
                         <div class="about-widget" style="display: flex; align-items: center; gap: 10px;">
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                style="height: 120px;width:250px; margin-bottom: -20px;">
+                                style="height: 120px;width:240px; margin-bottom: -20px;margin-left: -30px;">
                             <div class="custom-logo-text">
                                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
                                     <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
@@ -1218,11 +1567,6 @@
                                     Download Company Profile
                                 </button>
                             </a>
-
-
-
-
-
                         </div>
                     </div>
 
@@ -1311,7 +1655,6 @@
             </div>
         </div>
     </footer>
-
     <!-- Footer End -->
 
     <!-- start scrollUp  -->
