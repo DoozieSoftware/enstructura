@@ -92,7 +92,6 @@
             </div>
         </div>
         <!-- Toolbar End -->
-        <!-- Header Menu Start -->
         <div class="menu-area menu-sticky">
             <div class="container">
                 <div class="row">
@@ -100,13 +99,12 @@
                     <div class="col-sm-3 logo-col">
                         <a href="index.html" class="logo-link">
                             <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                style="height: 120px;width:250px; margin-bottom: -20px;">
+                                style="height: 100px;width:250px; margin-bottom: -20px;">
                             <div class="custom-logo-text">
                                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
                                     <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
                                         Engineering Solutions</h5>
                                 </div>
-
                             </div>
 
                         </a>
@@ -149,9 +147,6 @@
                                         <li><a href="technical_training.html">Technical Training</a></li>
                                     </ul>
                                 </li>
-
-
-
                                 <li><a href="gallery.html">Gallery</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
@@ -162,9 +157,6 @@
         </div>
 
         <style>
-            /* ✅ DO NOT touch background on desktop */
-
-            /* Align and space logo properly */
             .menu-area .row {
                 align-items: center;
                 padding-top: 8px;
@@ -187,7 +179,7 @@
 
             /* Logo image */
             .custom-logo-img {
-                height: 70px;
+                height: 200px;
                 width: auto;
                 display: block;
                 margin: -17px;
@@ -258,37 +250,81 @@
             /* ✅ MOBILE VIEW FIXES ONLY */
             @media (max-width: 767px) {
 
+                /* header stack: logo/text first, then menu */
+                .menu-area .row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+
+                .logo-col {
+                    order: 0;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .col-sm-9 {
+                    order: 1;
+                    width: 100%;
+                }
+
+                /* logo + text row */
+                .logo-link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    margin: 0;
+                    /* remove extra offset */
+                }
+
+                /* override inline size from the <img style="..."> */
+                .custom-logo-img {
+                    height: 130px !important;
+                    width: auto !important;
+                    padding: 0;
+                    display: block;
+                }
+
+                .custom-logo-text {
+                    color: #fff;
+                    font-weight: 700;
+                    line-height: 1.15;
+                    font-size: 16px;
+                    /* main line */
+                    margin: 0;
+                    padding: 0;
+                    text-align: left;
+                    /* looks cleaner next to logo */
+                }
+
+                .custom-logo-text h5 {
+                    font-size: 12px;
+                    /* tagline */
+                    font-style: italic;
+                    color: #fff;
+                    margin: 2px 0 0 0;
+                    line-height: 1.15;
+                }
+
+                /* keep your existing mobile menu colors/behavior */
                 .menu-area,
                 .rs-menu-toggle {
                     background-color: #000 !important;
                 }
 
-                .logo-col {
-                    justify-content: center;
-                    text-align: center;
-                }
-
-                .logo-link {
-                    justify-content: center;
-                }
-
-                .custom-logo-img {
-                    height: 50px;
-                }
-
-                .custom-logo-text {
-                    font-size: 15px;
-                }
-
-                .menu-area .row {
-                    padding-top: 10px;
-                    padding-bottom: 10px;
+                .rs-menu-toggle {
+                    display: block;
+                    text-align: left;
+                    padding: -1px;
                 }
 
                 .sub-menu {
                     position: static;
                     display: none;
-                    background-color: #000;
+                    background: #000;
                     box-shadow: none;
                 }
 
@@ -301,7 +337,7 @@
                 }
 
                 .sub-menu li a:hover {
-                    background-color: #222;
+                    background: #222;
                 }
             }
         </style>
@@ -391,7 +427,7 @@
                 <!-- Main Content -->
                 <div class="col-sm-8">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 ">
                             <h3 class="title-border">Technical Training </h3>
                             <p>At Dr. CSV Training Center, we offer specialized technical training for practicing
                                 engineers, enabling them to enhance their knowledge with the latest available resources.
@@ -402,6 +438,7 @@
                             </p>
 
                             <div><img src="images/services/service_001.jpg" alt="" width="850" height="auto"></div>
+                            <br>
 
 
                         </div>
@@ -499,6 +536,7 @@
             </div>
         </div> -->
         <!-- Partner End -->
+
         <style>
             .download-btn {
                 background: #e85a3a;
@@ -521,6 +559,74 @@
                 text-decoration: none;
                 outline: 0;
             }
+
+            /* Mobile-only alignment for Bootstrap 3 */
+            @media (max-width: 767px) {
+
+                /* Quick Links section - remove default padding */
+                .col-md-4:nth-child(2) {
+                    padding-left: 15px;
+                    margin-left: 0;
+                    text-align: left;
+                }
+
+                /* Contact Us section - remove default padding */
+                .col-md-4:nth-child(3) {
+                    padding-left: 15px;
+                    margin-left: 0;
+                    text-align: left;
+                }
+
+                /* Align footer titles to left edge */
+                .col-md-4:nth-child(2) .footer-title,
+                .col-md-4:nth-child(3) .footer-title {
+                    text-align: left;
+                    margin-left: 0;
+                    padding-left: 0;
+                }
+
+                /* Quick links list alignment with 5px margin */
+                .col-md-4:nth-child(2) .sitemap-widget {
+                    padding-left: 0;
+                    margin-left: 0;
+                    list-style: none;
+                }
+
+                .col-md-4:nth-child(2) .sitemap-widget li {
+                    text-align: left;
+                    padding-left: 0;
+                    margin-left: 5px;
+                    /* 5px left margin for list items */
+                }
+
+                .col-md-4:nth-child(2) .sitemap-widget li a {
+                    margin-left: 0;
+                    padding-left: 0;
+                }
+
+                /* Remove contact icon margins to align to left edge */
+                .col-md-4:nth-child(3) div[style*="margin-left: 70px"] {
+                    margin-left: 0 !important;
+                }
+
+                /* Ensure contact items align to left edge */
+                .col-md-4:nth-child(3) div[style*="display: flex"] {
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    margin-left: 0;
+                    padding-left: 0;
+                }
+            }
+
+            /* Preserve desktop layout */
+            @media (min-width: 768px) {
+
+                .col-md-4:nth-child(2),
+                .col-md-4:nth-child(3) {
+                    padding-left: 15px;
+                    /* Bootstrap 3 default */
+                }
+            }
         </style>
         <!-- Footer Start -->
         <footer id="rs-footer" class="rs-footer">
@@ -531,29 +637,27 @@
                         <div class="col-md-4">
                             <div class="about-widget" style="display: flex; align-items: center; gap: 10px;">
                                 <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                                    style="height: 120px;width:250px; margin-bottom: -20px;">
+                                    style="height: 120px;width:240px; margin-bottom: -20px;margin-left: -30px;">
                                 <div class="custom-logo-text">
                                     <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt)
                                         Ltd.<br>
                                         <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With
-                                            Smart Engineering Solutions</h5>
+                                            Smart
+                                            Engineering Solutions</h5>
                                     </div>
+
                                 </div>
                             </div>
                             <div style="margin-top: 10px;">
                                 <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering
-                                    structural solutions tailored to every client’s unique needs.</p>
+                                    structural
+                                    solutions tailored to every client’s unique needs.</p>
                                 <a href="images/certificates/company profile.pdf" download
                                     style="text-decoration: none;">
                                     <button class="download-btn">
                                         Download Company Profile
                                     </button>
                                 </a>
-
-
-
-
-
                             </div>
                         </div>
 
@@ -564,7 +668,6 @@
                                 <li><a href="about.html">About</a></li>
                                 <li><a href="team.html">Team</a></li>
                                 <li><a href="services.html">Services</a></li>
-
                                 <li><a href="clientele.html">Clientele</a></li>
                                 <li><a href="gallery.html">Gallery</a></li>
                                 <li><a href="contact.html">Contact</a></li>
@@ -578,20 +681,19 @@
                                 <!-- Phone Section -->
                                 <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                                     <div
-                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px">
+                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                                         <i class="fa fa-phone" style="color: white;"></i>
                                     </div>
                                     <div>
                                         <strong style="color: white;">Call Us</strong><br>
-                                        +91 9663329229<br>
-
+                                        +91 9663329229 <br>
                                     </div>
                                 </div>
 
                                 <!-- Email Section -->
                                 <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                                     <div
-                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px">
+                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                                         <i class="fa fa-envelope" style="color: white;"></i>
                                     </div>
                                     <div>
@@ -603,7 +705,7 @@
                                 <!-- Location Section -->
                                 <div style="display: flex; align-items: flex-start; gap: 10px;">
                                     <div
-                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px">
+                                        style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                                         <i class="fa fa-map-marker" style="color: white;"></i>
                                     </div>
                                     <div>

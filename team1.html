@@ -614,6 +614,97 @@
         </div> -->
   <!-- Partner End -->
 
+  <style>
+    .download-btn {
+      background: #e85a3a;
+      color: black;
+      padding: 18px 40px;
+      font-size: 17px;
+      border: 0;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .download-btn:hover,
+    .download-btn:focus {
+      background: #e85a3a;
+      /* black on hover */
+      color: #fff;
+      /* white text */
+      text-decoration: none;
+      outline: 0;
+    }
+
+    /* Mobile-only alignment for Bootstrap 3 */
+    @media (max-width: 767px) {
+
+      /* Quick Links section - remove default padding */
+      .col-md-4:nth-child(2) {
+        padding-left: 15px;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      /* Contact Us section - remove default padding */
+      .col-md-4:nth-child(3) {
+        padding-left: 15px;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      /* Align footer titles to left edge */
+      .col-md-4:nth-child(2) .footer-title,
+      .col-md-4:nth-child(3) .footer-title {
+        text-align: left;
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      /* Quick links list alignment with 5px margin */
+      .col-md-4:nth-child(2) .sitemap-widget {
+        padding-left: 0;
+        margin-left: 0;
+        list-style: none;
+      }
+
+      .col-md-4:nth-child(2) .sitemap-widget li {
+        text-align: left;
+        padding-left: 0;
+        margin-left: 5px;
+        /* 5px left margin for list items */
+      }
+
+      .col-md-4:nth-child(2) .sitemap-widget li a {
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      /* Remove contact icon margins to align to left edge */
+      .col-md-4:nth-child(3) div[style*="margin-left: 70px"] {
+        margin-left: 0 !important;
+      }
+
+      /* Ensure contact items align to left edge */
+      .col-md-4:nth-child(3) div[style*="display: flex"] {
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
+
+    /* Preserve desktop layout */
+    @media (min-width: 768px) {
+
+      .col-md-4:nth-child(2),
+      .col-md-4:nth-child(3) {
+        padding-left: 15px;
+        /* Bootstrap 3 default */
+      }
+    }
+  </style>
   <!-- Footer Start -->
   <footer id="rs-footer" class="rs-footer">
     <div class="footer-top">
@@ -623,22 +714,20 @@
           <div class="col-md-4">
             <div class="about-widget" style="display: flex; align-items: center; gap: 10px;">
               <img src="images/logo/logo.png" alt="logo" class="custom-logo-img"
-                style="height: 120px;width:250px; margin-bottom: -20px;">
+                style="height: 120px;width:240px; margin-bottom: -20px;margin-left: -30px;">
               <div class="custom-logo-text">
                 <div style="white-space: nowrap;margin-top: 10px">Enstructura Consultants (Pvt) Ltd.<br>
-                  <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart Engineering
-                    Solutions</h5>
+                  <h5 style="color: white;font-style: italic;margin-top: 10px;">Structures With Smart
+                    Engineering Solutions</h5>
                 </div>
+
               </div>
             </div>
             <div style="margin-top: 10px;">
-              <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering structural solutions
-                tailored to every client’s unique needs.</p>
+              <p style="color: #ccc;">Enstructura Consultant Pvt Ltd is committed to delivering structural
+                solutions tailored to every client’s unique needs.</p>
               <a href="images/certificates/company profile.pdf" download style="text-decoration: none;">
-                <button
-                  style="background-color: #fbc02d
-
-; color: #000000; padding: 18px 40px; font-size: 17px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+                <button class="download-btn">
                   Download Company Profile
                 </button>
               </a>
@@ -658,23 +747,22 @@
             </ul>
           </div>
 
-          <!-- Column 3: Contact Us -->
+          <!-- Column 3: Contact Us / Subscribe -->
           <div class="col-md-4">
             <h3 class="footer-title" style="color: white; margin-bottom: 20px;">Contact Us</h3>
             <div style="color: #ccc;">
-              <!-- Phone -->
+              <!-- Phone Section -->
               <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                 <div style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                   <i class="fa fa-phone" style="color: white;"></i>
                 </div>
                 <div>
-                  <strong style="color: white;">Call Us 24/7</strong><br>
+                  <strong style="color: white;">Call Us</strong><br>
                   +91 9663329229 <br>
-                  +91 8029753545 <br>
                 </div>
               </div>
 
-              <!-- Email -->
+              <!-- Email Section -->
               <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                 <div style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                   <i class="fa fa-envelope" style="color: white;"></i>
@@ -685,7 +773,7 @@
                 </div>
               </div>
 
-              <!-- Location -->
+              <!-- Location Section -->
               <div style="display: flex; align-items: flex-start; gap: 10px;">
                 <div style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                   <i class="fa fa-map-marker" style="color: white;"></i>
@@ -707,13 +795,14 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom">
       <div class="container">
-        <div class="row align-items-center">
+        <div class="row">
           <div class="col-md-6 col-sm-6">
             <div class="copyright">
-              <p><a href="https://dooziesoft.com/">© 2025 Powered By Dooziesoft.</a> All Rights Reserved.</p>
+              <p> <a href="https://dooziesoft.com/">© 2025 Powered By Dooziesoft .</a> All Rights
+                Reserved.</p>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6 text-end">
+          <div class="col-md-6 col-sm-6 text-right">
             <div class="footer-bottom-share">
               <ul>
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -727,27 +816,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- CSS to fix social icon alignment -->
-  <style>
-    .footer-bottom-share ul {
-      display: flex;
-      justify-content: flex-end;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .footer-bottom-share ul li {
-      margin-left: 10px;
-    }
-
-    .footer-bottom-share ul li a i {
-      color: white;
-      font-size: 18px;
-    }
-  </style>
-
 
   <!-- Footer End -->
 
