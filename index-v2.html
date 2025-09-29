@@ -1238,7 +1238,7 @@
                 margin-bottom: 0;
             }
 
-            /* Transform existing service boxes to PERFECT CIRCLES WITH BACKGROUND IMAGES */
+            /* Transform existing service boxes to PERFECT CIRCLES */
             #services-sections .single-service {
                 width: 240px;
                 height: 240px;
@@ -1247,9 +1247,7 @@
                 max-width: 240px;
                 max-height: 240px;
                 border-radius: 50%;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
+                background: white;
                 box-shadow: 0 5px 20px rgba(255, 165, 0, 0.3);
                 padding: 0;
                 display: flex;
@@ -1258,7 +1256,7 @@
                 justify-content: center;
                 text-align: center;
                 transition: all 0.3s ease;
-                border: 2px solid #ff6600;
+                border: 3px solid #ff6600;
                 cursor: pointer;
                 box-sizing: border-box;
                 position: relative;
@@ -1266,65 +1264,19 @@
                 aspect-ratio: 1 / 1;
             }
 
-            /* Set background images for each service */
-            #services-sections .col-md-4:nth-child(1) .single-service {
-                background-image: url('images/services/RESIDENCE FOR  SRI HARSHA.jpg');
-            }
-
-            #services-sections .col-md-4:nth-child(2) .single-service {
-                background-image: url('images/services/structure-investigationn.jpg');
-            }
-
-            #services-sections .col-md-4:nth-child(3) .single-service {
-                background-image: url('images/services/service_21.jpg');
-            }
-
-            #services-sections .col-md-4:nth-child(4) .single-service {
-                background-image: url('images/services/service_005.png');
-            }
-
-            #services-sections .col-md-4:nth-child(5) .single-service {
-                background-image: url('images/services/service_004.png');
-            }
-
-            #services-sections .col-md-4:nth-child(6) .single-service {
-                background-image: url('images/services/service_003.png');
-            }
-
-            #services-sections .col-md-4:nth-child(7) .single-service {
-                background-image: url('images/services/service_002.jpg');
-            }
-
-            /* Add LIGHTER semi-transparent overlay for BETTER IMAGE VISIBILITY */
-            #services-sections .single-service::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(255, 255, 255, 0.60);
-                border-radius: 50%;
-                z-index: 1;
-                transition: all 0.3s ease;
-            }
-
-            #services-sections .single-service:hover::before {
-                background: rgba(255, 255, 255, 0.70);
-            }
-
             #services-sections .single-service:hover {
                 transform: scale(1.05);
                 box-shadow: 0 8px 30px rgba(255, 102, 0, 0.4);
                 border-color: #ff4500;
+                background: linear-gradient(135deg, #fff 0%, #fff8f0 100%);
             }
 
-            /* Hide original img tags in circular layout */
+            /* Hide original images in circular layout */
             #services-sections .service-img {
                 display: none;
             }
 
-            /* PERFECT SERVICE DETAILS CONTAINER - ABOVE THE BACKGROUND IMAGE */
+            /* PERFECT SERVICE DETAILS CONTAINER FOR BIGGER CIRCLES */
             #services-sections .service-details {
                 display: flex;
                 flex-direction: column;
@@ -1332,14 +1284,13 @@
                 justify-content: center;
                 width: 100%;
                 height: 100%;
-                padding: 25px 20px;
+                padding: 30px 25px 50px 25px;
                 box-sizing: border-box;
                 position: relative;
                 text-align: center;
-                z-index: 2;
             }
 
-            /* Style service titles - OVERLAID ON IMAGE */
+            /* Style service titles - BIGGER TEXT FOR BIGGER CIRCLES */
             #services-sections .service-details h3 {
                 font-size: 15px;
                 font-weight: bold;
@@ -1349,7 +1300,6 @@
                 width: 100%;
                 word-wrap: break-word;
                 hyphens: auto;
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             }
 
             #services-sections .service-details h3 a {
@@ -1359,31 +1309,31 @@
             }
 
             #services-sections .service-details h3 a:hover {
-                color: #ff6600 !important;
+                color: #333333 !important;
             }
 
-            /* Style service descriptions - OVERLAID ON IMAGE */
+            /* Style service descriptions - BIGGER TEXT WITH PERFECT SPACING */
             #services-sections .service-details p {
-                font-size: 10px;
-                color: #333333 !important;
-                line-height: 1.3;
-                margin: 0 0 15px 0;
+                font-size: 11px;
+                color: #000000 !important;
+                line-height: 1.4;
+                margin: 0 0 20px 0;
                 overflow: hidden;
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
                 text-align: center;
                 width: 100%;
                 word-wrap: break-word;
                 hyphens: auto;
+                padding: 0 3px;
                 flex-grow: 1;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             }
 
-            /* READ MORE BUTTON - OVERLAID ON IMAGE */
+            /* BIGGER READ MORE BUTTON FOR BIGGER CIRCLES */
             #services-sections .primary-btn {
                 display: inline-block !important;
                 background: linear-gradient(135deg, #ff6600 0%, #ff4500 100%);
@@ -1391,7 +1341,7 @@
                 padding: 4px 12px;
                 border: none;
                 border-radius: 8px;
-                font-size: 8px;
+                font-size: 9px;
                 font-weight: 600;
                 text-decoration: none;
                 text-transform: uppercase;
@@ -1400,18 +1350,20 @@
                 box-shadow: 0 2px 6px rgba(255, 102, 0, 0.3);
                 margin: 0;
                 white-space: nowrap;
-                position: relative;
-                z-index: 3;
+                position: absolute;
+                bottom: 18px;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             #services-sections .primary-btn:hover {
                 background: linear-gradient(135deg, #ff4500 0%, #ff3300 100%);
-                transform: translateY(-2px);
+                transform: translateX(-50%) translateY(-2px);
                 box-shadow: 0 4px 10px rgba(255, 51, 0, 0.4);
                 color: white !important;
             }
 
-            /* Perfect circular positioning for 7 services - FIXED ALIGNMENT */
+            /* Perfect circular positioning for 7 MUCH BIGGER services */
             #services-sections .col-md-4:nth-child(1) {
                 /* Structural Design - Top */
                 top: 100px;
@@ -1426,10 +1378,9 @@
             }
 
             #services-sections .col-md-4:nth-child(3) {
-                /* NDT Testing - Bottom Right - FIXED ALIGNMENT */
-
-                top: 425px;
-                right: 111px;
+                /* NDT Testing - Bottom Right */
+                top: 430px;
+                right: 120px;
             }
 
             #services-sections .col-md-4:nth-child(4) {
@@ -1441,20 +1392,20 @@
 
             #services-sections .col-md-4:nth-child(5) {
                 /* Architectural - Bottom Left */
-                top: 425px;
-                left: 90px;
+                top: 430px;
+                left: 100px;
             }
 
             #services-sections .col-md-4:nth-child(6) {
                 /* Environmental - Top Left */
                 top: 175px;
-                left: 128px;
+                left: 130px;
             }
 
             #services-sections .col-md-4:nth-child(7) {
-                /* Technical Training - Center Right - FIXED ALIGNMENT */
+                /* Technical Training - Center Right */
                 top: 77%;
-                right: 250px;
+                right: 260px;
                 transform: translateY(-50%);
             }
         }
@@ -1530,10 +1481,6 @@
                 overflow: visible;
             }
 
-            #services-sections .single-service::before {
-                display: none;
-            }
-
             #services-sections .single-service:hover {
                 box-shadow: 0 8px 25px rgba(255, 102, 0, 0.2);
                 border-color: #ff4500;
@@ -1544,18 +1491,11 @@
             #services-sections .service-img {
                 display: block;
                 margin-bottom: 15px;
-                width: 100%;
-                height: auto;
-                border-radius: 10px;
-                overflow: hidden;
             }
 
             #services-sections .service-img img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
                 border-radius: 10px;
-                border: 2px solid #ff6600;
+                border: 2px solid black;
             }
 
             /* Mobile service details reset */
@@ -1566,7 +1506,6 @@
                 width: 100%;
                 height: auto;
                 text-align: left;
-                z-index: auto;
             }
 
             /* Enhanced Read More buttons on mobile */
@@ -1591,7 +1530,6 @@
                 bottom: auto;
                 left: auto;
                 white-space: nowrap;
-                z-index: auto;
             }
 
             #services-sections .primary-btn:hover {
@@ -1614,7 +1552,6 @@
                 color: #333;
                 text-align: left;
                 width: 100%;
-                text-shadow: none;
             }
 
             #services-sections .service-details h3 a {
@@ -1638,7 +1575,6 @@
                 text-align: left;
                 width: 100%;
                 padding: 0;
-                text-shadow: none;
             }
         }
 
@@ -1762,7 +1698,7 @@
             }
 
             #services-sections .service-details {
-                padding: 20px 15px;
+                padding: 25px 20px 40px 20px;
             }
 
             #services-sections .service-details h3 {
@@ -1771,15 +1707,17 @@
             }
 
             #services-sections .service-details p {
-                font-size: 8px;
-                -webkit-line-clamp: 2;
-                margin: 0 0 12px 0;
+                font-size: 9px;
+                -webkit-line-clamp: 3;
+                margin: 0 0 15px 0;
+                padding: 0 2px;
             }
 
             #services-sections .primary-btn {
-                font-size: 6px;
+                font-size: 7px;
                 padding: 3px 8px;
                 border-radius: 6px;
+                bottom: 15px;
             }
 
             #services-sections .row::before {
@@ -1869,12 +1807,12 @@
                         <div class="service-img">
                             <a href="services-details.html" title="Service Image">
                                 <img src="images/services/RESIDENCE FOR  SRI HARSHA.jpg"
-                                    alt="Structural Design consultancy" />
+                                    alt="Structural Design consultancy"
+                                    style="height: 200px;width: 100%;object-fit: cover;" />
                             </a>
                         </div>
                         <div class="service-details">
-                            <h3><a href="services-details.html" style="padding-top: 30px;">Structural Design
-                                    consultancy</a></h3>
+                            <h3><a href="services-details.html">Structural Design consultancy</a></h3>
                             <p>We focus on planning, design, and execution of safe, stable, and efficient structures by
                                 expert analysis, design, compliance with local building codes. combining technical
                                 expertise with practical experience to provide reliable, sustainable, and economical
@@ -1889,8 +1827,8 @@
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="structural_investigation.html" title="Service Image">
-                                <img src="images/services/structure-investigationn.jpg"
-                                    alt="Structural Investigation" />
+                                <img src="images/services/structure-investigationn.jpg" alt="Structural Investigation"
+                                    style="height: 200px;width: 100%;object-fit: cover;" />
                             </a>
                         </div>
                         <div class="service-details">
@@ -1911,9 +1849,7 @@
                             </a>
                         </div>
                         <div class="service-details">
-                            <h3><a href="ndt-retrofitting.html" style="padding-top: 30px;">NDT and Laboratory
-                                    Testing</a>
-                            </h3>
+                            <h3><a href="ndt-retrofitting.html">NDT and Laboratory Testing</a></h3>
                             <p>Compressive test on concrete Cube ,
                                 Test on Masonry blocks ,
                                 Sieve analysis on coarse and fine aggregates</p>
@@ -1931,8 +1867,7 @@
                             </a>
                         </div>
                         <div class="service-details">
-                            <h3><a href="project-management.html" style="padding-top: 30px;">Project Management
-                                    Consultancy Services</a></h3>
+                            <h3><a href="project-management.html">Project Management Consultancy Services</a></h3>
                             <p>Integrated Mechanical, Electrical, and Plumbing design solutions for optimized
                                 building performance.</p>
                             <a href="project-management.html" class="primary-btn">Read More</a>
@@ -1984,9 +1919,9 @@
                             </a>
                         </div>
                         <div class="service-details">
-                            <h3><a href="technical_training.html" style="padding-top: 30px;">Technical Training</a></h3>
+                            <h3><a href="technical_training.html">Technical Training</a></h3>
                             <p>Technical training for practicing engineers, enabling them to enhance their knowledge
-                                with the latest available resources.</p>
+                                with the latest available resourcces.</p>
                             <a href="technical_training.html" class="primary-btn">Read More</a>
                         </div>
                     </div>
