@@ -1203,595 +1203,6 @@
     </div>
 
     <!-- About Us Action -->
-    <style>
-        /* Transform existing services section to circular layout */
-        #services-sections.services-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 20px 0;
-            background-color: #f8f9fa;
-        }
-
-        #services-sections .container {
-            position: relative;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        #services-sections .row {
-            position: relative;
-            width: 1000px;
-            height: 1000px;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* Desktop Layout - Transform to circular with PERFECT CIRCLES */
-        @media (min-width: 768px) {
-            #services-sections .col-md-4 {
-                position: absolute;
-                width: 240px;
-                height: 240px;
-                margin-bottom: 0;
-            }
-
-            /* Transform existing service boxes to PERFECT CIRCLES */
-            #services-sections .single-service {
-                width: 240px;
-                height: 240px;
-                min-width: 240px;
-                min-height: 240px;
-                max-width: 240px;
-                max-height: 240px;
-                border-radius: 50%;
-                background: white;
-                box-shadow: 0 5px 20px rgba(255, 165, 0, 0.3);
-                padding: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                transition: all 0.3s ease;
-                border: 3px solid #ff6600;
-                cursor: pointer;
-                box-sizing: border-box;
-                position: relative;
-                overflow: hidden;
-                aspect-ratio: 1 / 1;
-            }
-
-            #services-sections .single-service:hover {
-                transform: scale(1.05);
-                box-shadow: 0 8px 30px rgba(255, 102, 0, 0.4);
-                border-color: #ff4500;
-                background: linear-gradient(135deg, #fff 0%, #fff8f0 100%);
-            }
-
-            /* Hide original images in circular layout */
-            #services-sections .service-img {
-                display: none;
-            }
-
-            /* PERFECT SERVICE DETAILS CONTAINER FOR BIGGER CIRCLES */
-            #services-sections .service-details {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                height: 100%;
-                padding: 30px 25px 50px 25px;
-                box-sizing: border-box;
-                position: relative;
-                text-align: center;
-            }
-
-            /* Style service titles - BIGGER TEXT FOR BIGGER CIRCLES */
-            #services-sections .service-details h3 {
-                font-size: 15px;
-                font-weight: bold;
-                margin: 0 0 10px 0;
-                line-height: 1.1;
-                text-align: center;
-                width: 100%;
-                word-wrap: break-word;
-                hyphens: auto;
-            }
-
-            #services-sections .service-details h3 a {
-                color: #000000 !important;
-                text-decoration: none;
-                display: block;
-            }
-
-            #services-sections .service-details h3 a:hover {
-                color: #333333 !important;
-            }
-
-            /* Style service descriptions - BIGGER TEXT WITH PERFECT SPACING */
-            #services-sections .service-details p {
-                font-size: 11px;
-                color: #000000 !important;
-                line-height: 1.4;
-                margin: 0 0 20px 0;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 4;
-                -webkit-box-orient: vertical;
-                text-align: center;
-                width: 100%;
-                word-wrap: break-word;
-                hyphens: auto;
-                padding: 0 3px;
-                flex-grow: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* BIGGER READ MORE BUTTON FOR BIGGER CIRCLES */
-            #services-sections .primary-btn {
-                display: inline-block !important;
-                background: linear-gradient(135deg, #ff6600 0%, #ff4500 100%);
-                color: white !important;
-                padding: 4px 12px;
-                border: none;
-                border-radius: 8px;
-                font-size: 9px;
-                font-weight: 600;
-                text-decoration: none;
-                text-transform: uppercase;
-                letter-spacing: 0.3px;
-                transition: all 0.3s ease;
-                box-shadow: 0 2px 6px rgba(255, 102, 0, 0.3);
-                margin: 0;
-                white-space: nowrap;
-                position: absolute;
-                bottom: 18px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            #services-sections .primary-btn:hover {
-                background: linear-gradient(135deg, #ff4500 0%, #ff3300 100%);
-                transform: translateX(-50%) translateY(-2px);
-                box-shadow: 0 4px 10px rgba(255, 51, 0, 0.4);
-                color: white !important;
-            }
-
-            /* Perfect circular positioning for 7 MUCH BIGGER services */
-            #services-sections .col-md-4:nth-child(1) {
-                /* Structural Design - Top */
-                top: 100px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            #services-sections .col-md-4:nth-child(2) {
-                /* Structural Investigation - Top Right */
-                top: 175px;
-                right: 128px;
-            }
-
-            #services-sections .col-md-4:nth-child(3) {
-                /* NDT Testing - Bottom Right */
-                top: 430px;
-                right: 130px;
-            }
-
-            #services-sections .col-md-4:nth-child(4) {
-                /* Project Management - Bottom */
-                bottom: 110px;
-                left: 36%;
-                transform: translateX(-50%);
-            }
-
-            #services-sections .col-md-4:nth-child(5) {
-                /* Architectural - Bottom Left */
-                top: 430px;
-                left: 100px;
-            }
-
-            #services-sections .col-md-4:nth-child(6) {
-                /* Environmental - Top Left */
-                top: 175px;
-                left: 130px;
-            }
-
-            #services-sections .col-md-4:nth-child(7) {
-                /* Technical Training - Center Right */
-                top: 77%;
-                right: 260px;
-                transform: translateY(-50%);
-            }
-        }
-
-        /* Add BIGGER center circle with PERFECT CIRCLE SHAPE */
-        #services-sections .row::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            min-width: 200px;
-            min-height: 200px;
-            max-width: 200px;
-            max-height: 200px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 8px 25px rgba(255, 102, 0, 0.2);
-            border: 4px solid #ff6600;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 1 / 1;
-        }
-
-        /* MUCH BIGGER logo that fills more of the circle */
-        #services-sections .row::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            background: url('images/logo/logo.png') no-repeat center center;
-            background-size: 140px 140px;
-            z-index: 11;
-        }
-
-        /* Mobile: Keep original layout EXACTLY as it was with ORANGE styling */
-        @media (max-width: 767px) {
-            #services-sections .row {
-                height: auto;
-                width: 100%;
-                display: flex;
-                flex-wrap: wrap;
-            }
-
-            #services-sections .col-md-4 {
-                position: relative;
-                width: 100%;
-                margin-bottom: 30px;
-                display: flex;
-                flex-direction: column;
-            }
-
-            #services-sections .single-service {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                flex-grow: 1;
-                height: 100%;
-                box-sizing: border-box;
-                border-radius: 15px;
-                box-shadow: 0 5px 15px rgba(255, 102, 0, 0.1);
-                border: 2px solid #ff6600;
-                padding: 20px;
-                background: white;
-                transition: all 0.3s ease;
-                overflow: visible;
-            }
-
-            #services-sections .single-service:hover {
-                box-shadow: 0 8px 25px rgba(255, 102, 0, 0.2);
-                border-color: #ff4500;
-                transform: translateY(-3px);
-            }
-
-            /* Show original images on mobile with ORANGE accent */
-            #services-sections .service-img {
-                display: block;
-                margin-bottom: 15px;
-            }
-
-            #services-sections .service-img img {
-                border-radius: 10px;
-                border: 2px solid black;
-            }
-
-            /* Mobile service details reset */
-            #services-sections .service-details {
-                display: block;
-                padding: 0;
-                position: relative;
-                width: 100%;
-                height: auto;
-                text-align: left;
-            }
-
-            /* Enhanced Read More buttons on mobile */
-            #services-sections .primary-btn {
-                display: inline-block;
-                background: linear-gradient(135deg, #ff6600 0%, #ff4500 100%);
-                color: white !important;
-                padding: 12px 24px;
-                border: none;
-                border-radius: 25px;
-                font-size: 14px;
-                font-weight: 600;
-                text-decoration: none;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
-                margin-top: 15px;
-                align-self: center;
-                position: relative;
-                transform: none;
-                bottom: auto;
-                left: auto;
-                white-space: nowrap;
-            }
-
-            #services-sections .primary-btn:hover {
-                background: linear-gradient(135deg, #ff4500 0%, #ff3300 100%);
-                transform: translateY(-2px);
-                box-shadow: 0 6px 16px rgba(255, 51, 0, 0.4);
-                color: white !important;
-            }
-
-            /* Hide center logo on mobile */
-            #services-sections .row::before,
-            #services-sections .row::after {
-                display: none;
-            }
-
-            /* Enhanced text styles for mobile */
-            #services-sections .service-details h3 {
-                font-size: 20px;
-                margin: 15px 0 10px 0;
-                color: #333;
-                text-align: left;
-                width: 100%;
-            }
-
-            #services-sections .service-details h3 a {
-                color: #ff6600 !important;
-                text-decoration: none;
-                transition: color 0.3s ease;
-            }
-
-            #services-sections .service-details h3 a:hover {
-                color: #ff4500 !important;
-            }
-
-            #services-sections .service-details p {
-                font-size: 14px;
-                -webkit-line-clamp: none;
-                display: block;
-                overflow: visible;
-                margin: 10px 0 15px 0;
-                line-height: 1.5;
-                color: #555 !important;
-                text-align: left;
-                width: 100%;
-                padding: 0;
-            }
-        }
-
-        /* Animation effects for desktop */
-        @media (min-width: 768px) {
-            #services-sections .col-md-4 {
-                opacity: 0;
-                animation: fadeInCircle 0.8s ease forwards;
-            }
-
-            #services-sections .col-md-4:nth-child(1) {
-                animation-delay: 0.1s;
-            }
-
-            #services-sections .col-md-4:nth-child(2) {
-                animation-delay: 0.2s;
-            }
-
-            #services-sections .col-md-4:nth-child(3) {
-                animation-delay: 0.3s;
-            }
-
-            #services-sections .col-md-4:nth-child(4) {
-                animation-delay: 0.4s;
-            }
-
-            #services-sections .col-md-4:nth-child(5) {
-                animation-delay: 0.5s;
-            }
-
-            #services-sections .col-md-4:nth-child(6) {
-                animation-delay: 0.6s;
-            }
-
-            #services-sections .col-md-4:nth-child(7) {
-                animation-delay: 0.7s;
-            }
-
-            @keyframes fadeInCircle {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px) scale(0.8);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-            }
-
-            /* Fix animation for centered elements */
-            #services-sections .col-md-4:nth-child(1) {
-                animation-name: fadeInCircleTop;
-            }
-
-            #services-sections .col-md-4:nth-child(4) {
-                animation-name: fadeInCircleBottom;
-            }
-
-            #services-sections .col-md-4:nth-child(7) {
-                animation-name: fadeInCircleRight;
-            }
-
-            @keyframes fadeInCircleTop {
-                from {
-                    opacity: 0;
-                    transform: translateX(-50%) translateY(30px) scale(0.8);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateX(-50%) translateY(0) scale(1);
-                }
-            }
-
-            @keyframes fadeInCircleBottom {
-                from {
-                    opacity: 0;
-                    transform: translateX(-50%) translateY(-30px) scale(0.8);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateX(-50%) translateY(0) scale(1);
-                }
-            }
-
-            @keyframes fadeInCircleRight {
-                from {
-                    opacity: 0;
-                    transform: translateY(-50%) translateX(30px) scale(0.8);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(-50%) translateX(0) scale(1);
-                }
-            }
-        }
-
-        /* Tablet responsive adjustments */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            #services-sections .row {
-                width: 900px;
-                height: 900px;
-            }
-
-            #services-sections .col-md-4 {
-                width: 200px;
-                height: 200px;
-            }
-
-            #services-sections .single-service {
-                width: 200px;
-                height: 200px;
-                min-width: 200px;
-                min-height: 200px;
-                max-width: 200px;
-                max-height: 200px;
-                aspect-ratio: 1 / 1;
-            }
-
-            #services-sections .service-details {
-                padding: 25px 20px 40px 20px;
-            }
-
-            #services-sections .service-details h3 {
-                font-size: 13px;
-                margin: 0 0 8px 0;
-            }
-
-            #services-sections .service-details p {
-                font-size: 9px;
-                -webkit-line-clamp: 3;
-                margin: 0 0 15px 0;
-                padding: 0 2px;
-            }
-
-            #services-sections .primary-btn {
-                font-size: 7px;
-                padding: 3px 8px;
-                border-radius: 6px;
-                bottom: 15px;
-            }
-
-            #services-sections .row::before {
-                width: 170px;
-                height: 170px;
-                min-width: 170px;
-                min-height: 170px;
-                max-width: 170px;
-                max-height: 170px;
-            }
-
-            /* BIGGER logo for tablet too */
-            #services-sections .row::after {
-                width: 150px;
-                height: 150px;
-                background-size: 120px 120px;
-            }
-
-            /* Adjust positions for tablet screens */
-            #services-sections .col-md-4:nth-child(1) {
-                top: 90px;
-            }
-
-            #services-sections .col-md-4:nth-child(2) {
-                top: 150px;
-                right: 140px;
-            }
-
-            #services-sections .col-md-4:nth-child(3) {
-                top: 400px;
-                right: 100px;
-            }
-
-            #services-sections .col-md-4:nth-child(4) {
-                bottom: 90px;
-            }
-
-            #services-sections .col-md-4:nth-child(5) {
-                top: 400px;
-                left: 100px;
-            }
-
-            #services-sections .col-md-4:nth-child(6) {
-                top: 150px;
-                left: 140px;
-            }
-
-            #services-sections .col-md-4:nth-child(7) {
-                right: 70px;
-            }
-        }
-
-        /* Additional Mobile Optimization */
-        @media (max-width: 480px) {
-            #services-sections .single-service {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-
-            #services-sections .service-details h3 {
-                font-size: 18px;
-            }
-
-            #services-sections .service-details p {
-                font-size: 13px;
-            }
-
-            #services-sections .primary-btn {
-                padding: 10px 20px;
-                font-size: 12px;
-            }
-        }
-    </style>
-
     <!-- Our Services Section Title with Minimal Gap -->
     <div class="sec-title text-center" style="margin-bottom: 5px;">
         <h3 style="margin-bottom: 0;">Our Services</h3>
@@ -1799,16 +1210,45 @@
 
     <!-- Services Section Start -->
     <div id="services-sections" class="services-section sec-spacer">
+        <style>
+            /* Equal height for all service boxes */
+            .services-section .row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .services-section .col-md-4 {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 30px;
+            }
+
+            .services-section .single-service {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                flex-grow: 1;
+                height: 100%;
+                box-sizing: border-box;
+            }
+        </style>
+
         <div class="container">
             <div class="row">
-                <!-- Service Box 1 - Structural Design consultancy -->
+
+                <!-- Service Box 1 -->
+
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="single-service text-center">
                         <div class="service-img">
+
                             <a href="services-details.html" title="Service Image">
+
+
                                 <img src="images/services/RESIDENCE FOR  SRI HARSHA.jpg"
                                     alt="Structural Design consultancy"
                                     style="height: 200px;width: 100%;object-fit: cover;" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1822,13 +1262,14 @@
                     </div>
                 </div>
 
-                <!-- Service Box 2 - Structural Investigation -->
+                <!-- Service Box 3 -->
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="structural_investigation.html" title="Service Image">
                                 <img src="images/services/structure-investigationn.jpg" alt="Structural Investigation"
                                     style="height: 200px;width: 100%;object-fit: cover;" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1840,12 +1281,13 @@
                     </div>
                 </div>
 
-                <!-- Service Box 3 - NDT and Laboratory Testing -->
+                <!-- Service Box 4 -->
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="testing.html" title="Service Image">
                                 <img src="images/services/service_21.jpg" alt="Architectural Design" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1858,29 +1300,35 @@
                     </div>
                 </div>
 
-                <!-- Service Box 4 - Project Management Consultancy Services -->
+
+
+                <!-- Service Box 5 -->
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="project-management.html" title="Service Image">
                                 <img src="images/services/service_005.png" alt="Urban Planning" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
                             <h3><a href="project-management.html">Project Management Consultancy Services</a></h3>
                             <p>Integrated Mechanical, Electrical, and Plumbing design solutions for optimized
-                                building performance.</p>
+                                building performance.</p>
                             <a href="project-management.html" class="primary-btn">Read More</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Service Box 5 - Architectural Consultancy Services -->
+
+                <!-- Service Box 6 -->
+                <!-- Service Box 5 -->
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="architectural-green.html" title="Service Image">
                                 <img src="images/services/service_004.png" alt="Urban Planning" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1892,12 +1340,14 @@
                     </div>
                 </div>
 
-                <!-- Service Box 6 - Environmental Engineering -->
+                <!-- Service Box 6 -->
+                <!-- Service Box 5 -->
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="environmental.html" title="Service Image">
                                 <img src="images/services/service_003.png" alt="Urban Planning" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
@@ -1910,45 +1360,43 @@
                     </div>
                 </div>
 
-                <!-- Service Box 7 - Technical Training -->
+                <!-- Service Box 6 -->
+
+
+
+                <!-- Service Box 6 -->
+                <!-- Service Box 6 -->
+
+
+
+                <!-- Service Box 6 -->
+                <!-- Service Box 6 -->
+
                 <div class="col-md-4 col-sm-6 col-xs-6">
                     <div class="single-service text-center">
                         <div class="service-img">
                             <a href="technical_training.html" title="Service Image">
                                 <img src="images/services/service_002.jpg" alt="Technical Training" />
+                                <!-- <i class="fa fa-link" aria-hidden="true"></i> -->
                             </a>
                         </div>
                         <div class="service-details">
                             <h3><a href="technical_training.html">Technical Training</a></h3>
                             <p>Technical training for practicing engineers, enabling them to enhance their knowledge
-                                with the latest available resourcces.</p>
+                                with the latest available resourcces.
+                            </p>
                             <a href="technical_training.html" class="primary-btn">Read More</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Service Box 6 -->
+
+
+
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Ensure clicks work on both desktop circular layout and mobile grid
-            document.querySelectorAll('#services-sections .single-service').forEach(function (service) {
-                service.addEventListener('click', function () {
-                    // Check if we're in desktop mode with circular layout
-                    if (window.innerWidth >= 768) {
-                        var link = this.querySelector('.service-details h3 a');
-                        if (link) {
-                            window.location.href = link.href;
-                        }
-                    }
-                    // Mobile layout already has working links
-                });
-            });
-        });
-    </script>
-
-
 
 
     <div class="counter-top-area secondary-bg">
