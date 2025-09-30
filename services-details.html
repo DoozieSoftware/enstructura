@@ -584,7 +584,7 @@
 
                     </div>
                     <br>
-                    <style>
+                    <!-- <style>
                         /* Simple Uniform Image Height Fix */
                         .uniform-image-slider img {
                             width: 100% !important;
@@ -605,8 +605,87 @@
                                 height: 250px !important;
                             }
                         }
+                    </style> -->
+                    <style>
+                        /* Uniform Image Height with Clear Display - No Hover Effects */
+                        .uniform-image-slider img {
+                            width: 100% !important;
+                            height: 500px !important;
+                            object-fit: contain !important;
+                            object-position: center !important;
+                            display: block;
+                            border: none;
+                            outline: none;
+                            /* Remove all transitions and hover effects */
+                            transition: none !important;
+                            transform: none !important;
+                            filter: none !important;
+                            opacity: 1 !important;
+                            pointer-events: auto;
+                        }
+
+                        /* Completely disable any hover effects */
+                        .uniform-image-slider img:hover {
+                            transition: none !important;
+                            transform: none !important;
+                            scale: 1 !important;
+                            filter: none !important;
+                            opacity: 1 !important;
+                            background: none !important;
+                            border: none !important;
+                            outline: none !important;
+                        }
+
+                        /* Remove hover effects from carousel items */
+                        .uniform-image-slider .owl-item:hover {
+                            transform: none !important;
+                            transition: none !important;
+                        }
+
+                        /* Disable hover pause on carousel */
+                        .uniform-image-slider:hover {
+                            animation-play-state: running !important;
+                        }
+
+                        /* Responsive heights */
+                        @media (max-width: 768px) {
+                            .uniform-image-slider img {
+                                height: 300px !important;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .uniform-image-slider img {
+                                height: 250px !important;
+                            }
+                        }
                     </style>
 
+                    <script>
+                        // Initialize carousel with no hover pause
+                        $('#about-slider').owlCarousel({
+                            autoplayHoverPause: false,
+                            stopOnHover: false,
+                            loop: true,
+                            autoplay: true,
+                            autoplayTimeout: 3000,
+                            mouseDrag: true,
+                            touchDrag: true,
+                            pullDrag: true,
+                            margin: 10,
+                            responsive: {
+                                0: {
+                                    items: 1
+                                },
+                                600: {
+                                    items: 2
+                                },
+                                1000: {
+                                    items: 3
+                                }
+                            }
+                        });
+                    </script>
 
                 </div>
             </div>
