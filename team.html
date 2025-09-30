@@ -879,12 +879,41 @@
                     </div>
                 </div>
             </div>
+            <style>
+                /* Unique ID selector for team layout with centered equal spacing */
+                #team-layout-spacing {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 20px;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 0 20px;
+                }
 
+                /* Responsive adjustments for the unique ID */
+                @media (max-width: 768px) {
+                    #team-layout-spacing {
+                        gap: 15px;
+                        padding: 0 10px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    #team-layout-spacing {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+                        padding: 0;
+                    }
+                }
+            </style>
             <!-- Managers' Team -->
             <div class="section-header" style="background: linear-gradient( #8e44ad 0%, #9b59b6 100%);">
                 Managers' Team</div>
 
-            <div class="team-grid" style="margin-bottom: -20px;">
+            <div class="team-grid" id="team-layout-spacing" style="margin-bottom: -20px;">
                 <!-- Gouri Roy Chandgadkar -->
                 <div class="team-member manager-member">
                     <div class="photo-container">
@@ -897,16 +926,6 @@
                         <h4 class="member-name">Gouri Roy Chandgadkar</h4>
                         <p class="member-title">Technical Manager(Design and Design Review)</p>
                     </div>
-
-                    <!-- <div class="description-card">
-                        <div class="member-role">Design, Design Review</div>
-                        <p class="member-desc">
-                            Technical Manager specializing in Design and Design Review processes with extensive
-                            experience in structural engineering projects and quality assurance procedures.
-                            Expertise in project coordination and technical oversight across multiple engineering
-                            disciplines.
-                        </p>
-                    </div> -->
                 </div>
 
                 <!-- Vani K -->
@@ -921,41 +940,23 @@
                         <h4 class="member-name">Vani K</h4>
                         <p class="member-title">Manager(NDT and Laboratory Testing)</p>
                     </div>
-
-                    <!-- <div class="description-card">
-                        <div class="member-role">NDT and Laboratory Testing</div>
-                        <p class="member-desc">
-                            Manager specializing in Non-Destructive Testing and Laboratory testing procedures
-                            with comprehensive knowledge of material testing and quality control processes.
-                            Expert in testing methodologies, equipment calibration, and compliance standards for
-                            structural materials.
-                        </p>
-                    </div> -->
                 </div>
 
                 <!-- Amitha -->
-                <div class="team-member manager-member">
-                    <div class="photo-container">
-                        <div class="photo-frame">
-                            <img src="images/team/Amitha.jpeg" alt="Amitha">
-                        </div>
-                    </div>
-
-                    <div class="member-header">
-                        <h4 class="member-name">Amitha</h4>
-                        <p class="member-title">Manager(Finance and Administration)</p>
-                    </div>
-
-                    <!-- <div class="description-card">
-                        <div class="member-role">Finance and Administration</div>
-                        <p class="member-desc">
-                            Finance and Administration Manager responsible for financial planning, budget
-                            management, and administrative operations across all organizational functions.
-                            Expertise in resource allocation, cost control, and operational efficiency optimization.
-                        </p>
-                    </div> -->
-                </div>
+                <!-- <div class="team-member manager-member">
+        <div class="photo-container">
+            <div class="photo-frame">
+                <img src="images/team/Amitha.jpeg" alt="Amitha">
             </div>
+        </div>
+
+        <div class="member-header">
+            <h4 class="member-name">Amitha</h4>
+            <p class="member-title">Manager(Finance and Administration)</p>
+        </div>
+    </div> -->
+            </div>
+
         </div>
     </div>
 
