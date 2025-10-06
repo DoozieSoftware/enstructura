@@ -5000,4 +5000,9 @@ h3.title-border:after {
     color: #fff;
     font-weight: bold;
 }
-
+.fg-slide img {
+  width: 100%;         /* Makes image stretch to parent width */
+  height: 300px;       /* Set fixed height */
+  object-fit: cover;   /* Crops image to fit without distortion */
+  border-radius: 8px;  /* optional: rounded corners */
+}
