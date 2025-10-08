@@ -444,32 +444,83 @@
           <div class="new_section">
 
             <ul class="nav nav-tabs nav-justified" role="tablist" id="myTab">
-              <li class="active"><a href="#accreditations" role="tab" data-toggle="tab">Accreditations</a></li>
-              <li><a href="#certifications" role="tab" data-toggle="tab">Registrations</a></li>
+              <!-- <li class="active"><a href="#accreditations" role="tab" data-toggle="tab">Accreditations</a></li>
+              <li><a href="#certifications" role="tab" data-toggle="tab">Registrations</a></li> -->
             </ul>
 
             <div class="tab-content">
-              <!-- Accreditations -->
-              <div class="tab-pane active" id="accreditations">
-                <div class="left_disgnnew">
-                  <button class="btn custom-blue-btn preview-btn "
-                    data-file="images/certificates/certificate of incorporation.png">
-                    Certificate of Incorporation
-                  </button>
-                </div>
-                <div class="left_disgnnew">
-                  <button class="btn custom-blue-btn preview-btn"
-                    data-file="images/certificates/certificate of accredition.png">
-                    Certificate of Accreditation
-                  </button>
-                </div>
-                <div class="left_disgnnew">
-                  <button class="btn custom-blue-btn preview-btn"
-                    data-file="images/certificates/certificate expalment.png">
-                    Empanelment Certificate
-                  </button>
-                </div>
+                <!-- Accreditations -->
+                <div class="tab-pane active" id="accreditations">
+                  <div class="left_disgnnew" style="text-align:center; margin-bottom:10px;">
+                      <button class="btn custom-blue-btn preview-btn" onclick="showContent('certifications')">
+                        Certifications
+                     </button>
+                   </div>
+                         <div class="left_disgnnew" style="text-align:center; margin-bottom:10px;">
+                            <button class="btn custom-blue-btn preview-btn" onclick="showContent('accreditations')">
+                               Accreditations
+                            </button>
+                        </div>
+                            <div class="left_disgnnew" style="text-align:center; margin-bottom:10px;">
+                                <button class="btn custom-blue-btn preview-btn" onclick="showContent('empanelment')">
+                                   Empanelment
+                                </button>
+                            </div>
+                                  <script>
+                                   function showContent(type) {
+                                  const previewArea = document.getElementById("preview-area");
+
+                                  if (type === "certifications") {
+                                  previewArea.innerHTML = `
+      
+                      <div>
+          <h4 style="color:#003366; font-weight:bold;">Corporate Certifications:</h4>
+          <p style="color:black; line-height:1.6; margin-top:10px;">
+            GST No: <strong>29AAECE8614K129</strong><br>
+            CIN: <strong>U74999KA2017PTC108360</strong> (Registrar of Companies, Govt. of India)<br>
+            UDYAM Registration No.: <strong>UDYAM–KR-03-0089671</strong>
+          </p>
+          
+          <h4 style="color:#003366; font-weight:bold;">Professional Certifications:</h4>
+          <p style="color:black; line-height:1.8; margin-top:10px;">
+            Registered Structural Engineer in BBMP<br>
+            <strong>(K. Prasanna – Director)</strong><br><br>
+
+            Registered Professional Engineer in Engineering Council of India (ECI)<br>
+            <strong>(K. Prasanna – Director)</strong><br><br>
+
+            Registered Chartered Engineer (The Institution of Engineers India)<br>
+            <strong>(K. Prasanna – Director)</strong>
+          </p>
+        </div>`;
+       
+        
+    }
+
+    else if (type === "accreditations") {
+      previewArea.innerHTML = `
+        <div>
+          <h4 style="color:#003366; font-weight:bold;">Accreditations</h4>
+          <p style="color:black; margin-top:10px;"><b>NABL</b> accreditation in the field of Testing</p>
+        </div>`;
+    }
+
+    else if (type === "empanelment") {
+      previewArea.innerHTML = `
+        <div>
+          <h4 style="color:#003366; font-weight:bold;">Empanelment</h4>
+          <p style="color:black; margin-top:10px;">Registered structural engineer in Karnataka Industrial Areas development 
+board (S Ravi-Director)<br>Empaneled Consultant in Karnataka Police Housing Corporation<br>Empaneled Consultants for Karnataka Rural Drinking Water and Sanitation Department<br>Empaneled Consultants for Karnataka Housing Board</p>
+        </div>`;
+    }
+  }
+  </script>
+                
+                
+
               </div>
+              
+              
 
               <!-- Certifications -->
               <div class="tab-pane" id="certifications">
