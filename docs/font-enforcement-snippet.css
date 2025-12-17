@@ -1,0 +1,136 @@
+/* ============================================
+   FONT CONSISTENCY ENFORCEMENT
+   Enstructura Website - Play Font System
+   ============================================
+
+   Add this snippet to the TOP of your style.css
+   (after the @import statement) to enforce
+   'Play' font across all elements and override
+   any conflicting declarations from plugins.
+*/
+
+/* Primary font import (already in style.css) */
+@import url('https://fonts.googleapis.com/css?family=Play:400,700');
+
+/* Global font enforcement - use with caution */
+* {
+    font-family: 'Play', sans-serif !important;
+}
+
+/* ============================================
+   OR use this SELECTIVE approach (recommended):
+   ============================================ */
+
+/* Body and common elements */
+body,
+p,
+div,
+span,
+a,
+li,
+td,
+th,
+button,
+input,
+select,
+textarea {
+    font-family: 'Play', sans-serif;
+}
+
+/* All headings */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Play', sans-serif;
+    font-weight: 700;
+}
+
+/* Navigation and menus */
+nav,
+.nav-menu,
+.rs-menu,
+.mega-menu,
+.sub-menu {
+    font-family: 'Play', sans-serif;
+}
+
+/* Buttons and forms */
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+    font-family: 'Play', sans-serif;
+}
+
+/* Footer */
+footer,
+#rs-footer {
+    font-family: 'Play', sans-serif;
+}
+
+/* Preserve monospace for code blocks */
+code,
+pre,
+kbd,
+samp,
+.code {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace !important;
+}
+
+/* Preserve serif for blockquotes (optional design choice) */
+blockquote {
+    font-family: Georgia, serif;
+}
+
+/* Icon fonts - DO NOT OVERRIDE */
+.fa,
+[class^="fa-"],
+[class*=" fa-"],
+.flaticon,
+[class^="flaticon-"],
+[class*=" flaticon-"],
+.glyphicon,
+[class^="glyphicon-"],
+[class*=" glyphicon-"] {
+    font-family: inherit !important;
+}
+
+/* ============================================
+   FIND & REPLACE LIST
+   ============================================
+
+   Use your code editor's find-and-replace to
+   standardize font declarations across CSS files:
+
+   FIND                              → REPLACE WITH
+   ─────────────────────────────────────────────────
+   "Open Sans", sans-serif          → 'Play', sans-serif
+   "Helvetica Neue", Helvetica      → 'Play', sans-serif
+   Arial, sans-serif                → 'Play', sans-serif
+   Segoe UI, Tahoma                 → 'Play', sans-serif
+   Montserrat, sans-serif           → 'Play', sans-serif
+
+   EXCLUDE FROM REPLACEMENT:
+   - Font icon files (.fa, .flaticon, .glyphicon)
+   - Monospace declarations (code, pre, kbd)
+   - Georgia serif (blockquotes, if intentional)
+
+   ============================================ */
+
+/* ============================================
+   LOAD ORDER CHECKLIST
+   ============================================
+
+   Ensure your HTML <head> loads CSS in this order:
+
+   1. Bootstrap CSS (bootstrap.min.css)
+   2. Font Awesome (font-awesome.min.css)
+   3. Other plugin CSS (slick, owl-carousel, etc.)
+   4. YOUR CUSTOM style.css ← loads LAST to override
+
+   Example:
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <link rel="stylesheet" href="css/owl.carousel.css">
+   <link rel="stylesheet" href="style.css"> ← LAST
+
+   ============================================ */

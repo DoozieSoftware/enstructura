@@ -48,17 +48,18 @@ Version: 1.0.0
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	SUB-MENUS SETTINGS 
+/*	SUB-MENUS SETTINGS
 /*-----------------------------------------------------------------------------------*/
 /* Hide sub-menus */
 .rs-menu ul ul {
 	position: absolute;
    top: 100%;
    width: 100%;
-   display: none;	
+display: none;
 }
 
-.rs-menu ul ul.visible, .rs-menu ul .rs-mega-menu ul.visible ul.sub-menu {	
+.rs-menu ul ul.visible,
+.rs-menu ul .rs-mega-menu ul.visible ul.sub-menu {
 	display:block;
    z-index: 17;
 }
@@ -69,7 +70,7 @@ Version: 1.0.0
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	SUB-MENUS APPEARANCE 
+/*	SUB-MENUS APPEARANCE
 /*-----------------------------------------------------------------------------------*/
 /* Place border bottom */
 .rs-menu ul ul li {
@@ -110,11 +111,11 @@ Version: 1.0.0
 
 
 /*-----------------------------------------------------------------------------------*/
-/*  APPEARANCE SETTINGS 
+/*  APPEARANCE SETTINGS
 /*-----------------------------------------------------------------------------------*/
 .rs-menu a {
     color:#4a4a4a;
-	
+
 	/* Remove the blue Webkit background when element is tapped */
 	-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
@@ -130,7 +131,7 @@ Version: 1.0.0
 
 
 
-.nav-menu > li > a { 
+.nav-menu>li>a {
 	color:#fff;
 	font-size: 16px;
 	text-transform: uppercase;
@@ -142,13 +143,13 @@ Version: 1.0.0
 }
 
 /*home 1*/
-.home1 .rs-menu a {    
+.home1 .rs-menu a {
 	padding: 16px 14px;
 }
 
 /*home 4*/
 .home4 .rs-menu a,
-.home5 .rs-menu a {    
+.home5 .rs-menu a {
 	padding: 35px 14px 35px;
 }
 
@@ -158,7 +159,7 @@ Version: 1.0.0
 	margin-right:10px;
 	font-size:16px;
 	/* Make the font smoother for Chrome */
-	transform:translate3d(0, 0, 0);    
+	transform: translate3d(0, 0, 0);
 }
 
 /* Put down arrows */
@@ -179,7 +180,7 @@ Version: 1.0.0
 	box-shadow: -1px 0 0 0 rgba(0,0,0,.1);*/
 }
 
-.nav-menu li .mega-menu li a {    
+.nav-menu li .mega-menu li a {
     padding:0;
 	width:auto;
 	display:inline-block;
@@ -188,8 +189,8 @@ Version: 1.0.0
 /*-----------------------------------------------------------------------------------*/
 /*  Typography
 /*-----------------------------------------------------------------------------------*/
-.rs-menu ul{	
-    /* Put "center" to align the center menu */	
+.rs-menu ul {
+	/* Put "center" to align the center menu */
     text-align: right;
 }
 .home1 .rs-menu ul{
@@ -213,8 +214,8 @@ Version: 1.0.0
 }
 
 /* Sub-menus - font size and text alignment*/
-.rs-menu ul ul a {   
-    font-size:14px;	
+.rs-menu ul ul a {
+	font-size: 14px;
     text-align:left;
 }
 
@@ -224,7 +225,7 @@ Version: 1.0.0
 
 .mega-menu li p a {
 	font-size:16px;
-    font-family: "Open Sans",sans-serif;
+    font-family: 'Play', sans-serif;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -241,8 +242,8 @@ Version: 1.0.0
 .nav-menu .mega-menu {
     left:0;
     width:100%;
-	min-height:250px; 
-	position:absolute;   
+	min-height: 250px;
+		position: absolute;
 }
 
 .nav-menu .mega-menu .mega-menu-container {
@@ -258,7 +259,7 @@ Version: 1.0.0
 	width:auto;
     padding:0;
     min-height:initial;
-    box-shadow:none;   
+	box-shadow: none;
 }
 
 .nav-menu .mega-menu .sub-menu a {
@@ -363,7 +364,7 @@ Version: 1.0.0
 /*  RESPONSIVE IMAGES
 /*-----------------------------------------------------------------------------------*/
 .rs-menu img {
-	max-width:100%;	
+	max-width: 100%;
     height:auto;
     -ms-interpolation-mode:bicubic
 }
@@ -393,10 +394,10 @@ Version: 1.0.0
 
 @media screen and (min-width: 992px) {
 	.rs-menu {
-		/*border:1px solid #000;*/    
+		/*border:1px solid #000;*/
 		height: auto !important;
 	}
-	
+
 	.rs-menu h1 {
 		font-size: 3.2rem;
 		line-height: 1.2em;
@@ -410,11 +411,11 @@ Version: 1.0.0
 	.rs-menu h3 {
 		font-size: 2rem;
 	}
-	
+
 	.rs-menu h4 {
 		font-size: 1rem;
 	}
-	
+
 	/* Grid */
    .rs-menu .row [class*="col-"] {
       display: block;
@@ -485,31 +486,30 @@ Version: 1.0.0
 	.rs-menu li {
     	display:inline-block;
 	}
-	
+
 	.nav-menu .rs-mega-menu {
     	position: static;
 	}
-	
+
 	.rs-menu ul ul.visible {
 		visibility: hidden;
     	opacity:0;
 	}
-	
+
 	/* Remove arrows if not in mobile */
 	.nav-menu .menu-item-has-children > span, .nav-menu .rs-mega-menu > span {
 		display:none;
 	}
-	
-	/* Remove Menu Toggle if not in mobile */	
+/* Remove Menu Toggle if not in mobile */
 	.rs-menu-toggle {
 		display:none;
 	}
-	
+
 	/* Remove Menu Close if not in mobile */
 	.nav-menu div.sub-menu-close {
 		display:none;
 	}
-	
+
 	/* Insert arrows down */
 	.nav-menu .rs-mega-menu > a:after, .nav-menu > .menu-item-has-children > a:after {
 		content:"\f107";
@@ -517,7 +517,7 @@ Version: 1.0.0
 		float:right;
 		margin:2px 0 0 5px;
 	}
-	
+
 	/* Put arrows to the right */
 	.nav-menu ul .menu-item-has-children > a:after {
 		content:"\f105";
@@ -526,39 +526,39 @@ Version: 1.0.0
 	}
 
 	/* Show sub-menus in hover */
-	.rs-menu li:active > ul, .rs-menu li:focus > ul, .rs-menu li:hover > ul, .rs-menu li:hover > ul.mega-menu > li > ul, .rs-menu li:hover ul.mega-menu .sub-menu {		
+		.rs-menu li:active>ul,
+		.rs-menu li:focus>ul,
+		.rs-menu li:hover>ul,
+		.rs-menu li:hover>ul.mega-menu>li>ul,
+		.rs-menu li:hover ul.mega-menu .sub-menu {
 		display:block;
-		z-index: 17;	
+		z-index: 17;
 	}
 
 	/* Adjust position the sub-menus in the left */
 	.rs-menu ul ul li > ul {
 		left:100%;
 	}
-	
+
 	/* Adjust position the sub-menus on the top */
 	.rs-menu ul ul ul {
 		top:-4px;
-	}	
 	
 	.rs-menu ul ul {
 		width:auto;
 	}
-	
+
 	/* Sub-menus - width */
 	.rs-menu ul ul a {
 		width:285px;	/* <- Modify for width change */
 	}
-	
-	.nav-menu .mega-menu li div.mega-menu-img a {	
+.nav-menu .mega-menu li div.mega-menu-img a {
 		width:25%;
 	}
-	
-	
-	.nav-menu .mega-menu .mega-menu-container {		
+.nav-menu .mega-menu .mega-menu-container {
 		padding: 16px;
 	}
-		
+
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -566,18 +566,18 @@ Version: 1.0.0
 /*-----------------------------------------------------------------------------------*/
 @media screen and (min-width:0\0) {
 	.rs-menu img {
-    	width:100%;    	
+		width: 100%;
 	}
-	
+
     .nav-menu .menu-item-has-children a, .nav-menu .rs-mega-menu a {
         padding-right:24px
     }
-	
+
     .nav-menu .menu-item-has-children a:after, .nav-menu .rs-mega-menu a:after {
         position:static;
         float:right;
         margin:0 -16px 0 0
-    }   
+	
 }
 
 @media only screen and (max-width: 991px) {
@@ -587,52 +587,49 @@ Version: 1.0.0
        margin-left: 0!important;
        margin-right: 0!important;
     }
-   
+
 	.nav-menu > li > a {
 		border-bottom:1px solid #131313;
 		color: #fff !important;
 		text-align: left;
 	}
-	
+
 	.nav-menu > li:last-child > a {
     	border-bottom:none;
 	}
-	
-	.nav-menu span.rs-menu-parent i { 
+.nav-menu span.rs-menu-parent i {
 		margin:0;
 	}
-	
-	.nav-menu > .menu-item-has-children > span.rs-menu-parent, .nav-menu .rs-mega-menu > span.rs-menu-parent {		
+.nav-menu>.menu-item-has-children>span.rs-menu-parent,
+.nav-menu .rs-mega-menu>span.rs-menu-parent {
 		display: block;
 		position: absolute;
 		right: 0;
 		top: 0;
-		padding: 20px;	
+		padding: 20px;
 		cursor:pointer;
 		line-height: 15px;
 		background: #181818;
-		border-left: 1px solid #131313;		
-		
+		border-left: 1px solid #131313;
 		/* Remove the blue Webkit background when element is tapped */
-		-webkit-tap-highlight-color:rgba(0,0,0,0);    
-	}	
-	
-	.nav-menu > .menu-item-has-children > span.rs-menu-parent:hover, .nav-menu .rs-mega-menu > span.rs-menu-parent:hover {	
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		}
+		
+		.nav-menu>.menu-item-has-children>span.rs-menu-parent:hover,
+		.nav-menu .rs-mega-menu>span.rs-menu-parent:hover {
 		color: #fff;
 	}
-	
-	.nav-menu > .menu-item-has-children .sub-menu .menu-item-has-children span.rs-menu-parent {		
+.nav-menu>.menu-item-has-children .sub-menu .menu-item-has-children span.rs-menu-parent {
 		display: block;
 		position: absolute;
 		right: 0;
 		top: 0;
-		padding: 20px;	
+		padding: 20px;
 		cursor:pointer;
 		line-height: 15px;
-		border-left:1px solid rgba(0, 0, 0, .05);		
-		
+		border-left: 1px solid rgba(0, 0, 0, .05);
 		/* Remove the blue Webkit background when element is tapped */
-		-webkit-tap-highlight-color:rgba(0,0,0,0);    
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	}
 
 	/*Options Menu Closed*/
@@ -642,17 +639,16 @@ Version: 1.0.0
 		padding:16px;
 		cursor:pointer;
 		background:#f6f3ed;
-		
+
 		color:#000;
 		font-size:14px;
-		text-align:center;		
+		text-align: center;
 	}
-	
-	.nav-menu div.sub-menu-close i {		
+.nav-menu div.sub-menu-close i {
 		font-size:16px;
 		margin-right: 5px;
 	}
-	
+
 	.rs-menu .sub-menu {
 		-webkit-box-shadow: 0 0 20px rgba(0,0,0,.15);
 		-moz-box-shadow: 0 0 20px rgba(0,0,0,.15);
@@ -660,42 +656,42 @@ Version: 1.0.0
 		-o-box-shadow:  0 0 20px rgba(0,0,0,.15);
 		box-shadow:  0 0 20px rgba(0,0,0,.15);
 	}
-	
+
 	.rs-menu-close {
-    	height: 0;		
+		height: 0;
     	overflow: hidden!important;
 	}
-	
+
 	/*Menu Toggle Appearance*/
-	.rs-menu-toggle {      
+		.rs-menu-toggle {
 		padding: 16px;
 		display: block;
 		background: #222;
 		border-left: 1px solid #222;
 		position: relative;
-		cursor:pointer;		
+		cursor: pointer;
 		color: #eee;
 		font-size: 15px;
 		text-transform: uppercase;
-		
+
 		/* Remove the blue Webkit background when element is tapped */
 		-webkit-tap-highlight-color:rgba(0,0,0,0);
 	}
-	
+
 	.rs-menu-toggle i {
-		margin-right:10px; 
+		margin-right: 10px;
 	}
-	
+
 }
 
-@media only screen and (max-width: 1080px) {	
+@media only screen and (max-width: 1080px) {
 	.nav-menu > li > a i {
 		display:none;
 	}
 }
 
 
-@media only screen and (min-width: 992px) {	
+@media only screen and (min-width: 992px) {
 	.home5 .rs-menu > ul > li > a{
 		padding: 0;
 		height: 68px;
@@ -714,5 +710,5 @@ Version: 1.0.0
 	.home5 #rs-header .middle-header-home5 .sticky4 .header-bottom-area .navbar ul li:first-child{
 		margin-left: 0;
 	}
-	
+
 }
