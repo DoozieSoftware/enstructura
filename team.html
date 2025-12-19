@@ -230,6 +230,8 @@
 
       .sub-menu li {
         border-bottom: 1px solid #eee;
+        display: block;
+        width: 100%;
       }
 
       .sub-menu li a {
@@ -325,14 +327,16 @@
         }
 
         .sub-menu {
-          position: static;
-          display: none;
+          position: static !important;
+          display: none !important;
+          width: 100% !important;
           background: #000;
           box-shadow: none;
         }
 
-        .menu-item-has-children.open>.sub-menu {
-          display: block;
+        .menu-item-has-children.open>.sub-menu,
+        .sub-menu.visible {
+          display: block !important;
         }
 
         .sub-menu li a {
@@ -342,12 +346,18 @@
         .sub-menu li a:hover {
           background: #222;
         }
+
+        /* Allow menu container to expand when open */
+        .rs-menu:not(.rs-menu-close) {
+          height: auto !important;
+        }
       }
     </style>
 
     <script>
       // Toggle dropdowns on mobile
       document.addEventListener('DOMContentLoaded', function () {
+        // Toggle on link click
         document.querySelectorAll('.menu-item-has-children > a').forEach(function (link) {
           link.addEventListener('click', function (e) {
             if (window.innerWidth <= 767) {
@@ -357,6 +367,35 @@
             }
           });
         });
+
+        // specific fix for the Close button dynamic element
+        // We use a small timeout to ensure jQuery is loaded if it's deferred, 
+        // though standard order usually puts it before this script if it's in head.
+        // The previous attempt might have had a race condition or conflict.
+
+        var intervalCheck = setInterval(function () {
+          if (window.jQuery) {
+            clearInterval(intervalCheck);
+            $(document).on('click', '.sub-menu-close', function (e) {
+              // Prevent any other handlers from stopping this if needed, 
+              // though usually we want bubbling. The main issue was likely
+              // that the external JS handler prevented default/prop or simply
+              // our class 'open' was not being removed.
+
+              e.preventDefault(); // Stop link nav if any
+
+              // Remove 'open' from our custom toggle
+              $(this).closest('.menu-item-has-children').removeClass('open');
+
+              // Also ensure the 'visible' class used by the theme is removed,
+              // just in case the theme's handler didn't fire or was overridden.
+              $(this).closest('.sub-menu').removeClass('visible');
+
+              // Reset the arrow icon in the parent link
+              $(this).closest('.menu-item-has-children').find('> .rs-menu-parent').html('<i class="fa fa-angle-down" aria-hidden="true"></i>');
+            });
+          }
+        }, 100);
       });
     </script>
 
@@ -1034,7 +1073,7 @@
         flex-direction: column;
         align-items: center;
         padding: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         min-height: 250px;
         width: 95% !important;
         margin-left: auto !important;
@@ -1126,131 +1165,28 @@
 
   <style>
     .manager-section {
-
-      padding: 50px;
-      background: #ffffff;
+      padding-left: 15px;
+      padding-right: 15px;
+      /* background: #ffffff; */
       border-radius: 20px;
-      box-shadow: none;
-      border: none;
-      width: 90%;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     .manager-section .row {
       margin-bottom: 20px;
     }
 
-    .role-box {
-      border: none;
-      border-radius: 12px;
-      padding: 20px;
-      height: 100%;
-      width: 100%;
-      background: #ffffff;
-      box-shadow: none;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .role-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      transition: left 0.5s ease;
-    }
-
-    .role-box:hover::before {
-      left: 100%;
-    }
-
-    .role-box:hover {
-      transform: translateY(-3px);
-      box-shadow: none;
-      border-color: transparent;
-    }
-
-    .left-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .manager-image {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: none;
-      box-shadow:
-        0 4px 12px rgba(249, 115, 22, 0.25),
-        0 0 15px rgba(249, 115, 22, 0.18);
-      transition: all 0.3s ease;
-    }
-
-    .role-box:hover .manager-image {
-      transform: scale(1.08);
-      box-shadow:
-        0 6px 20px rgba(249, 115, 22, 0.35),
-        0 0 25px rgba(249, 115, 22, 0.28);
-    }
-
-    .role-title {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 700;
-      color: #c2410c;
-      letter-spacing: 0.5px;
-    }
-
-    .right-box {
-      display: flex;
-      align-items: center;
-    }
-
-    .right-box ul {
-      list-style-type: disc;
-      padding-left: 25px;
-      margin: 0;
-      width: 100%;
-    }
-
-    .right-box li {
-      margin-bottom: 10px;
-      font-size: 18px;
-      font-weight: 500;
-      color: #9a3412;
-      transition: all 0.3s ease;
-    }
-
-    .right-box li::marker {
-      color: #ea580c;
-    }
-
-    .right-box li:hover {
-      color: #c2410c;
-      transform: translateX(5px);
-    }
-
-    .right-box li:last-child {
-      margin-bottom: 0;
-    }
+    /* ... omitted unresponsive styles ... */
 
     /* Responsive */
     @media (max-width: 768px) {
       .manager-section {
-        padding: 15px;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        padding-top: 0 !important;
+        margin-top: -30px !important;
+        margin-bottom: 0 !important;
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
@@ -1261,64 +1197,43 @@
         margin-bottom: 15px;
       }
 
-      .manager-section .col-md-6 {
-        width: 95% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+      .manager-section .col-md-6,
+      .executive-directors,
+      .advisory-board {
+        /* Match 50% width and tight padding for all grid items */
+        width: 50% !important;
+        max-width: 50% !important;
+        flex: 0 0 50%;
+        margin-bottom: 5px;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
       }
 
-      .manager-section .unit {
+      .manager-section .unit,
+      .executive-directors .unit,
+      .advisory-board .unit {
         width: 100% !important;
-        padding: 10px;
+        padding: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
       }
 
+      /* Use auto height to show full image (collage) without cropping */
       .manager-section .unit img {
         width: 100% !important;
         height: auto !important;
         object-fit: contain !important;
         border-radius: 15px !important;
       }
-
-      .role-box {
-        margin-bottom: 15px;
-        padding: 10px;
-        min-height: auto;
-      }
-
-      .left-box {
-        gap: 8px;
-      }
-
-      .manager-image {
-        width: 50px;
-        height: 50px;
-      }
-
-      .role-title {
-        font-size: 14px;
-      }
-
-      .right-box {
-        padding: 5px 0;
-      }
-
-      .right-box ul {
-        padding-left: 20px;
-      }
-
-      .right-box li {
-        font-size: 13px;
-        margin-bottom: 5px;
-      }
     }
   </style>
 
   <div class="container manager-section">
-    <div class="row" style="display: flex; align-items: stretch; justify-content: center;">
+    <div class="row" style="display: flex; align-items: stretch;">
       <div class="col-md-6 col-12" style="display: flex;">
         <div class="unit" style="width: 100%;">
           <img src="images/team/operational-manager.jpg" alt="Operational Manager"
-            style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px; border: none;">
+            style="width: 100%; border-radius: 15px; border: none;">
         </div>
       </div>
     </div>
@@ -1493,14 +1408,16 @@
 
               <!-- Location Section -->
               <div style="display: flex; align-items: flex-start; gap: 10px;">
-                <div style="background-color: #2e3a46; padding: 10px; border-radius: 6px;">
+                <div style="background-color: #2e3a46; padding: 10px; border-radius: 6px;margin-left: 70px;">
                   <i class="fa fa-map-marker" style="color: white;"></i>
                 </div>
                 <div>
                   <strong style="color: white;">Our Location</strong><br>
                   # 2054, 2nd Main, BCCHS Layout<br>
                   Raghuvanahalli,off. Kanakapura Road
-                  Bengaluru - 560 062
+                  Bengaluru - 560 062<br>
+                  <strong style="color: white;">Note :</strong><br>
+                  Land mark 50m from Vajarahalli Metro station (green line)
                 </div>
               </div>
             </div>
