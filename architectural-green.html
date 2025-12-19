@@ -376,80 +376,78 @@
         }
     </style>
     <!-- Breadcrumbs End -->
-    <style>
-        /* Owl Carousel uniform image height without cropping */
-        #about-slider.owl-carousel {
-            display: block;
-        }
+<style>
+/* Owl Carousel uniform image height without cropping */
+#about-slider.owl-carousel {
+    display: block;
+}
 
-        #about-slider.owl-carousel .owl-stage {
-            display: flex;
-            align-items: stretch;
-        }
+#about-slider.owl-carousel .owl-stage {
+    display: flex;
+    align-items: stretch;
+}
 
-        #about-slider.owl-carousel .owl-item {
-            height: 500px;
-            /* Set your desired uniform height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f8f9fa;
-        }
+#about-slider.owl-carousel .owl-item {
+    height: 500px; /* Set your desired uniform height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
 
-        #about-slider.owl-carousel .owl-item img {
-            width: auto;
-            height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-            /* This ensures no cropping - images scale to fit */
-            display: block;
-        }
+#about-slider.owl-carousel .owl-item img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* This ensures no cropping - images scale to fit */
+    display: block;
+}
 
-        /* Optional: Add some padding to items */
-        #about-slider.owl-carousel .owl-item {
-            padding: 10px;
-            box-sizing: border-box;
-        }
+/* Optional: Add some padding to items */
+#about-slider.owl-carousel .owl-item {
+    padding: 10px;
+    box-sizing: border-box;
+}
 
-        /* Responsive heights */
-        @media (max-width: 768px) {
-            #about-slider.owl-carousel .owl-item {
-                height: 250px;
+/* Responsive heights */
+@media (max-width: 768px) {
+    #about-slider.owl-carousel .owl-item {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    #about-slider.owl-carousel .owl-item {
+        height: 200px;
+    }
+}
+</style>
+
+<script>
+// Initialize Owl Carousel
+$(document).ready(function(){
+    $('#about-slider').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
             }
         }
-
-        @media (max-width: 480px) {
-            #about-slider.owl-carousel .owl-item {
-                height: 200px;
-            }
-        }
-    </style>
-
-    <script>
-        // Initialize Owl Carousel
-        $(document).ready(function () {
-            $('#about-slider').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                dots: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 2
-                    },
-                    1000: {
-                        items: 3
-                    }
-                }
-            });
-        });
-    </script>
+    });
+});
+</script>
 
     <!-- Services Section Start -->
     <div class="services-section ">
@@ -473,7 +471,7 @@
                                 <div> <img src="images/services/service_020.jpeg" alt=""></div>
                                 <div> <img src="images/services/service_021.jpeg" alt=""></div>
                                 <div> <img src="images/services/service_49.jpeg" alt=""></div>
-                                <div> <img src="images/services/service_50.jpeg" alt=""></div>
+                                <div> <img src="images/services/service_50.jpeg" alt=""></div> 
                                 <div> <img src="images/services/service_51.jpeg" alt=""></div>
                                 <div> <img src="images/services/service_52.jpeg" alt=""></div>
                                 <div> <img src="images/services/service_53.jpeg" alt=""></div>
@@ -769,9 +767,7 @@
                                     <strong style="color: white;">Our Location</strong><br>
                                     # 2054, 2nd Main, BCCHS Layout<br>
                                     Raghuvanahalli,off. Kanakapura Road
-                                    Bengaluru - 560 062<br>
-                                    <strong style="color: white;">Note :</strong><br>
-                                    Land mark 50m from Vajarahalli Metro station (green line)
+                                    Bengaluru - 560 062
                                 </div>
                             </div>
                         </div>

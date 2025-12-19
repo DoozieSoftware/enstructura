@@ -226,8 +226,6 @@
 
             .sub-menu li {
                 border-bottom: 1px solid #eee;
-                display: block;
-                width: 100%;
             }
 
             .sub-menu li a {
@@ -323,16 +321,14 @@
                 }
 
                 .sub-menu {
-                    position: static !important;
-                    display: none !important;
-                    width: 100% !important;
+                    position: static;
+                    display: none;
                     background: #000;
                     box-shadow: none;
                 }
 
-                .menu-item-has-children.open>.sub-menu,
-                .sub-menu.visible {
-                    display: block !important;
+                .menu-item-has-children.open>.sub-menu {
+                    display: block;
                 }
 
                 .sub-menu li a {
@@ -342,18 +338,12 @@
                 .sub-menu li a:hover {
                     background: #222;
                 }
-
-                /* Allow menu container to expand when open */
-                .rs-menu:not(.rs-menu-close) {
-                    height: auto !important;
-                }
             }
         </style>
 
         <script>
             // Toggle dropdowns on mobile
             document.addEventListener('DOMContentLoaded', function () {
-                // Toggle on link click
                 document.querySelectorAll('.menu-item-has-children > a').forEach(function (link) {
                     link.addEventListener('click', function (e) {
                         if (window.innerWidth <= 767) {
@@ -363,19 +353,6 @@
                         }
                     });
                 });
-
-                // specific fix for the Close button dynamic element
-                var intervalCheck = setInterval(function () {
-                    if (window.jQuery) {
-                        clearInterval(intervalCheck);
-                        $(document).on('click', '.sub-menu-close', function (e) {
-                            e.preventDefault();
-                            $(this).closest('.menu-item-has-children').removeClass('open');
-                            $(this).closest('.sub-menu').removeClass('visible');
-                            $(this).closest('.menu-item-has-children').find('> .rs-menu-parent').html('<i class="fa fa-angle-down" aria-hidden="true"></i>');
-                        });
-                    }
-                }, 100);
             });
         </script>
 
@@ -861,6 +838,7 @@
                                 <div class="fg-slide"><img src="images/home/4.jpeg" alt=""></div>
                                 <div class="fg-slide"><img src="images/home/5.jpeg" alt=""></div>
                                 <div class="fg-slide"><img src="images/home/6.jpeg" alt=""></div>
+                                <div class="fg-slide"><img src="images/home/7.jpeg" alt=""></div>
                                 <div class="fg-slide"><img src="images/home/8.jpeg" alt=""></div>
                                 <div class="fg-slide"><img src="images/home/9.jpeg" alt=""></div>
                                 <div class="fg-slide"><img src="images/home/10.jpeg" alt=""></div>
@@ -1248,8 +1226,8 @@
         </div>
     </div>
 
-    <!-- About Us Action -->
-    <style>
+  <!-- About Us Action -->
+<style>
         /* Transform existing services section to circular layout */
         #services-sections.services-section {
             min-height: 100vh;
@@ -2030,7 +2008,7 @@
                 font-size: 12px;
             }
         }
-    </style>
+</style>
 
 
 
@@ -2044,8 +2022,7 @@
         <div class="container">
             <div class="row">
                 <!-- Add this single line for clickable logo -->
-                <a href="about.html"
-                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 200px; z-index: 12; display: block; border-radius: 50%;"></a>
+                <a href="about.html" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 200px; z-index: 12; display: block; border-radius: 50%;"></a>
 
                 <!-- Service Box 1 - Structural Design consultancy -->
                 <div class="col-md-4 col-sm-6 col-xs-6">
@@ -2423,9 +2400,7 @@
                                     <strong style="color: white;">Our Location</strong><br>
                                     # 2054, 2nd Main, BCCHS Layout<br>
                                     Raghuvanahalli,off. Kanakapura Road
-                                    Bengaluru - 560 062<br>
-                                    <strong style="color: white;">Note :</strong><br>
-                                    Land mark 50m from Vajarahalli Metro station (green line)
+                                    Bengaluru - 560 062
                                 </div>
                             </div>
                         </div>
