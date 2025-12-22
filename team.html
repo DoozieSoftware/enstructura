@@ -433,10 +433,13 @@
       .board-card {
         background-color: #ffffff;
         background-image: url('images/team/board-of-director.jpg');
-        min-height: 950px;
-        height: 950px;
-        transition: min-height 0.3s ease, background-image 0s;
-        background-size: cover;
+        width: 90%;
+        max-width: 1100px;
+        aspect-ratio: 1100 / 950;
+        height: auto;
+        min-height: auto;
+        background-size: 100% 100%;
+        transition: none;
         /* looks better with rounded corners */
         background-repeat: no-repeat;
         background-position: center center;
@@ -531,7 +534,7 @@
     }
 
     .board-member-area:hover {
-      background-color: rgba(249, 115, 22, 0.1);
+      background-color: transparent;
     }
 
     /* Focus styles for keyboard navigation */
@@ -625,7 +628,7 @@
     .popup-close:focus {
       outline: 3px solid #fff;
       outline-offset: 2px;
-      background: #ea580c;
+      /* background: #ea580c; */
     }
 
     .popup-close:focus-visible {
@@ -796,19 +799,75 @@
 
   <div class="container board-card" role="region" aria-label="Board of Directors">
     <!-- Hover areas for board members -->
-    <div class="board-member-area" data-member="s-ravi"
-      style="position: absolute; top: 1%; left: 8%; width: 30%; height: 28%;" role="button" tabindex="0"
+    <!-- Hover areas for board members -->
+    <div class="board-member-area area-s-ravi" data-member="s-ravi" role="button" tabindex="0"
       aria-label="View information about S. Ravi, Board Member" aria-describedby="popup-s-ravi"></div>
-    <div class="board-member-area" data-member="k-prasanna"
-      style="position: absolute; top: 1%; right: 9%; width: 30%; height: 28%;" role="button" tabindex="0"
+    <div class="board-member-area area-k-prasanna" data-member="k-prasanna" role="button" tabindex="0"
       aria-label="View information about K. Prasanna, Board Member" aria-describedby="popup-k-prasanna"></div>
-    <div class="board-member-area" data-member="sharath-chandra"
-      style="position: absolute; bottom: 7%; left: 8%; width: 30%; height: 28%;" role="button" tabindex="0"
+    <div class="board-member-area area-sharath-chandra" data-member="sharath-chandra" role="button" tabindex="0"
       aria-label="View information about Sharath Chandra V, Board Member" aria-describedby="popup-sharath-chandra">
     </div>
-    <div class="board-member-area" data-member="subramanya-bs"
-      style="position: absolute; bottom: 8%; right: 9%; width: 30%; height: 28%;" role=" button" tabindex="0"
+    <div class="board-member-area area-subramanya-bs" data-member="subramanya-bs" role="button" tabindex="0"
       aria-label="View information about Subramanya BS, Board Member" aria-describedby="popup-subramanya-bs"></div>
+
+    <style>
+      /* Base styles for member areas (Mobile default based on original inline styles) */
+      .board-member-area {
+        position: absolute;
+        width: 30%;
+        height: 28%;
+        z-index: 10;
+      }
+
+      .area-s-ravi {
+        top: 1%;
+        left: 8%;
+      }
+
+      .area-k-prasanna {
+        top: 1%;
+        right: 9%;
+      }
+
+      .area-sharath-chandra {
+        bottom: 7%;
+        left: 8%;
+      }
+
+      .area-subramanya-bs {
+        bottom: 8%;
+        right: 9%;
+      }
+
+      /* Desktop adjustments to align with desktop image layout */
+      @media (min-width: 769px) {
+        .board-member-area {
+          width: 32%;
+          height: 32%;
+        }
+
+        /* Adjusted positions for Desktop Image (Centered Grid) */
+        .area-s-ravi {
+          top: 15%;
+          left: 11%;
+        }
+
+        .area-k-prasanna {
+          top: 15%;
+          right: 11%;
+        }
+
+        .area-sharath-chandra {
+          bottom: 15%;
+          left: 11%;
+        }
+
+        .area-subramanya-bs {
+          bottom: 15%;
+          right: 11%;
+        }
+      }
+    </style>
 
     <!-- Popup elements for board members -->
     <div class="board-popup" id="popup-s-ravi" role="dialog" aria-modal="true" aria-labelledby="popup-s-ravi-title"
@@ -1545,10 +1604,10 @@
         // Position popup vertically based on row
         // Position popup vertically based on row
         if (isTopRow) {
-          popup.style.top = '32%';
+          popup.style.top = '40%';
           popup.style.bottom = 'auto';
         } else if (isBottomRow) {
-          popup.style.top = '94%';
+          popup.style.top = '82%';
           popup.style.bottom = 'auto';
         }
 
