@@ -369,7 +369,7 @@
         });
 
         // specific fix for the Close button dynamic element
-          // We use a small timeout to ensure jQuery is loaded if it's deferred,
+        // We use a small timeout to ensure jQuery is loaded if it's deferred,
         // though standard order usually puts it before this script if it's in head.
         // The previous attempt might have had a race condition or conflict.
 
@@ -377,7 +377,7 @@
           if (window.jQuery) {
             clearInterval(intervalCheck);
             $(document).on('click', '.sub-menu-close', function (e) {
-                // Prevent any other handlers from stopping this if needed,
+              // Prevent any other handlers from stopping this if needed,
               // though usually we want bubbling. The main issue was likely
               // that the external JS handler prevented default/prop or simply
               // our class 'open' was not being removed.
@@ -406,897 +406,1092 @@
     <!-- Header Menu End -->
   </header>
 
-  <!-- === Board of Directors (Bootstrap 5+) === -->
-  <!-- first part starts -->
-
+  <!-- === Board of Directors - Orbital Layout === -->
   <style>
-    .board-card {
-      border-radius: 20px;
-      border: none;
+    /* Board of Directors - Orbital Section */
+    .bod-orbital-section {
+      padding: 80px 0 60px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+      min-height: 700px;
       position: relative;
-      overflow: visible;
-      background: #ffffff;
-      box-shadow: none;
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      background-position: center;
-      margin-top: 150px;
-      margin-bottom: 50px;
+      overflow: hidden;
+    }
+
+    /* Decorative background elements */
+    .bod-orbital-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(232, 90, 58, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(232, 90, 58, 0.03) 0%, transparent 50%);
+      animation: pulse-bg 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse-bg {
+
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .bod-orbital-container {
       width: 90%;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Desktop image - smooth switching on viewport resize */
-    @media (min-width: 769px) {
-      .board-card {
-        background-color: #ffffff;
-        background-image: url('images/team/board-of-director.jpg');
-        width: 90%;
-        max-width: 1100px;
-        aspect-ratio: 1100 / 950;
-        height: auto;
-        min-height: auto;
-        background-size: 100% 100%;
-        transition: none;
-        /* looks better with rounded corners */
-        background-repeat: no-repeat;
-        background-position: center center;
-        padding: 30px;
-
-        border-radius: 15px;
-        /* Rounded corners */
-        overflow: visible;
-        /* Ensures image follows rounded corners */
-      }
-
-
-      .board-card::before {
-        content: '';
-        position: absolute;
-        top: 30px;
-        left: 30px;
-        right: 30px;
-        bottom: 30px;
-        border: none;
-        border-radius: 12px;
-        pointer-events: none;
-        z-index: 1;
-      }
-    }
-
-    /* Mobile image - smooth switching on viewport resize */
-    @media (max-width: 768px) {
-      .board-card {
-        background-image: url('images/team/board-of-director-mobile.jpg') !important;
-        min-height: 500px;
-        height: 500px;
-        /* Smooth transition for background changes */
-        transition: min-height 0.3s ease, background-image 0s;
-        background-size: 100% 100% !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        width: 95% !important;
-        max-width: 95% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        padding: 10px;
-        overflow: hidden !important;
-      }
-
-      /* Mobile popup styling */
-      .board-popup {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
-      }
-
-      .board-popup.active {
-        transform: translate(-50%, -50%);
-      }
-
-      .popup-close {
-        display: block;
-      }
-    }
-
-    /* Fallback styling for image load failures */
-
-
-    .board-card::after {
-      content: 'Board of Directors';
+    /* Center Title Badge */
+    .bod-center-title {
       position: absolute;
-      top: 50%;
       left: 50%;
+      top: 50%;
       transform: translate(-50%, -50%);
-      font-size: 24px;
-      font-weight: 700;
-      color: #7c2d12;
-      display: none;
       text-align: center;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
-    }
-
-    /* Hover area styling */
-    .board-member-area {
-      position: absolute;
-      cursor: pointer;
-      transition: background-color 0.3s ease, outline 0.2s ease;
       z-index: 10;
     }
 
-    .board-member-area:hover {
-      background-color: transparent;
-    }
-
-    /* Focus styles for keyboard navigation */
-    .board-member-area:focus {
-      outline: 3px solid;
-      outline-offset: 2px;
-      background-color: rgba(249, 115, 22, 0.15);
-    }
-
-    .board-member-area:focus:not(:focus-visible) {
-      outline: none;
-    }
-
-    .board-member-area:focus-visible {
-      outline: 3px solid;
-      outline-offset: 2px;
-      background-color: rgba(249, 115, 22, 0.15);
-    }
-
-    /* Popup styling */
-    .board-popup {
-      position: absolute;
-      display: none;
-      background: white;
-      border: none;
-      border-radius: 10px;
-      padding: 12px 15px;
-      box-shadow: none;
-      z-index: 100;
-      max-width: 280px;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .board-popup.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .board-popup:hover {
-      box-shadow: none;
-
-    }
-
-    .popup-content {
-      position: relative;
-    }
-
-    .popup-content h4 {
-      margin: 0 0 8px 0;
-      font-size: 16px;
-      font-weight: 700;
-      color: #7c2d12;
-      border-bottom: none;
-      padding-bottom: 6px;
-    }
-
-    .popup-content p {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.5;
-      color: #9a3412;
-    }
-
-    .popup-close {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background: #ffffff;
-      color: #333333;
-      border: none;
+    .bod-title-badge {
+      background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+      border: 2px solid #e85a3a;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      font-size: 20px;
-      cursor: pointer;
-      display: none;
-      line-height: 1;
-      transition: all 0.3s ease;
-      box-shadow: none;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(232, 90, 58, 0.3),
+        inset 0 0 30px rgba(232, 90, 58, 0.1);
+      transition: all 0.4s ease;
     }
 
-    .popup-close:hover {
+    .bod-title-badge:hover {
+      box-shadow: 0 0 80px rgba(232, 90, 58, 0.5),
+        inset 0 0 40px rgba(232, 90, 58, 0.15);
+      transform: scale(1.05);
+    }
 
+    .bod-title-badge h2 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.3;
+    }
+
+    .bod-title-badge .subtitle {
+      color: #e85a3a;
+      font-size: 12px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    /* Orbital Ring */
+    .bod-orbital-ring {
+      position: relative;
+      width: 100%;
+      height: 650px;
+      padding-top: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Orbital path visualization */
+    .bod-orbital-path {
+      position: absolute;
+      border: 1px dashed rgba(232, 90, 58, 0.2);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .bod-orbital-path-1 {
+      width: 450px;
+      height: 450px;
+    }
+
+    .bod-orbital-path-2 {
+      width: 500px;
+      height: 500px;
+    }
+
+    /* Director Cards */
+    .bod-director-card {
+      position: absolute;
+      width: 200px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 5;
+    }
+
+    .bod-director-card:hover {
+      z-index: 20;
       transform: scale(1.1);
     }
 
-    /* Focus styles for close button */
-    .popup-close:focus {
-      outline: 3px solid #fff;
-      outline-offset: 2px;
-      /* background: #ea580c; */
+    /* Card positions - orbital arrangement using data attributes */
+    .bod-director-card[data-director="s-ravi"] {
+      /* Top Left */
+      top: 12%;
+      left: 8%;
     }
 
-    .popup-close:focus-visible {
-      outline: 3px solid #fff;
-      outline-offset: 2px;
-
+    .bod-director-card[data-director="k-prasanna"] {
+      /* Top Right */
+      top: 12%;
+      right: 8%;
     }
 
-    .board-cell {
-      min-height: 300px;
-      position: relative;
+    .bod-director-card[data-director="sharath-chandra"] {
+      /* Bottom Left */
+      bottom: 5%;
+      left: 10%;
+    }
+
+    .bod-director-card[data-director="subramanya-bs"] {
+      /* Bottom Right */
+      bottom: 5%;
+      right: 10%;
+    }
+
+    /* Card Inner */
+    .bod-card-inner {
+      background: linear-gradient(145deg, #1f1f1f 0%, #2a2a2a 100%);
+      border-radius: 16px;
       overflow: hidden;
-      background: #ffffff;
-      border: none;
-      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(232, 90, 58, 0.1);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(232, 90, 58, 0.2);
     }
 
-    .board-cell:hover {
-      background: #ffffff;
-
-      box-shadow: none;
+    .bod-director-card:hover .bod-card-inner {
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(232, 90, 58, 0.3);
+      border-color: #e85a3a;
     }
 
-    /* Full box images */
-    .board-cell img {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      bottom: 50px;
-      width: calc(100% - 20px);
-      height: calc(100% - 60px);
-      object-fit: contain;
-      object-position: center;
-      border-radius: 8px;
-      filter: brightness(1.02) contrast(1.05);
-    }
-
-    /* Name overlay */
-    .board-cell h5 {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #ffffff;
-      color: #333333;
-      margin: 0;
-      padding: 15px;
+    /* Director Image */
+    .bod-director-img-wrapper {
+      position: relative;
+      padding: 15px 15px 10px;
       text-align: center;
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      box-shadow: 0 -2px 10px rgba(249, 115, 22, 0.35);
     }
 
-    /* rounded outer corners */
-    .board-top-left {
-      border-top-left-radius: 1rem;
-    }
-
-    .board-top-right {
-      border-top-right-radius: 1rem;
-    }
-
-    .board-bottom-left {
-      border-bottom-left-radius: 1rem;
-    }
-
-    .board-bottom-right {
-      border-bottom-right-radius: 1rem;
-    }
-
-    /* center badge */
-    .board-badge {
-      position: absolute;
-      left: 50%;
-      top: 46%;
-      transform: translate(-50%, -50%);
-      background: #ffffff;
-      color: #333333;
-      font-weight: 700;
-      border-radius: 1rem;
-      padding: 1.2rem 2rem;
-      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
-      white-space: nowrap;
-      cursor: default;
-      transition: all 0.3s ease;
-      border: none;
-      user-select: none;
-      font-size: 18px;
-      letter-spacing: 1px;
-    }
-
-    .board-badge:hover {
-      background: #ffffff;
-      color: #333333;
-      transform: translate(-50%, -50%) scale(1.05);
-      box-shadow: 0 12px 28px rgba(249, 115, 22, 0.5);
-
-    }
-
-    .board-badge:active {
-      transform: translate(-50%, -50%) scale(0.98);
-      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
-      background: #ffffff;
-    }
-
-    /* Mobile responsive */
-    @media (max-width: 768px) {
-      .board-card {
-        border: none;
-        background: transparent;
-        box-shadow: none;
-        border-radius: 0;
-        padding: 5px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .board-badge {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        font-size: 16px;
-        padding: 1rem 1.5rem;
-        white-space: normal;
-        text-align: center;
-        max-width: 100%;
-        width: 100%;
-        margin-bottom: 0;
-        border-radius: 1rem 1rem 0 0;
-        order: -1;
-      }
-
-      .board-card .row {
-        order: 1;
-      }
-
-      .board-cell {
-        min-height: 250px;
-        border-radius: 0 !important;
-        padding-left: 0;
-        padding-right: 0;
-      }
-
-      .board-cell:last-child {
-        border-radius: 0 0 1rem 1rem !important;
-      }
-
-      .board-cell img {
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 50px;
-        width: calc(100% - 20px);
-        height: calc(100% - 60px);
-      }
-
-      .board-cell h5 {
-        font-size: 14px;
-        padding: 12px;
-      }
-    }
-  </style>
-
-  <div class="container board-card" role="region" aria-label="Board of Directors">
-    <!-- Hover areas for board members -->
-    <!-- Hover areas for board members -->
-    <div class="board-member-area area-s-ravi" data-member="s-ravi" role="button" tabindex="0"
-      aria-label="View information about S. Ravi, Board Member" aria-describedby="popup-s-ravi"></div>
-    <div class="board-member-area area-k-prasanna" data-member="k-prasanna" role="button" tabindex="0"
-      aria-label="View information about K. Prasanna, Board Member" aria-describedby="popup-k-prasanna"></div>
-    <div class="board-member-area area-sharath-chandra" data-member="sharath-chandra" role="button" tabindex="0"
-      aria-label="View information about Sharath Chandra V, Board Member" aria-describedby="popup-sharath-chandra">
-    </div>
-    <div class="board-member-area area-subramanya-bs" data-member="subramanya-bs" role="button" tabindex="0"
-      aria-label="View information about Subramanya BS, Board Member" aria-describedby="popup-subramanya-bs"></div>
-
-    <style>
-      /* Base styles for member areas (Mobile default based on original inline styles) */
-      .board-member-area {
-        position: absolute;
-        width: 30%;
-        height: 28%;
-        z-index: 10;
-      }
-
-      .area-s-ravi {
-        top: 1%;
-        left: 8%;
-      }
-
-      .area-k-prasanna {
-        top: 1%;
-        right: 9%;
-      }
-
-      .area-sharath-chandra {
-        bottom: 7%;
-        left: 8%;
-      }
-
-      .area-subramanya-bs {
-        bottom: 8%;
-        right: 9%;
-      }
-
-      /* Desktop adjustments to align with desktop image layout */
-      @media (min-width: 769px) {
-        .board-member-area {
-          width: 32%;
-          height: 32%;
-        }
-
-        /* Adjusted positions for Desktop Image (Centered Grid) */
-        .area-s-ravi {
-          top: 15%;
-          left: 11%;
-        }
-
-        .area-k-prasanna {
-          top: 15%;
-          right: 11%;
-        }
-
-        .area-sharath-chandra {
-          bottom: 15%;
-          left: 11%;
-        }
-
-        .area-subramanya-bs {
-          bottom: 15%;
-          right: 11%;
-        }
-      }
-    </style>
-
-    <!-- Popup elements for board members -->
-    <div class="board-popup" id="popup-s-ravi" role="dialog" aria-modal="true" aria-labelledby="popup-s-ravi-title"
-      aria-hidden="true">
-      <div class="popup-content">
-        <button class="popup-close" aria-label="Close information popup for S. Ravi" tabindex="0">&times;</button>
-        <h4 id="popup-s-ravi-title">S Ravi <small style="color:#000; font-weight:600;">35+ Years of Experience</small>
-        </h4>
-        <p>Seasoned Structural Engineer with over three decades of expertise in the analysis, design, evaluation, and
-          rehabilitation of RCC and steel structures. Specializes in multi-storeyed buildings, industrial facilities,
-          hydraulic structures, and liquid-retaining systems. Extensive experience in structural investigations,
-          non-destructive testing, and designing remedial measures for distressed structures.</p>
-      </div>
-    </div>
-
-    <div class="board-popup" id="popup-k-prasanna" role="dialog" aria-modal="true"
-      aria-labelledby="popup-k-prasanna-title" aria-hidden="true">
-      <div class="popup-content">
-        <button class="popup-close" aria-label="Close information popup for K. Prasanna" tabindex="0">&times;</button>
-        <h4 id="popup-k-prasanna-title">K. Prasanna <small style="color:#000; font-weight:600;"> 25+ Years of
-            Experience</small></h4>
-        <p>Experienced Structural Engineer with over two decades of expertise in the analysis, design, and evaluation of
-          RCC and steel structures including multi-storeyed buildings, bridges, industrial plants, and hydraulic
-          structures. Skilled in structural restoration, strengthening, and non-destructive testing techniques.
-          Proficient in advanced structural design and drafting tools such as STAAD.Pro, ETABS, SAFE, NISA Civil and
-          AutoCad. Knowledgeable in wastewater treatment process design and environmental engineering assessments.</p>
-      </div>
-    </div>
-
-    <div class="board-popup" id="popup-sharath-chandra" role="dialog" aria-modal="true"
-      aria-labelledby="popup-sharath-chandra-title" aria-hidden="true">
-      <div class="popup-content">
-        <button class="popup-close" aria-label="Close information popup for Sharath Chandra V"
-          tabindex="0">&times;</button>
-        <h4 id="popup-sharath-chandra-title">Sharath Chandra V <small style="color:#000; font-weight:600;">35+ Years of
-            Experience </small> </h4>
-        <p>A highly experienced Civil Engineer with over 35 years in the construction industry, including 20 years in
-          India and 11 years overseas. Proven expertise in project execution, structural systems, quality control, and
-          stakeholder coordination across residential, commercial, and infrastructure projects. Specialized in managing
-          large-scale developments from concept to handover, with strong focus on ISO standards and construction best
-          practices.</p>
-      </div>
-    </div>
-
-    <div class="board-popup" id="popup-subramanya-bs" role="dialog" aria-modal="true"
-      aria-labelledby="popup-subramanya-bs-title" aria-hidden="true">
-      <div class="popup-content">
-        <button class="popup-close" aria-label="Close information popup for Subramanya BS" tabindex="0">&times;</button>
-        <h4 id="popup-subramanya-bs-title">Subramanya BS <small style="color:#000; font-weight:600;"> 35+ Years of
-            Experience </small></h4>
-        <p>Highly accomplished Project Management Professional with over 35 years of extensive experience in project
-          planning, construction management, contract administration, and process optimization across large-scale
-          infrastructure and industrial projects. Proven expertise in method engineering, cost-effective execution, and
-          cross-functional leadership in both greenfield and brownfield environments.</p>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    @media (max-width: 768px) {
-      .board-card.container {
-        margin-top: 30px !important;
-        margin-bottom: 30px !important;
-        padding: 15px;
-        border-radius: 20px !important;
-      }
-    }
-  </style>
-
-
-  <!-- first part ends -->
-
-
-  <!-- middle part starts -->
-  <style>
-    .container.mt-5 {
-      padding: 50px;
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: none;
-      margin-top: 60px !important;
-      margin-bottom: 60px;
-      overflow: hidden;
-      border: none;
-      width: 90%;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .unit {
-      display: flex;
-      align-items: stretch;
-      padding: 25px 20px;
-      background: #ffffff;
-      border-radius: 15px;
-      box-shadow: none;
-      border: none;
-      transition: transform 0.3s ease;
-      margin-bottom: 30px;
-      min-height: 380px;
-      width: 100%;
-    }
-
-    .unit:hover {
-      transform: translateY(-5px);
-      box-shadow: none;
-      border-color: transparent;
-    }
-
-    .vertical-text {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-weight: 700;
-      font-size: 20px;
-      text-align: center;
-      padding: 25px 15px;
-      border: none;
-      background: #ffffff;
-      color: #333333;
+    .bod-director-img {
+      width: 120px;
+      height: 120px;
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      letter-spacing: 2px;
-      min-width: 60px;
-      flex-shrink: 0;
-    }
-
-    .names {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      margin-left: 20px;
-      padding: 5px;
-      flex: 1;
-      width: auto;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .name-row {
-      display: flex;
-      align-items: center;
-      transition: transform 0.2s ease;
-    }
-
-    .name-row:hover {
-      transform: translateX(5px);
-    }
-
-    .connector {
-      width: 40px;
-      height: 4px;
-      background: #ffffff;
-      margin-right: 12px;
-      border-radius: 2px;
-      box-shadow: 0 2px 4px rgba(249, 115, 22, 0.35);
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .connector::after {
-      content: '';
-      position: absolute;
-      right: -6px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      border-left: 6px solid #f97316;
-      border-top: 3px solid transparent;
-      border-bottom: 3px solid transparent;
-    }
-
-    .name-box {
-      border: none;
-      border-radius: 12px;
-      padding: 12px 18px;
-      width: 100%;
-      max-width: 100%;
-      height: 80px;
-      font-size: 18px;
-      background: #ffffff;
-      font-weight: 600;
-      color: #333333;
-      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.18);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 15px;
-    }
-
-    .member-image {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
       object-fit: cover;
-      border: none;
-      box-shadow: 0 3px 8px rgba(249, 115, 22, 0.35);
-      flex-shrink: 0;
+      border: 3px solid #e85a3a;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 20px rgba(232, 90, 58, 0.3);
     }
 
-    .member-name {
-      flex: 1;
-      font-size: 18px;
+    .bod-director-card:hover .bod-director-img {
+      border-width: 4px;
+      box-shadow: 0 8px 30px rgba(232, 90, 58, 0.5);
+    }
+
+    /* Experience Badge */
+    .bod-experience-badge {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e85a3a;
+      color: #fff;
+      font-size: 10px;
       font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    /* Director Info */
+    .bod-director-info {
+      padding: 10px 15px 15px;
+      text-align: center;
+    }
+
+    .bod-director-info h4 {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 4px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .name-box::before {
-      content: '';
+    .bod-director-info .designation {
+      color: #e85a3a;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* Hover Details Panel */
+    .bod-hover-details {
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      transition: left 0.4s;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      width: 280px;
+      background: linear-gradient(145deg, #1a1a1a 0%, #252525 100%);
+      border-radius: 12px;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(232, 90, 58, 0.2);
+      border: 1px solid rgba(232, 90, 58, 0.3);
+      z-index: 100;
     }
 
-    .name-box:hover::before {
-      left: 100%;
+    .bod-director-card:hover .bod-hover-details {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(5px);
     }
 
-    .name-box:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.28);
-      border-color: #f97316;
-      background: #ffffff;
+    /* Adjust hover panel position for bottom cards */
+    .bod-director-card[data-director="sharath-chandra"] .bod-hover-details,
+    .bod-director-card[data-director="subramanya-bs"] .bod-hover-details {
+      top: auto;
+      bottom: 100%;
+      transform: translateX(-50%) translateY(-10px);
     }
 
-    /* Responsive adjustments */
+    .bod-director-card[data-director="sharath-chandra"]:hover .bod-hover-details,
+    .bod-director-card[data-director="subramanya-bs"]:hover .bod-hover-details {
+      transform: translateX(-50%) translateY(-5px);
+    }
+
+    /* Adjust hover panel position for left cards */
+    .bod-director-card[data-director="s-ravi"] .bod-hover-details,
+    .bod-director-card[data-director="sharath-chandra"] .bod-hover-details {
+      left: 0;
+      transform: translateX(0) translateY(10px);
+    }
+
+    .bod-director-card[data-director="s-ravi"]:hover .bod-hover-details {
+      transform: translateX(0) translateY(5px);
+    }
+
+    .bod-director-card[data-director="sharath-chandra"] .bod-hover-details {
+      transform: translateX(0) translateY(-10px);
+    }
+
+    .bod-director-card[data-director="sharath-chandra"]:hover .bod-hover-details {
+      transform: translateX(0) translateY(-5px);
+    }
+
+    /* Adjust hover panel position for right cards */
+    .bod-director-card[data-director="k-prasanna"] .bod-hover-details,
+    .bod-director-card[data-director="subramanya-bs"] .bod-hover-details {
+      left: auto;
+      right: 0;
+      transform: translateX(0) translateY(10px);
+    }
+
+    .bod-director-card[data-director="k-prasanna"]:hover .bod-hover-details {
+      transform: translateX(0) translateY(5px);
+    }
+
+    .bod-director-card[data-director="subramanya-bs"] .bod-hover-details {
+      transform: translateX(0) translateY(-10px);
+    }
+
+    .bod-director-card[data-director="subramanya-bs"]:hover .bod-hover-details {
+      transform: translateX(0) translateY(-5px);
+    }
+
+    .bod-hover-details h5 {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 5px;
+    }
+
+    .bod-hover-details .exp-tag {
+      display: inline-block;
+      background: rgba(232, 90, 58, 0.2);
+      color: #e85a3a;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .bod-hover-details p {
+      color: #bbb;
+      font-size: 12px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Connecting Lines (decorative) */
+    .bod-connector-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, rgba(232, 90, 58, 0.3), transparent);
+      height: 1px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 992px) {
+      .bod-orbital-ring {
+        height: 500px;
+      }
+
+      .bod-title-badge {
+        width: 160px;
+        height: 160px;
+      }
+
+      .bod-title-badge h2 {
+        font-size: 15px;
+      }
+
+      .bod-director-card {
+        width: 140px;
+      }
+
+      .bod-director-img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .bod-orbital-path-1 {
+        width: 380px;
+        height: 380px;
+      }
+
+      .bod-orbital-path-2 {
+        width: 420px;
+        height: 420px;
+      }
+    }
+
     @media (max-width: 768px) {
-      .container.mt-5 {
-        padding: 15px !important;
-        margin-top: 30px !important;
-        margin-bottom: 30px !important;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
+      .bod-orbital-section {
+        padding: 50px 0;
+        min-height: auto;
       }
 
-      .container.mt-5 .row {
-        display: block !important;
-      }
-
-      .container.mt-5 .col-md-6 {
-        display: block !important;
-        width: 100% !important;
-        margin-bottom: 20px;
-      }
-
-      .unit {
+      .bod-orbital-ring {
+        height: auto;
         flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        margin-bottom: 10px;
-        min-height: 250px;
-        width: 95% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        gap: 20px;
+        padding-top: 20px;
       }
 
-      .unit img {
-        width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important;
-        border-radius: 15px !important;
-      }
-
-      .vertical-text {
-        writing-mode: horizontal-tb;
+      .bod-center-title {
+        position: relative;
+        left: auto;
+        top: auto;
         transform: none;
-        width: 100%;
-        text-align: center;
-        padding: 12px;
-        margin-bottom: 20px;
-        min-width: 100%;
-        font-size: 18px;
+        margin-bottom: 30px;
       }
 
-      .names {
-        margin-left: 0;
-        width: 100%;
-        gap: 15px;
+      .bod-title-badge {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
       }
 
-      .name-row {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-      }
-
-      .connector {
+      .bod-orbital-path {
         display: none;
       }
 
-      .name-box {
+      .bod-director-card {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
         width: 100%;
-        max-width: 100%;
-        height: auto;
-        min-height: 80px;
-        padding: 10px 15px;
-        font-size: 16px;
+        max-width: 300px;
+        margin: 0 auto;
       }
 
-      .member-image {
+      .bod-director-card:hover {
+        transform: scale(1.02);
+      }
+
+      .bod-card-inner {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+      }
+
+      .bod-director-img-wrapper {
+        padding: 0;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+
+      .bod-director-img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .bod-experience-badge {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 8px;
+        display: inline-block;
+      }
+
+      .bod-director-info {
+        padding: 0;
+        text-align: left;
+        flex: 1;
+      }
+
+      .bod-director-info h4 {
+        font-size: 16px;
+        white-space: normal;
+      }
+
+      .bod-hover-details {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+        margin-top: 15px;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+      }
+
+      .bod-director-card.mobile-expanded .bod-hover-details {
+        display: block;
+      }
+
+      .bod-director-card:hover .bod-hover-details {
+        transform: none;
+      }
+
+      /* Mobile tap indicator */
+      .bod-tap-indicator {
+        display: block;
+        text-align: center;
+        color: #666;
+        font-size: 11px;
+        margin-top: 5px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .bod-tap-indicator {
+        display: none;
+      }
+    }
+  </style>
+
+  <section class="bod-orbital-section">
+    <div class="bod-orbital-container">
+      <div class="bod-orbital-ring">
+        <!-- Orbital Paths (decorative) -->
+        <div class="bod-orbital-path bod-orbital-path-1"></div>
+        <div class="bod-orbital-path bod-orbital-path-2"></div>
+
+        <!-- Center Title -->
+        <div class="bod-center-title">
+          <div class="bod-title-badge">
+            <h2>Board of<br>Directors</h2>
+            <span class="subtitle">Leadership Team</span>
+          </div>
+        </div>
+
+        <!-- Director Card 1 - S Ravi -->
+        <div class="bod-director-card" data-director="s-ravi">
+          <div class="bod-card-inner">
+            <div class="bod-director-img-wrapper">
+              <img src="images/team/s.ravi.png" alt="S Ravi" class="bod-director-img">
+              <span class="bod-experience-badge">35+ Years</span>
+            </div>
+            <div class="bod-director-info">
+              <h4>S Ravi</h4>
+              <p class="designation">Director</p>
+              <span class="bod-tap-indicator">Tap for details</span>
+            </div>
+          </div>
+          <div class="bod-hover-details">
+            <h5>S Ravi</h5>
+            <span class="exp-tag">35+ Years of Experience</span>
+            <p>Seasoned Structural Engineer with over three decades of expertise in the analysis, design, evaluation,
+              and rehabilitation of RCC and steel structures. Specializes in multi-storeyed buildings, industrial
+              facilities, hydraulic structures, and liquid-retaining systems.</p>
+          </div>
+        </div>
+
+        <!-- Director Card 2 - K Prasanna -->
+        <div class="bod-director-card" data-director="k-prasanna">
+          <div class="bod-card-inner">
+            <div class="bod-director-img-wrapper">
+              <img src="images/team/k prasana.png" alt="K Prasanna" class="bod-director-img">
+              <span class="bod-experience-badge">25+ Years</span>
+            </div>
+            <div class="bod-director-info">
+              <h4>K Prasanna</h4>
+              <p class="designation">Director</p>
+              <span class="bod-tap-indicator">Tap for details</span>
+            </div>
+          </div>
+          <div class="bod-hover-details">
+            <h5>K Prasanna</h5>
+            <span class="exp-tag">25+ Years of Experience</span>
+            <p>Experienced Structural Engineer with over two decades of expertise in the analysis, design, and
+              evaluation of RCC and steel structures. Proficient in STAAD.Pro, ETABS, SAFE, NISA Civil and AutoCad.
+              Knowledgeable in wastewater treatment process design.</p>
+          </div>
+        </div>
+
+        <!-- Director Card 3 - Sharath Chandra V -->
+        <div class="bod-director-card" data-director="sharath-chandra">
+          <div class="bod-card-inner">
+            <div class="bod-director-img-wrapper">
+              <img src="images/team/sharath chandra.jpg" alt="Sharath Chandra V" class="bod-director-img">
+              <span class="bod-experience-badge">35+ Years</span>
+            </div>
+            <div class="bod-director-info">
+              <h4>Sharath Chandra V</h4>
+              <p class="designation">Director</p>
+              <span class="bod-tap-indicator">Tap for details</span>
+            </div>
+          </div>
+          <div class="bod-hover-details">
+            <h5>Sharath Chandra V</h5>
+            <span class="exp-tag">35+ Years of Experience</span>
+            <p>A highly experienced Civil Engineer with over 35 years in the construction industry, including 20 years
+              in India and 11 years overseas. Specialized in managing large-scale developments from concept to handover.
+            </p>
+          </div>
+        </div>
+
+        <!-- Director Card 4 - Subramanya BS -->
+        <div class="bod-director-card" data-director="subramanya-bs">
+          <div class="bod-card-inner">
+            <div class="bod-director-img-wrapper">
+              <img src="images/team/subramanya.jpg" alt="Subramanya BS" class="bod-director-img">
+              <span class="bod-experience-badge">35+ Years</span>
+            </div>
+            <div class="bod-director-info">
+              <h4>Subramanya BS</h4>
+              <p class="designation">Director</p>
+              <span class="bod-tap-indicator">Tap for details</span>
+            </div>
+          </div>
+          <div class="bod-hover-details">
+            <h5>Subramanya BS</h5>
+            <span class="exp-tag">35+ Years of Experience</span>
+            <p>Highly accomplished Project Management Professional with over 35 years of extensive experience in project
+              planning, construction management, contract administration, and process optimization across large-scale
+              projects.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Mobile tap to expand functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const directorCards = document.querySelectorAll('.bod-director-card');
+
+      directorCards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            // Close all other cards
+            directorCards.forEach(function (c) {
+              if (c !== card) c.classList.remove('mobile-expanded');
+            });
+            // Toggle current card
+            card.classList.toggle('mobile-expanded');
+          }
+        });
+      });
+    });
+  </script>
+  <!-- Board of Directors Section End -->
+
+
+  <!-- middle part starts -->
+  <style>
+    /* Section Title Styling */
+    .team-section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-top: 20px;
+    }
+
+    .team-section-title h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .team-section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #e85a3a;
+      border-radius: 2px;
+    }
+
+    .team-section-title p {
+      color: #666;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    /* Secondary Team Section Container */
+    .secondary-team-section {
+      padding: 40px 0;
+      background: #f8f9fa;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .secondary-team-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        url('images/services/structural_design_consultancy.jpeg'),
+        url('images/services/steel_structur.jpeg');
+      background-position: left center, right center;
+      background-size: 45% auto, 45% auto;
+      background-repeat: no-repeat, no-repeat;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .secondary-team-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Team Cards Row */
+    .team-cards-row {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Individual Team Card */
+    .team-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex: 1;
+      min-width: 300px;
+      max-width: 550px;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Card Header with Title */
+    .team-card-header {
+      background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+      color: #fff;
+      padding: 20px 25px;
+      text-align: center;
+    }
+
+    .team-card-header h3 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .team-card-header .subtitle {
+      font-size: 13px;
+      color: #e85a3a;
+      margin-top: 5px;
+      font-weight: 500;
+    }
+
+    /* Card Body with Members */
+    .team-card-body {
+      padding: 25px;
+    }
+
+    /* Member Item */
+    .team-member-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .team-member-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .team-member-item:hover {
+      background: #fff;
+      box-shadow: 0 4px 15px rgba(232, 90, 58, 0.15);
+      border-left-color: #e85a3a;
+      transform: translateX(5px);
+    }
+
+    /* Member Image */
+    .team-member-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e85a3a;
+      flex-shrink: 0;
+    }
+
+    /* Member Info */
+    .team-member-info {
+      flex: 1;
+    }
+
+    .team-member-info h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0 0 4px 0;
+    }
+
+    .team-member-info .designation {
+      font-size: 13px;
+      color: #e85a3a;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+    }
+
+    .team-member-info .experience {
+      font-size: 12px;
+      color: #666;
+      margin: 0;
+    }
+
+    /* Managers Section */
+    .managers-section {
+      padding: 50px 0;
+      background: #fff;
+    }
+
+    .managers-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .managers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    /* Manager Card */
+    .manager-card {
+      background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .manager-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .manager-card-inner {
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .manager-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e85a3a;
+      flex-shrink: 0;
+    }
+
+    .manager-info h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 5px 0;
+    }
+
+    .manager-info .designation {
+      font-size: 14px;
+      color: #e85a3a;
+      font-weight: 600;
+      margin: 0 0 3px 0;
+    }
+
+    .manager-info .experience {
+      font-size: 12px;
+      color: #aaa;
+      margin: 0;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .team-section-title h2 {
+        font-size: 24px;
+      }
+
+      .team-cards-row {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .team-card {
+        max-width: 100%;
+        min-width: auto;
+      }
+
+      .team-card-header {
+        padding: 15px 20px;
+      }
+
+      .team-card-header h3 {
+        font-size: 18px;
+      }
+
+      .team-card-body {
+        padding: 15px;
+      }
+
+      .team-member-item {
+        padding: 12px;
+        gap: 12px;
+      }
+
+      .team-member-img {
         width: 55px;
         height: 55px;
       }
 
-      .member-name {
+      .team-member-info h4 {
+        font-size: 14px;
+      }
+
+      .team-member-info .designation {
+        font-size: 12px;
+      }
+
+      .managers-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .manager-card-inner {
+        padding: 20px;
+        gap: 15px;
+      }
+
+      .manager-img {
+        width: 65px;
+        height: 65px;
+      }
+
+      .manager-info h4 {
         font-size: 16px;
       }
     }
   </style>
 
-  <div class="container mt-1">
-    <div class="row" style="display: flex; align-items: stretch;">
-      <!-- Executive Directors -->
-      <div class="col-md-6 col-12 executive-directors" style="display: flex;">
-        <div class="unit" style="width: 100%;">
-          <img src="images/team/executive-board.jpg" alt="Executive Directors"
-            style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
-        </div>
+  <!-- Executive Directors & Advisory Board Section -->
+  <section class="secondary-team-section">
+    <div class="secondary-team-container">
+      <div class="team-section-title">
+        <h2>Leadership Team</h2>
+        <p>Guiding our vision with expertise and dedication</p>
       </div>
 
-      <!-- Advisory Board -->
-      <div class="col-md-6 col-12 advisory-board" style="display: flex;">
-        <div class="unit" style="width: 100%;">
-          <img src="images/team/advisory-board.jpg" alt="Advisory Board"
-            style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+      <div class="team-cards-row">
+        <!-- Executive Directors Card -->
+        <div class="team-card">
+          <div class="team-card-header">
+            <h3>Executive Directors</h3>
+            <div class="subtitle">Core Leadership</div>
+          </div>
+          <div class="team-card-body">
+            <div class="team-member-item">
+              <img src="images/team/m.n ramesh.jpg" alt="M N Ramesh" class="team-member-img">
+              <div class="team-member-info">
+                <h4>M N Ramesh</h4>
+                <p class="designation">Executive Director</p>
+                <p class="experience">30+ Years Experience</p>
+              </div>
+            </div>
+            <div class="team-member-item">
+              <img src="images/team/narayana achutha.jpg" alt="Narayana Achutha" class="team-member-img">
+              <div class="team-member-info">
+                <h4>Narayana Achutha</h4>
+                <p class="designation">Executive Director</p>
+                <p class="experience">25+ Years Experience</p>
+              </div>
+            </div>
+            <div class="team-member-item">
+              <img src="images/team/s manoranjan.jpg" alt="S Manoranjan" class="team-member-img">
+              <div class="team-member-info">
+                <h4>S Manoranjan</h4>
+                <p class="designation">Executive Director</p>
+                <p class="experience">25+ Years Experience</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advisory Board Card -->
+        <div class="team-card">
+          <div class="team-card-header">
+            <h3>Advisory Board</h3>
+            <div class="subtitle">Strategic Guidance</div>
+          </div>
+          <div class="team-card-body">
+            <div class="team-member-item">
+              <img src="images/team/ms shivakumar.jpg" alt="M S Shivakumar" class="team-member-img">
+              <div class="team-member-info">
+                <h4>M S Shivakumar</h4>
+                <p class="designation">Advisory Board Member</p>
+                <p class="experience">35+ Years Experience</p>
+              </div>
+            </div>
+            <div class="team-member-item">
+              <img src="images/team/RAMESH P.jpg" alt="Ramesh P" class="team-member-img">
+              <div class="team-member-info">
+                <h4>Ramesh P</h4>
+                <p class="designation">Advisory Board Member</p>
+                <p class="experience">30+ Years Experience</p>
+              </div>
+            </div>
+            <div class="team-member-item">
+              <img src="images/team/SHIVAKUMAR A N.jpg" alt="Shivakumar A N" class="team-member-img">
+              <div class="team-member-info">
+                <h4>Shivakumar A N</h4>
+                <p class="designation">Advisory Board Member</p>
+                <p class="experience">30+ Years Experience</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-
-
+  </section>
   <!-- middle part ends -->
 
+  <!-- Operational Managers Section -->
+  <section class="managers-section">
+    <div class="managers-container">
+      <div class="team-section-title">
+        <h2>Operational & Executive Managers</h2>
+        <p>Driving excellence in day-to-day operations</p>
+      </div>
 
+      <div class="managers-grid">
+        <div class="manager-card">
+          <div class="manager-card-inner">
+            <img src="images/team/Amitha.jpeg" alt="Amitha" class="manager-img">
+            <div class="manager-info">
+              <h4>Amitha</h4>
+              <p class="designation">Manager - Operations</p>
+              <p class="experience">10+ Years Experience</p>
+            </div>
+          </div>
+        </div>
 
+        <div class="manager-card">
+          <div class="manager-card-inner">
+            <img src="images/team/Gouri R  C.jpeg" alt="Gouri R C" class="manager-img">
+            <div class="manager-info">
+              <h4>Gouri R C</h4>
+              <p class="designation">Executive Manager</p>
+              <p class="experience">8+ Years Experience</p>
+            </div>
+          </div>
+        </div>
 
-  <!-- third part starts-->
+        <div class="manager-card">
+          <div class="manager-card-inner">
+            <img src="images/team/Vaani.jpeg" alt="Vaani" class="manager-img">
+            <div class="manager-info">
+              <h4>Vaani</h4>
+              <p class="designation">Executive Manager</p>
+              <p class="experience">8+ Years Experience</p>
+            </div>
+          </div>
+        </div>
 
-  <style>
-    .manager-section {
-      padding-left: 15px;
-      padding-right: 15px;
-      /* background: #ffffff; */
-      border-radius: 20px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    .manager-section .row {
-      margin-bottom: 20px;
-    }
-
-    /* ... omitted unresponsive styles ... */
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .manager-section {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-        padding-top: 0 !important;
-        margin-top: -30px !important;
-        margin-bottom: 0 !important;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-      }
-
-      .manager-section .row {
-        margin-bottom: 15px;
-      }
-
-      .manager-section .col-md-6,
-      .executive-directors,
-      .advisory-board {
-        /* Match 50% width and tight padding for all grid items */
-        width: 50% !important;
-        max-width: 50% !important;
-        flex: 0 0 50%;
-        margin-bottom: 5px;
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-      }
-
-      .manager-section .unit,
-      .executive-directors .unit,
-      .advisory-board .unit {
-        width: 100% !important;
-        padding: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-      }
-
-      /* Use auto height to show full image (collage) without cropping */
-      .manager-section .unit img {
-        width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important;
-        border-radius: 15px !important;
-      }
-    }
-  </style>
-
-  <div class="container manager-section ">
-    <div class=" row" style="display: flex; align-items: stretch;">
-      <div class="col-md-6 col-12 " style="display: flex;margin-top: 30px;">
-        <div class="unit" style="width: 100%;">
-          <img src="images/team/operational-manager.jpg" alt="Operational Manager"
-            style="width: 100%; border-radius: 15px; border: none; display: block;">
+        <div class="manager-card">
+          <div class="manager-card-inner">
+            <img src="images/team/veena a k.jpg" alt="Veena A K" class="manager-img">
+            <div class="manager-info">
+              <h4>Veena A K</h4>
+              <p class="designation">Executive Manager</p>
+              <p class="experience">7+ Years Experience</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- third part ends -->
 
