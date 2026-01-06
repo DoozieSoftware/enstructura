@@ -2469,13 +2469,29 @@
     <script src="js/jquery.min.js"></script>
     <!-- bootstrap js -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- Initialize Bootstrap Collapse -->
+    <!-- Initialize Bootstrap Collapse with Hash Support -->
     <script>
         $(document).ready(function () {
-            // Initialize all collapse elements
-            $('.panel-collapse').collapse({ toggle: false });
-            // Show first panel by default
-            $('#collapseOne').collapse('show');
+            // Handle hash navigation on page load
+            if (window.location.hash) {
+                var hash = window.location.hash;
+                if ($(hash).length) {
+                    setTimeout(function () {
+                        $(hash).collapse('show');
+                        $('html, body').animate({
+                            scrollTop: $(hash).offset().top - 100
+                        }, 500);
+                    }, 100);
+                }
+            }
+
+            // Handle hash navigation when clicking accordion links
+            $('.accordion-toggle').on('click', function (e) {
+                var target = $(this).attr('href');
+                if (target && target.indexOf('#') === 0) {
+                    window.location.hash = target;
+                }
+            });
         });
     </script>
     <!-- op nav js -->
