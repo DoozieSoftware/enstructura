@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import { glob } from 'glob'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { copyFileSync, mkdirSync, existsSync } from 'fs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -80,6 +81,8 @@ export default defineConfig({
                         return `fonts/[name]-[hash][extname]`
                     } else if (ext === 'css') {
                         return `css/[name]-[hash][extname]`
+                    } else if (ext === 'pdf') {
+                        return `images/certificates/[name][extname]`
                     }
                     return `assets/[name]-[hash][extname]`
                 }
@@ -125,5 +128,26 @@ export default defineConfig({
             '@scripts': path.resolve(__dirname, './js')
         },
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
-    }
+    },
+
+    // Plugins
+    plugins: [
+        {
+            name: 'copy-pdf-files',
+            closeBundle() {
+                const distCertDir = path.resolve(__dirname, 'dist/images/certificates')
+                if (!existsSync(distCertDir)) {
+                    mkdirSync(distCertDir, { recursive: true })
+                }
+                const pdfSource = path.resolve(__dirname, 'images/certificates/company profile.pdf')
+                const pdfDest = path.resolve(distCertDir, 'company profile.pdf')
+                try {
+                    copyFileSync(pdfSource, pdfDest)
+                    console.log('✓ Copied company profile.pdf to dist')
+                } catch (err) {
+                    console.error('Failed to copy PDF:', err.message)
+                }
+            }
+        }
+    ]
 })

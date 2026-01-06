@@ -2469,6 +2469,15 @@
     <script src="js/jquery.min.js"></script>
     <!-- bootstrap js -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Initialize Bootstrap Collapse -->
+    <script>
+        $(document).ready(function () {
+            // Initialize all collapse elements
+            $('.panel-collapse').collapse({ toggle: false });
+            // Show first panel by default
+            $('#collapseOne').collapse('show');
+        });
+    </script>
     <!-- op nav js -->
     <script src="js/jquery.nav.js"></script>
     <!-- owl.carousel js -->
