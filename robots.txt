@@ -1,0 +1,40 @@
+# robots.txt for www.enstructura.in
+# Generated: January 5, 2026
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.enstructura.in/sitemap.xml
+
+# Disallow crawling of duplicate HTML files (to be removed)
+Disallow: /index-v1.html
+Disallow: /index-v2.html
+Disallow: /index1.html
+Disallow: /team-v1.html
+Disallow: /team-x.html
+Disallow: /team1.html
+Disallow: /team123.html
+Disallow: /services-details1.html
+Disallow: /test-performance.html
+
+# Disallow crawling of documentation and internal files
+Disallow: /docs/
+Disallow: /_archive/
+Disallow: /WEBSITE_AUDIT_REPORT.md
+Disallow: /TECHNICAL_DOCUMENTATION.md
+Disallow: /DEPLOYMENT_HANDOVER.md
+
+# Allow CSS, JS, and images for proper rendering
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /fonts/
+
+# Common directories to exclude (if they exist)
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /backup/
+
+# Crawl delay (optional - be nice to the server)
+Crawl-delay: 1
